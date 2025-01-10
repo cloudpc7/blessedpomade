@@ -1,0 +1,54 @@
+@import url("https://use.typekit.net/dax3jrh.css");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+.navbar {
+  grid-row: 1;
+  grid-column: 1;
+  align-self: start;
+}
+.navbar .container .navbar-toggler {
+  border: 1px solid #909090;
+}
+.navbar .container .navbar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(217,122,67)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.offcanvas {
+  display: grid;
+  background-color: #090D0C;
+  grid-template-rows: repeat(2, minmax(min-content, max-content));
+  cursor: pointer;
+  padding: 1rem;
+}
+.offcanvas .offcanvas-header {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(min-content, max-content));
+  gap: 1rem;
+  color: #ffffff;
+  letter-spacing: 0.08rem;
+  overflow: hidden;
+  font-size: 1.25rem;
+}
+.offcanvas .offcanvas-header .pomade {
+  grid-row: 1;
+  justify-self: start;
+  max-width: 2rem;
+  max-height: 2rem;
+}
+.offcanvas .offcanvas-header .btn-close {
+  background-color: #ffffff;
+  grid-row: 1;
+  justify-self: end;
+  align-self: start;
+}
+.offcanvas .offcanvas-body .navbar-nav .link {
+  color: #ffffff;
+  width: -moz-min-content;
+  width: min-content;
+}
+.offcanvas .offcanvas-body .navbar-nav .link:hover {
+  color: #D97A43;
+}
+.offcanvas .offcanvas-body .navbar-nav .shop {
+  font-size: 1.125rem;
+  letter-spacing: 0.2em;
+}/*# sourceMappingURL=header.css.map */

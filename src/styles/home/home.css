@@ -1,0 +1,52 @@
+@import url("https://use.typekit.net/dax3jrh.css");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+.home-container .row .col {
+  padding: 0;
+}
+.home-container .row .col .card .card-img {
+  border-radius: 0;
+}
+.home-container .row .col .card .card-img-overlay {
+  display: grid;
+  grid-template-rows: repeat(3 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  padding: 1rem;
+  gap: 0.5rem;
+}
+.home-container .row .col .card .card-img-overlay .call-action {
+  grid-row: 1;
+  grid-column: 2;
+  align-self: start;
+  justify-self: end;
+  background-color: transparent;
+  color: #D97A43;
+  border: 3px solid #909090;
+  border-radius: 0;
+  font-weight: bold;
+  font-size: 1.125rem;
+  text-align: center;
+  padding: 0.3125rem 0.875rem;
+  letter-spacing: 0.08em;
+}
+.home-container .row .col .card .card-img-overlay .call-action:hover {
+  background-color: #D97A43;
+  color: #ffffff;
+}
+.home-container .row .col .card .card-img-overlay .card-title {
+  grid-row: 2;
+  grid-column: 1/span 2;
+  color: #ffffff;
+  align-self: end;
+  justify-self: center;
+  max-width: 80%;
+}
+.home-container .row .col .card .card-img-overlay .card-body {
+  grid-row: 3;
+  grid-column: 1/span 2;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+.home-container .row .col .card .card-img-overlay .card-body .card-text {
+  color: #ffffff;
+}/*# sourceMappingURL=home.css.map */

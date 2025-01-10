@@ -3,14 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "blessedpomade": "file:",
     "cra-template": "1.2.0",
-    "font-awesome": "^4.7.0",
     "formik": "^2.4.6",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.10.7",
     "react-dom": "^18.2.0",
     "react-router-dom": "^7.1.1",
     "react-scripts": "5.0.1",
-    "react-spring": "^9.7.5"
+    "react-spring": "^9.7.5",
+    "reactstrap": "^9.2.3"
   },
   "scripts": {
     "start": "react-scripts start",

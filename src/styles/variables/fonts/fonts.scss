@@ -1,2 +1,54 @@
 @use 'sass:math';
 @use 'sass:color';
+@import url("https://use.typekit.net/dax3jrh.css");
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+// Font Families
+$defaultFont : 'Bebas Neue', serif;
+$titleFont : 'trajan-pro-3', serif;
+
+$font-themes: (
+    default: (
+        font-family: $defaultFont,
+    ),
+    title: (
+        font-family: $titleFont,
+    )
+);
+
+@mixin font-theme($theme-name) {
+    $theme: map-get($font-themes, $theme-name);
+    @if $theme {
+        font-family: map-get($theme, font-family);
+        font-weight: map-get($theme, font-weight);
+        line-height: map-get($theme, line-height);
+        letter-spacing: map-get($theme, letter-spacing);
+        color: map-get($theme, color);
+      } @else {
+        @error "No font theme found for `#{$theme-name}`";
+      }
+};
+
+$title: (
+    xs: 2rem,
+);
+
+@function title($breakpoint) {
+    @return map-get($title, $breakpoint);
+};
+
+$subTitle: (
+    xs: 1.25rem,
+);
+
+@function subTitle($breakpoint) {
+    @return map-get($subTitle, $breakpoint);
+};
+
+$default: (
+    xs: 1.125rem,
+);
+
+@function default($breakpoint) {
+    @return map-get($default, $breakpoint);
+}

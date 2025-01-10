@@ -1,0 +1,67 @@
+// toggler style background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(174,131,25,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+@use '../variables/fonts/fonts.scss' as font;
+@use '../variables/utillities/utils.scss' as util;
+@use '../variables/colors/colors.scss' as colors;
+
+.navbar {
+    grid-row: 1;
+    grid-column: 1;
+    align-self: start;
+    .container {
+        .navbar-toggler {
+            border: 1px solid colors.colorTheme(lightGrey);
+            .navbar-toggler-icon {
+                background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(217,122,67)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+            }
+            
+        }
+    }
+}
+
+.offcanvas {
+    display: grid;
+    background-color: colors.colorTheme(appBlack);
+    grid-template-rows: repeat(2, minmax(min-content,max-content));
+    cursor: pointer;
+    padding: util.gutter(xs);
+    .offcanvas-header {
+        display: grid;
+        grid-template-rows: repeat(2, minmax(min-content,max-content));
+        gap: 1rem;
+        color: colors.colorTheme(appWhite);
+        letter-spacing: 0.08rem;
+        overflow: hidden;
+        font-size: font.subTitle(xs);
+        .pomade {
+            grid-row: 1;
+            justify-self: start;
+            max-width: 2rem;
+            max-height: 2rem;
+        }
+
+        .btn-close {
+            background-color: colors.colorTheme(appWhite);
+            grid-row: 1;
+            justify-self: end;
+            align-self: start;
+        }
+    }
+
+    .offcanvas-body {
+        .navbar-nav {
+            .link {
+                color: colors.colorTheme(appWhite);
+                width:min-content;
+
+                &:hover {
+                    color: colors.colorTheme(burntOrange);
+                }
+            }
+
+            .shop {
+                font-size: font.default(xs);
+                letter-spacing: 0.2em;
+            }
+        }
+    }
+}

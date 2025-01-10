@@ -1,2 +1,28 @@
-@use 'sass:math';
-@use 'sass:color';
+@use '../colors/colors.scss' as colors;
+
+$grid-gutter-widths: (
+    default: 0,
+    xs: 1rem,
+);
+
+@function gutter($breakpoint) {
+    @return map-get($grid-gutter-widths, $breakpoint);
+}
+
+
+@mixin call-action {
+    background-color: transparent;
+    color: colors.colorTheme(burntOrange);
+    border: 3px solid #909090;
+    border-radius: 0;
+    font-weight: bold;
+    font-size: 1.125rem;
+    text-align: center;
+    padding: 0.3125rem 0.875rem;
+    letter-spacing: 0.08em;
+
+    &:hover {
+        background-color: colors.colorTheme(burntOrange);
+        color: colors.colorTheme(appWhite);
+    }
+}

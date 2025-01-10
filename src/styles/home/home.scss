@@ -1,0 +1,48 @@
+@use '../variables/fonts/fonts.scss' as font;
+@use '../variables/utillities/utils.scss' as util;
+@use '../variables/colors/colors.scss' as colors;
+.home-container {
+    .row {
+        .col {
+            padding: 0;
+            .card {
+                .card-img {
+                    border-radius: 0;
+                }
+                .card-img-overlay {
+                    display: grid;
+                    grid-template-rows: repeat(3 1fr);
+                    grid-template-columns: repeat(2, 1fr);
+                    padding: util.gutter(xs);
+                    gap: 0.5rem;
+                    .call-action {
+                        grid-row: 1;
+                        grid-column: 2;
+                        align-self: start;
+                        justify-self: end;
+                        @include util.call-action();
+                    }
+
+                    .card-title {
+                        grid-row: 2;
+                        grid-column: 1 / span 2;
+                        color: colors.colorTheme(appWhite);
+                        align-self: end;
+                        justify-self: center;
+                        max-width: 80%;
+                    }
+                    .card-body {
+                        grid-row: 3;
+                        grid-column: 1 / span 2;
+                        display: flex;
+                        justify-content: center;
+                        align-items: start;
+                        .card-text {
+                            color: colors.colorTheme(appWhite);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

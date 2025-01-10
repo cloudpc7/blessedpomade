@@ -1,2 +1,15 @@
-@use 'sass:math';
 @use 'sass:color';
+$color-theme: (
+    burntOrange: #D97A43,
+    brownRed: #8C5230,
+    brown:#593A27,
+    appBlack: #090D0C,
+    sand: #F2D1B3,
+    appWhite: #ffffff,
+    lightGrey: #909090,
+);
+
+@function colorTheme($key) {
+    @return map-get($color-theme, $key);
+}
+

@@ -20,6 +20,25 @@
   
   body{
     line-height: 1;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .navbar,
+  .card-img-overlay,
+  .card-body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  .card-text,
+  .card-title,
+  .btn {
+    padding: 0;
+    margin: 0;
   }
   
   ol, ul{
