@@ -3,10 +3,10 @@ import { Container, Row, Col, Button, Card} from 'react-bootstrap';
 import Header from '../components/Header';
 import pomadeHero from '../app/assets/images/pomade-mobile.png';
 import '../styles/home/home.scss';
+import PomadeSale from '../features/modals/PomadeSale';
 const HomePage = () => {
-
     const [showModal, setShowModal] = useState(false);
-    console.log(showModal);
+    const handleClose = () => setShowModal(false);
     return (
         <Container className="home-container">
             <Row>
@@ -25,6 +25,9 @@ const HomePage = () => {
                         </Card.ImgOverlay>
                     </Card>
                 </Col>
+                {
+                    showModal && <PomadeSale showModal={showModal} handleClose={handleClose}/>
+                }
             </Row>
             <Row>
                 <Col>
