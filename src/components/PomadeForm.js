@@ -109,9 +109,9 @@ const PomadeForm = () => {
                     type="email"
                     name="email"
                     placeholder="Email"
-                    value={values.email}  // Bind the value
-                    onChange={handleChange}  // Provide the onChange handler
-                    onBlur={handleBlur}  // Optionally use Formik's handleBlur
+                    value={values.email}  
+                    onChange={handleChange}  
+                    onBlur={handleBlur}  
                     isInvalid={touched.email && !!errors.email}
                 />
                 <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
