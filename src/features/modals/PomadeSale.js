@@ -1,7 +1,14 @@
 import '../../styles/modals/modal.scss';
 import { Modal } from 'react-bootstrap';
 import PomadeCard from '../../components/PomadeCard';
-const PomadeSale = ({ showModal, handleClose }) => {
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import ProductContext from '../../ProductContext';
+import CheckOutModal from '../modals/CheckOutModal';
+
+const PomadeSale = () => {
+  const { getCart, showModal, handleClose } = useContext(ProductContext);
+
   return (
     <Modal 
       show={showModal} 
@@ -14,58 +21,12 @@ const PomadeSale = ({ showModal, handleClose }) => {
        </Modal.Header>
         <Modal.Body>
           <PomadeCard />
+          {
+            getCart && <CheckOutModal />
+          }
         </Modal.Body>
     </Modal>
   );
 };
 
 export default PomadeSale;
-
-// <Modal >
-//      
-//       <Modal.Body>
-//         
-
-//         <Formik
-//           initialValues={{
-//             firstName: '',
-//             lastName: '',
-//             street: '',
-//             city: '',
-//             state: '',
-//             zip: '',
-//           }}
-//           onSubmit={handleSubmit}
-//         >
-//           {({ values, handleChange, handleBlur }) => (
-//             <Form noValidate>
-//               
-//               
-//               </Form.Group>
-//               <Form.Group>
-//                 <Form.Label>Street Address</Form.Label>
-//                 {
-//                   isLoaded && 
-//                   <StandaloneSearchBox
-//                     onLoad={(ref) => inputRef.current = ref}
-//                     onPlacesChanged={handleOnPlacesChanged}
-//                   >
-//                     <Form.Control
-//                       id="location-input"
-//                       type="text"
-//                       name="street"
-//                       placeholder="Street Address"
-//                       value={values.street}
-//                       onChange={handleChange}
-//                       onBlur={handleBlur}
-//                     />
-//                   </StandaloneSearchBox>
-//                 }
-//               </Form.Group>
-//               
-//               <Button type="submit">Submit</Button>
-//             </Form>
-//           )}
-//         </Formik>
-//       </Modal.Body>
-//     </Modal>

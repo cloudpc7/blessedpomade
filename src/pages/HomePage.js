@@ -4,9 +4,11 @@ import Header from '../components/Header';
 import pomadeHero from '../app/assets/images/pomade-mobile.png';
 import '../styles/home/home.scss';
 import PomadeSale from '../features/modals/PomadeSale';
+import { useContext } from 'react';
+import ProductContext from '../ProductContext';
+
 const HomePage = () => {
-    const [showModal, setShowModal] = useState(false);
-    const handleClose = () => setShowModal(false);
+    const {handleModal, showModal} = useContext(ProductContext);
     return (
         <Container className="home-container">
             <Row>
@@ -15,7 +17,7 @@ const HomePage = () => {
                         <Card.Img src={pomadeHero} alt="black barber shop chair with blessed pomade" />
                         <Card.ImgOverlay>
                             <Header />
-                                <Button onClick={() => setShowModal(true)} className="call-action">Feel Fresh</Button>
+                                <Button onClick={handleModal} className="call-action">Feel Fresh</Button>
                                 <Card.Title>Blessed Pomade</Card.Title>
                                     <Card.Body>
                                         <Card.Text>
@@ -26,7 +28,7 @@ const HomePage = () => {
                     </Card>
                 </Col>
                 {
-                    showModal && <PomadeSale showModal={showModal} handleClose={handleClose}/>
+                    showModal && <PomadeSale showModal={showModal}/>
                 }
             </Row>
             <Row>

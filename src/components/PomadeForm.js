@@ -3,7 +3,7 @@ import { StandaloneSearchBox } from '@react-google-maps/api';
 import '../styles/modals/modal.scss';
 import { Button, Form } from 'react-bootstrap';
 import { Formik } from 'formik';
-import { useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import ProductContext from '../ProductContext';
 import * as Yup from 'yup';
 const PomadeForm = () => {
@@ -14,8 +14,38 @@ const PomadeForm = () => {
         handleOnPlacesChanged,
         addressInfo,
         handleSubmit,
+        isValid,
+        setIsValid,
         validateAddressWithGoogle,
     } = useContext(ProductContext);
+    const [streetAddress, setStreetAddress] = useState('');
+    
+    const handleAddress = (event, setFieldValue) => {
+        const address = event.target.value;
+        setFieldValue("street", address);
+        setStreetAddress(address);
+    };
+
+    useEffect(() => {
+        console.log(isValid);
+            const validateAddress = async () => {
+                if(streetAddress) {
+                    const validAddress = await validateAddressWithGoogle(streetAddress);
+                    if(validAddress) {
+                        console.log('Street adddress is valid');
+                    } else {
+                        console.log('Street address is invalid');
+                    }
+                }
+            }
+        if(!isValid) {
+            validateAddress();
+            setIsValid(true);
+            console.log(isValid);
+        }
+
+    }, [streetAddress, validateAddressWithGoogle]);
+
 
     const validationSchema = Yup.object({
         firstName: Yup.string().required('First name is required')
@@ -27,30 +57,16 @@ const PomadeForm = () => {
         .max(50, 'First name should not exceed 50 characters')
         .matches(/^[A-Za-z\s]+$/, 'Last name can only contain letters and spaces'),
         email: Yup.string()
-        .email('Invalid email format')  // This validates the email format
-        .required('Email is required'), 
+        .email('Invalid email format')
+        .required('Email is required'),
         street: Yup.string().required('Street address is required')
-        .min(3, 'Street address must be at least 3 characters long')
-        .max(100, 'Street address cannot exceed 100 characters'),
+        .min(3, 'Street Address should be at least 3 characters'),
         city: Yup.string().required('City is required'),
         state: Yup.string().required('State is required'),
         zip: Yup.string().required('Zip code is required')
         .matches(/^[0-9]{5}$/, 'Zip code must be exactly 5 digits'),
 
     });
-
-    const handleStreetValidation = async (e, setFieldTouched, setFieldValue, values) => {
-        if(!values.street|| values.street.length < 3) {
-            setFieldTouched('street', true);
-            setFieldValue('street', '');
-        } else {
-            const isValid = await validateAddressWithGoogle();
-            if(!isValid) {
-                setFieldTouched('street', true);
-                setFieldValue('street', '');
-            }
-        }
-    }
 
     return (
         <Formik
@@ -76,7 +92,7 @@ const PomadeForm = () => {
             setFieldTouched, 
             handleSubmit 
             }) => (
-            <Form noValidate onSubmit={handleSubmit}>
+            <Form noValidate onSubmit={(e) => handleSubmit(e, streetAddress)}>
                 <Form.Group>
                 <Form.Label>First Name</Form.Label>
                 <Form.Control
@@ -132,21 +148,13 @@ const PomadeForm = () => {
                         name="street"
                         value={values.street}
                         placeholder="address"
-                        onBlur={(e) => {
-                            handleStreetValidation(e,setFieldTouched, setFieldValue, values)
-                        }}
-                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        onChange={(e) => handleAddress(e, setFieldValue)}
                         isInvalid={touched.street && !!errors.street}
                     />
                 </StandaloneSearchBox>
                 }
-                {
-                    touched.street && errors.street && (
-                        <div className="invalid-feedback" style={{ display: 'block'}}>
-                            {errors.street}
-                        </div>
-                    )
-                }
+                <Form.Control.Feedback type="invalid">{errors.street}</Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group>
                 <Form.Label>City</Form.Label>
@@ -158,6 +166,7 @@ const PomadeForm = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={touched.city && !!errors.city}
+                    readOnly
                 />
                 <Form.Control.Feedback type="invalid">{errors.city}</Form.Control.Feedback>
                 </Form.Group>
@@ -171,6 +180,7 @@ const PomadeForm = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={touched.state && !!errors.state}
+                    readOnly
                     />
                     <Form.Control.Feedback type="invalid">{errors.state}</Form.Control.Feedback>
                 </Form.Group>
@@ -184,11 +194,12 @@ const PomadeForm = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={touched.zip && !!errors.zip}
+                    readOnly
                     />
                     <Form.Control.Feedback type="invalid">{errors.zip}</Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group>
-                    <Button type="submit">pay now</Button>
+                    <Button type="submit" disabled={!isValid}>pay now</Button>
                 </Form.Group>
                 </Form>
             )}
