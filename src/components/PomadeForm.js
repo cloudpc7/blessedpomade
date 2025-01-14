@@ -6,6 +6,7 @@ import { Formik } from 'formik';
 import { useState, useEffect, useContext } from 'react';
 import ProductContext from '../ProductContext';
 import * as Yup from 'yup';
+import { Link } from 'react-router-dom';
 const PomadeForm = () => {
 
     const {
@@ -27,7 +28,6 @@ const PomadeForm = () => {
     };
 
     useEffect(() => {
-        console.log(isValid);
             const validateAddress = async () => {
                 if(streetAddress) {
                     const validAddress = await validateAddressWithGoogle(streetAddress);
@@ -199,7 +199,7 @@ const PomadeForm = () => {
                     <Form.Control.Feedback type="invalid">{errors.zip}</Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group>
-                    <Button type="submit" disabled={!isValid}>pay now</Button>
+                    <Button as={Link} to="/paymentform" type="submit" disabled={!isValid}>pay now</Button>
                 </Form.Group>
                 </Form>
             )}

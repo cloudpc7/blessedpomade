@@ -2,7 +2,8 @@ import { useState, useRef, useEffect } from 'react'
 import useGoogleMapsLoader from '../utils/AddressApi';
 import ProductContext from '../ProductContext';
 import { transactionId } from '../transaction';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchTransactions, postPomadeTransactions } from '../components/pomadeSlice';
 const validateAddressWithGoogle = async (address) => {
     if(!window.google || !address) return false;
     const geocoder = new window.google.maps.Geocoder();
@@ -18,7 +19,10 @@ const validateAddressWithGoogle = async (address) => {
 };
 
 const ProductProvider = ({ children }) => {
-
+    const dispatch = useDispatch();
+    const transactions = useSelector((state) => state.transactions.pomadeTransactions);
+    const isLoading = useSelector((state) => state.transactions.isLoading);
+    const errMsg = useSelector((state) => state.transactions.errMsg);
     const productDetail = "";
     let productTotal = 13.99;
     const [quantity, setQuantity] = useState(0);
@@ -42,6 +46,19 @@ const ProductProvider = ({ children }) => {
             zip: '', 
         })
     };
+
+    const fetchData = async () => {
+        dispatch(fetchTransactions());
+    };
+
+    const addTransaction = async (transactionData) => {
+        dispatch(postPomadeTransactions(transactionData));
+    };
+
+    useEffect(() => {
+        fetchData();
+    },[]);
+
     const handleDecrement = () => {
         setCount((prev) => Math.max(1, prev - 1));
     }
@@ -136,6 +153,7 @@ const ProductProvider = ({ children }) => {
         }
 
         console.log(newTransaction);
+        dispatch(postPomadeTransactions(newTransaction));
     }
 
 

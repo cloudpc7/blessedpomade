@@ -6,5 +6,26 @@
       "**/.*",
       "**/node_modules/**"
     ]
-  }
+  },
+  "emulators": {
+    "firestore": {
+      "host": "localhost",
+      "port": 8080
+    }
+  },
+  "functions": [
+    {
+      "host": "localhost",
+      "port": 5001,
+      "source": "./pomadebackend",
+      "codebase": "blessedpomade-backend",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ]
+    }
+  ]
 }
