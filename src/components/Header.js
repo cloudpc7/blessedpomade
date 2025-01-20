@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons'
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 import pomadeLogo from '../app/assets/images/pomade-logo.png';
 import { Tooltip } from 'reactstrap';
 import '../styles/header/header.scss';
@@ -14,12 +15,15 @@ const Header = () => {
     const [cart, setCart] = useState(false);
     const [phone, setPhone] = useState(false);
     const [mail, setMail] = useState(false);
+    const [instagram, setInstagram] = useState(false);
 
     const toggleHome = () => setHome((prev) => !prev);
     const toggleShop = () => setShop((prev) => !prev);
     const toggleCart = () => setCart((prev) => !prev);
     const togglePhone = () => setPhone((prev) => !prev);
     const toggleMail = () => setMail((prev) => !prev);
+    const toggleInstagram = () => setInstagram((prev) => !prev);
+
     return (
         <Navbar expand="lg">
             <Container>
@@ -89,7 +93,23 @@ const Header = () => {
                                     target="mail"
                                     toggle={toggleMail}
                                 >
-                                    mail
+                                    email
+                                </Tooltip>
+                            </Nav.Link>
+                            <Nav.Link  
+                                id="instagram" 
+                                href="https://instagram.com" 
+                                className="link" 
+                                alt="instagram"
+                            > 
+                                <FontAwesomeIcon icon={faInstagram} size="2x" /> 
+                                <Tooltip
+                                    placement="right"
+                                    isOpen={instagram}
+                                    target="instagram"
+                                    toggle={toggleInstagram}
+                                >
+                                    instagram
                                 </Tooltip>
                             </Nav.Link>
                         </Nav>

@@ -1,25 +1,40 @@
 
 import { StandaloneSearchBox } from '@react-google-maps/api';
 import '../styles/modals/modal.scss';
+import { useJsApiLoader } from '@react-google-maps/api';
 import { Button, Form } from 'react-bootstrap';
 import { Formik } from 'formik';
 import { useState, useEffect, useContext } from 'react';
 import ProductContext from '../ProductContext';
+import AddressContext from '../AddressContext';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
+const libraries = ['places'];
 const PomadeForm = () => {
-
-    const {
-        inputRef,
-        isLoaded,
-        handleOnPlacesChanged,
-        addressInfo,
-        handleSubmit,
-        isValid,
-        setIsValid,
-        validateAddressWithGoogle,
+    const { 
+        handleSubmit,  
+        quantity, 
+        subTotal, 
+        finalAmount 
     } = useContext(ProductContext);
+    const { 
+        inputRef, 
+        googleKey, 
+        handleOnPlacesChanged, 
+        addressInfo, 
+        isValid, 
+        setIsValid, 
+        validateAddressWithGoogle,
+    } = useContext(AddressContext);
     const [streetAddress, setStreetAddress] = useState('');
+    const { isLoaded } = useJsApiLoader({
+        id: 'google-map-scripts',
+        googleMapsApiKey: googleKey,
+        libraries,
+        version: 'weekly',
+        language: 'en',
+        region: 'US',
+    });
     
     const handleAddress = (event, setFieldValue) => {
         const address = event.target.value;
@@ -41,7 +56,6 @@ const PomadeForm = () => {
         if(!isValid) {
             validateAddress();
             setIsValid(true);
-            console.log(isValid);
         }
 
     }, [streetAddress, validateAddressWithGoogle]);
@@ -79,7 +93,8 @@ const PomadeForm = () => {
             state: addressInfo.state,
             zip: addressInfo.zip,
             }}
-            onSubmit={handleSubmit}
+            onSubmit={(values) => {
+                handleSubmit(values,setIsValid,quantity,subTotal,finalAmount)}}
             validationSchema={validationSchema}
         >
         {({ 
@@ -92,7 +107,7 @@ const PomadeForm = () => {
             setFieldTouched, 
             handleSubmit 
             }) => (
-            <Form noValidate onSubmit={(e) => handleSubmit(e, streetAddress)}>
+            <Form noValidate onSubmit={handleSubmit}>
                 <Form.Group>
                 <Form.Label>First Name</Form.Label>
                 <Form.Control
@@ -115,7 +130,7 @@ const PomadeForm = () => {
                     value={values.lastName}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    isInvalid={touched.lastName && !!errors.lastName}
+                    isInvalid={touched.lastName && !errors.lastName}
                 />
                 <Form.Control.Feedback type="invalid">{errors.lastName}</Form.Control.Feedback>
                 </Form.Group>
@@ -128,7 +143,7 @@ const PomadeForm = () => {
                     value={values.email}  
                     onChange={handleChange}  
                     onBlur={handleBlur}  
-                    isInvalid={touched.email && !!errors.email}
+                    isInvalid={touched.email && !errors.email}
                 />
                 <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
                 </Form.Group>
@@ -150,7 +165,7 @@ const PomadeForm = () => {
                         placeholder="address"
                         onBlur={handleBlur}
                         onChange={(e) => handleAddress(e, setFieldValue)}
-                        isInvalid={touched.street && !!errors.street}
+                        isInvalid={touched.street && !errors.street}
                     />
                 </StandaloneSearchBox>
                 }
@@ -165,7 +180,7 @@ const PomadeForm = () => {
                     value={values.city}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    isInvalid={touched.city && !!errors.city}
+                    isInvalid={touched.city && !errors.city}
                     readOnly
                 />
                 <Form.Control.Feedback type="invalid">{errors.city}</Form.Control.Feedback>
@@ -179,7 +194,7 @@ const PomadeForm = () => {
                     value={values.state}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    isInvalid={touched.state && !!errors.state}
+                    isInvalid={touched.state && !errors.state}
                     readOnly
                     />
                     <Form.Control.Feedback type="invalid">{errors.state}</Form.Control.Feedback>
@@ -193,13 +208,13 @@ const PomadeForm = () => {
                     value={values.zip}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    isInvalid={touched.zip && !!errors.zip}
+                    isInvalid={touched.zip && !errors.zip}
                     readOnly
                     />
                     <Form.Control.Feedback type="invalid">{errors.zip}</Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group>
-                    <Button as={Link} to="/paymentform" type="submit" disabled={!isValid}>pay now</Button>
+                    <Button type="submit" disabled={!isValid}>pay now</Button>
                 </Form.Group>
                 </Form>
             )}

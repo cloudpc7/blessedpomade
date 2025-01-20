@@ -3,7 +3,7 @@ import { collection, getDocs, addDoc } from 'firebase/firestore';
 
 export const fetchTransactions = createAsyncThunk('cart/fetchTransactions', async() => {
     try {
-        const url= 'http://127.0.0.1:5001/blessedpomade/us-central1/api/transactions';
+        const url= 'http://localhost:5001/blessedpomade/us-central1/api/transactions';
         const response = await fetch(url);
         if(!response.ok) throw new Error("Failed to fetch transactions");
         return await response.json();
@@ -15,7 +15,7 @@ export const fetchTransactions = createAsyncThunk('cart/fetchTransactions', asyn
 
 export const postPomadeTransactions = createAsyncThunk('cart/postTransactions', async(transactionData) => {
     try {
-        const url= 'http://127.0.0.1:5001/blessedpomade/us-central1/api/addTransaction';
+        const url= 'http://localhost:5001/blessedpomade/us-central1/api/addTransaction';
         const response = await fetch(url,{
             method: 'POST',
             headers: {
@@ -47,7 +47,7 @@ const transactionsSlice = createSlice({
                 id: state.pomadeTransactions.length + 1,
                 ...action.payload
             };
-            state.pomadeTransactions.push(newTransaction);
+            state.pomadeTransactions.push();
         }
     },
     extraReducers: (builder) => {
@@ -65,7 +65,7 @@ const transactionsSlice = createSlice({
             state.errMsg = action.error ? action.error.message : 'Fetch failed';
         })
         .addCase(postPomadeTransactions.fulfilled, (state, action) => {
-            state.pomadeTransactions.push(action.payload);
+            state.pomadeTransactions = [...state.pomadeTransactions, action.payload];
         })
         .addCase(postPomadeTransactions.rejected, (state, action) => {
             alert(
@@ -76,7 +76,7 @@ const transactionsSlice = createSlice({
     }
 });
 
-export const pomoadeTransactionsReducer =  transactionsSlice.reducer;
+export const pomadeTransactionsReducer =  transactionsSlice.reducer;
 export const { addTransaction } = transactionsSlice.actions;
 export const transactions = (state) => {
     return state.transations.pomadeTransactions;

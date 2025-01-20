@@ -1,0 +1,28 @@
+@use '../../variables/fonts/fonts.scss' as font;
+
+.faqs-container {
+    .faqs-row {
+        display: grid;
+        padding: 2rem;
+        .faqs-col {
+            display: grid;
+            text-align: center;
+            gap: 1rem;
+
+            .faqs-title {
+                font-size: 1.25rem;
+                font-weight: 600;
+                margin: 0;
+            }
+
+            .faqs {
+                padding: 1rem;
+                @include font.font-theme(default);
+                font-size: 14px;
+                letter-spacing: 0.0675rem;
+                line-height: 1.2;
+                font-weight: 300;
+            }
+        }
+    }
+}

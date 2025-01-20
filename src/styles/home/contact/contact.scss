@@ -1,0 +1,18 @@
+@use '../../variables/fonts/fonts.scss' as font;
+@use '../../variables/utillities/utils.scss' as util;
+@use '../../variables/colors/colors.scss' as colors;
+
+.contact-container {
+    display: grid;
+    text-align: center;
+    .contact-title {
+        font-weight: 600;
+        font-size: 1.25rem;
+        @include font.font-theme(title);
+        margin: 0;
+    }
+    .contact-form {
+        padding: 2rem;
+        text-align: start;
+    }
+}

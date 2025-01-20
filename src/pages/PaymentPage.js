@@ -1,45 +1,43 @@
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import PaymentForm from '../components/PaymentForm';
-import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 import { useState, useEffect } from 'react';
-const stripePromise = loadStripe('pk_test_51QfVA1IMAr2rME9PThfDWjvbhpZa7fHuIQ886wVuAsFv2zHc0x04eerI4SuUjdCYtNOiiGabR1NWiDWMDPBUUSZh006svUuUYn');
+import { useContext } from 'react';
+import StripeContext from '../StripeContext';
 const PaymentPage = () => {
-    const [clientSecret, setClientSecret ] = useState('');
+    const { stripeKey, stripeClientSecret } = useContext(StripeContext);
+    const [stripe, setStripe] = useState(null);
+
     useEffect(() => {
-        const fetchClientSecret = async () => {
-            const response = await fetch('http://localhost:5001/blessedpomade/us-central1/api/create-payment-intent', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ amount: 1000 }), // Amount in cents
+        if(stripeKey && stripeClientSecret) {
+            loadStripe(stripeKey)
+            .then(stripeInstance => {
+                setStripe(stripeInstance);
+            })
+            .catch(error => {
+                console.error('Error loading Stripe:', error);
             });
+        }
+    },[stripeKey, stripeClientSecret]);
 
-            const { clientSecret } = await response.json();
-            setClientSecret(clientSecret);
-        };
-
-        fetchClientSecret();
-    }, []);
-
-    if(!clientSecret) {
-        return <div>Loading...</div>;
-    }
-    
     const options = {
-         clientSecret: clientSecret,
+        clientSecret: stripeClientSecret,
     };
 
+
     return (
+        
         <Container>
-        <Row>
-            <Col>
-                <Elements stripe={stripePromise} options={options}>
-                    <PaymentForm />
-                </Elements>
-            </Col>
-        </Row>
+            {
+                stripeKey && stripeClientSecret ? (
+                    <Elements stripe={stripe} options={options}>
+                        <PaymentForm />
+                    </Elements>
+                ) : (
+                    <div>...Loading</div>
+                )
+            }
         </Container>
     );
 };

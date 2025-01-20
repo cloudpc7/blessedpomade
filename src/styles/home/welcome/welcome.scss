@@ -1,0 +1,28 @@
+@use '../../variables/fonts/fonts.scss' as font;
+.welcome-container {
+    .welcome-row {
+        display: grid;
+        padding: 2rem;
+        text-align: center;
+        gap: 1rem;
+        .welcome-title, .welcome-statment {
+            margin: 0;
+
+        }
+
+        .welcome-title {
+            font-weight: 600;
+            font-size: 1.25rem;
+            @include font.font-theme(title);
+        }
+
+        .welcome-statement {
+            padding: 0 1.5rem;
+            font-size: 14px;
+            letter-spacing: 0.0675rem;
+            line-height: 1.47;
+            font-weight: 300;
+            @include font.font-theme(default);
+        }
+   }
+}

@@ -1,0 +1,16 @@
+@use '../variables/fonts/fonts.scss' as font;
+@use '../variables/utillities/utils.scss' as util;
+@use '../variables/colors/colors.scss' as colors;
+
+.footer-container {
+    .footer-row {
+        display: grid;
+        padding: 2rem;
+        grid-template-rows: repeat(2, mimax(min-content, max-content));
+        grid-template-columns: repeat(3, 1fr);
+        .footer-title {
+            font-size: 1rem;
+        }
+    }
+}
+

@@ -5,7 +5,7 @@
 
 body {
     @include font.font-theme(default);
-    .h1,.h2,.h3,.h4,.h5,.h6 {
+    .h1, .h2, .h3, .h4, .h5, .h6 {
         @include font.font-theme(title);
     }
 
@@ -17,12 +17,45 @@ body {
         font-size: font.default(default);
     }
 
-    .container {
+    .container, .col {
         padding: 0;
         margin: 0;
     }
 
     .pac-container {
-        z-index: 2050,
+        z-index: 2050;
+    }
+
+    // Ensure containers don't overflow
+    .container {
+        box-sizing: border-box;
+        max-width: 100%;
+        overflow: hidden; // Prevent overflow from child elements
+    }
+
+    @media (max-width: 376px) {
+        .container {
+            display: grid;
+        }
+
+        .h1 {
+            font-size: math.div(font.title(title), 1.2);
+        }
+
+        p {
+            font-size: math.div(font.default(default), 1.1);
+        }
+    }
+
+    @media (min-width: 377px) and (max-width: 540px) {
+        .container {
+            max-width: 100%;
+        }
+    }
+
+    @media (min-width: 541px) and (max-width: 767px) {
+        .container {
+            max-width: 540px;
+        }
     }
 }

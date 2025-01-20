@@ -1,0 +1,24 @@
+@import url("https://use.typekit.net/dax3jrh.css");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+.faqs-container .faqs-row {
+  display: grid;
+  padding: 2rem;
+}
+.faqs-container .faqs-row .faqs-col {
+  display: grid;
+  text-align: center;
+  gap: 1rem;
+}
+.faqs-container .faqs-row .faqs-col .faqs-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+.faqs-container .faqs-row .faqs-col .faqs {
+  padding: 1rem;
+  font-family: "Bebas Neue", serif;
+  font-size: 14px;
+  letter-spacing: 0.0675rem;
+  line-height: 1.2;
+  font-weight: 300;
+}/*# sourceMappingURL=faqs.css.map */

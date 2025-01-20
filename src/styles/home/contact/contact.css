@@ -1,0 +1,16 @@
+@import url("https://use.typekit.net/dax3jrh.css");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+.contact-container {
+  display: grid;
+  text-align: center;
+}
+.contact-container .contact-title {
+  font-weight: 600;
+  font-size: 1.25rem;
+  font-family: "trajan-pro-3", serif;
+  margin: 0;
+}
+.contact-container .contact-form {
+  padding: 2rem;
+  text-align: start;
+}/*# sourceMappingURL=contact.css.map */

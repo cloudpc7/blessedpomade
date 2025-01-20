@@ -1,9 +1,8 @@
 import { Form, Card,Button } from 'react-bootstrap';
 import pomade from '../app/assets/images/pomade_product_small.png';
-import { useState, useEffect } from 'react';
 import { useContext } from 'react';
 import ProductContext from '../ProductContext';
-import { Link } from 'react-router-dom';
+
 const PomadeCard = () => {
    const {
     count, 

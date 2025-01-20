@@ -1,0 +1,11 @@
+@import url("https://use.typekit.net/dax3jrh.css");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+.footer-container .footer-row {
+  display: grid;
+  padding: 2rem;
+  grid-template-rows: repeat(2, mimax(min-content, max-content));
+  grid-template-columns: repeat(3, 1fr);
+}
+.footer-container .footer-row .footer-title {
+  font-size: 1rem;
+}/*# sourceMappingURL=footer.css.map */

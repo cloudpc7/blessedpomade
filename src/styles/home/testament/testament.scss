@@ -1,0 +1,29 @@
+@use '../../variables/fonts/fonts.scss' as font;
+@use '../../variables/utillities/utils.scss' as util;
+@use '../../variables/colors/colors.scss' as colors;
+
+.testament-container {
+    .testament-row {
+        display: grid;
+        padding: 2rem;
+        .testament-col {
+            display: grid;
+            text-align: center;
+            gap: 1rem;
+            .testament-title {
+                font-size: 1.25rem;
+                font-weight: 600;
+                margin: 0;
+            }
+
+            .testament {
+                padding: 1rem;
+                @include font.font-theme(default);
+                font-size: 14px;
+                letter-spacing: 0.0675rem;
+                line-height: 1.2;
+                font-weight: 300;
+            }
+        }
+    }
+}

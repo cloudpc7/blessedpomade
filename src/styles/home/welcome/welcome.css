@@ -1,0 +1,24 @@
+@import url("https://use.typekit.net/dax3jrh.css");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+.welcome-container .welcome-row {
+  display: grid;
+  padding: 2rem;
+  text-align: center;
+  gap: 1rem;
+}
+.welcome-container .welcome-row .welcome-title, .welcome-container .welcome-row .welcome-statment {
+  margin: 0;
+}
+.welcome-container .welcome-row .welcome-title {
+  font-weight: 600;
+  font-size: 1.25rem;
+  font-family: "trajan-pro-3", serif;
+}
+.welcome-container .welcome-row .welcome-statement {
+  padding: 0 1.5rem;
+  font-size: 14px;
+  letter-spacing: 0.0675rem;
+  line-height: 1.47;
+  font-weight: 300;
+  font-family: "Bebas Neue", serif;
+}/*# sourceMappingURL=welcome.css.map */
