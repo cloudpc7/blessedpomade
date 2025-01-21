@@ -69,41 +69,16 @@ input {
 }
 
 body {
+  box-sizing: border-box;
   font-family: "Bebas Neue", serif;
 }
 body .h1, body .h2, body .h3, body .h4, body .h5, body .h6 {
   font-family: "trajan-pro-3", serif;
 }
-body .container, body .col {
-  padding: 0;
-  margin: 0;
-}
 body .pac-container {
   z-index: 2050;
 }
 body .container {
-  box-sizing: border-box;
+  width: 100%;
   max-width: 100%;
-  overflow: hidden;
-}
-@media (max-width: 376px) {
-  body .container {
-    display: grid;
-  }
-  body .h1 {
-    font-size: /1.2;
-  }
-  body p {
-    font-size: /1.1;
-  }
-}
-@media (min-width: 377px) and (max-width: 540px) {
-  body .container {
-    max-width: 100%;
-  }
-}
-@media (min-width: 541px) and (max-width: 767px) {
-  body .container {
-    max-width: 540px;
-  }
 }/*# sourceMappingURL=main.css.map */

@@ -1,8 +1,10 @@
 @import url("https://use.typekit.net/dax3jrh.css");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+.testament-container {
+  padding: 2rem;
+}
 .testament-container .testament-row {
   display: grid;
-  padding: 2rem;
 }
 .testament-container .testament-row .testament-col {
   display: grid;

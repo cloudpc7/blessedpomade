@@ -8,6 +8,7 @@
     grid-column: 1;
     align-self: start;
     .container {
+        padding: 0;
         .navbar-toggler {
             border: 2px solid colors.colorTheme(lightGrey);
             border-radius: 0;

@@ -7,7 +7,6 @@ import PaymentPage from './pages/PaymentPage';
 function App() {
 
   return (
-    <Container>
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/cart' element={<ShoppingCart />}/>
@@ -16,7 +15,6 @@ function App() {
           element={<PaymentPage />}
         />
       </Routes>
-    </Container>
   );
 }
 

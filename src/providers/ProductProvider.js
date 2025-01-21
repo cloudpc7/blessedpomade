@@ -1,81 +1,79 @@
 import { useState, useEffect } from 'react';
 import ProductContext from '../ProductContext';
-import { FormValidation }from '../utils/formValidation';
+// import { FormValidation }from '../utils/formValidation';
 const ProductProvider = ({ children }) => {
-    const { handleSubmit } = FormValidation();
-    const productDetail = "";
-    let productTotal = 13.99;
-    const [quantity, setQuantity] = useState(null);
+    // const { handleSubmit } = FormValidation();
+
+    // open pomade product modal in hero section 
+
+    // const [quantity, setQuantity] = useState(null);
+    // const [ count, setCount ] = useState(0);
+    // const [getCart, setGetCart] = useState(false);
+    // const [subTotal, setSubTotal] = useState(productTotal);
+    // const [isValid, setIsValid] = useState(true);
+
     
-    const [ count, setCount ] = useState(0);
-    const [getCart, setGetCart] = useState(false);
-    const [showModal, setShowModal] = useState(false);
-    const [subTotal, setSubTotal] = useState(productTotal);
-    const [isValid, setIsValid] = useState(true);
+    // const handleClose = () => {
+    //     setCount(1);
+    //     setQuantity();
+    //     setShowModal(false); 
+    //     setShowModal(false); 
+    //     setGetCart(false);
+    // };
 
-    const handleModal = () => setShowModal((prev) => !prev);
-    const handleClose = () => {
-        setCount(1);
-        setQuantity();
-        setShowModal(false); 
-        setShowModal(false); 
-        setGetCart(false);
-    };
+    // const handleDecrement = () => {
+    //     setCount((prev) => Math.max(1, prev - 1));
+    // }
+    // const handleIncrement = () => {
+    //     setCount(prev => prev + 1);
+    // }
 
-    const handleDecrement = () => {
-        setCount((prev) => Math.max(1, prev - 1));
-    }
-    const handleIncrement = () => {
-        setCount(prev => prev + 1);
-    }
+    // const handleCount = (e) => {
+    //     setCount((prev) => Math.max(1,Number(e.target.value)));
+    // };
 
-    const handleCount = (e) => {
-        setCount((prev) => Math.max(1,Number(e.target.value)));
-    };
+    // const handleCheckOut = () => {
+    //     setGetCart((prev) => !prev);
+    //     setQuantity();
+    // }
 
-    const handleCheckOut = () => {
-        setGetCart((prev) => !prev);
-        setQuantity();
-    }
+    // const addToCart = () => {
+    // };
 
-    const addToCart = () => {
-    };
+    // useEffect(() => {
+    //     setQuantity(null);
+    //     setSubTotal(productTotal * quantity);
+    // },[count, quantity]);
+    // let finalAmount = subTotal * 0.0725 + subTotal;
 
-    useEffect(() => {
-        setQuantity(null);
-        setSubTotal(productTotal * quantity);
-    },[count, quantity]);
-    let finalAmount = subTotal * 0.0725 + subTotal;
+    // useEffect(() => {
+    //     const handleBeforeUnload = () => {
+    //         localStorage.removeItem("count");
+    //         localStorage.removeItem("quantity");
+    //         localStorage.removeItem("subTotal");
+    //     };
 
-    useEffect(() => {
-        const handleBeforeUnload = () => {
-            localStorage.removeItem("count");
-            localStorage.removeItem("quantity");
-            localStorage.removeItem("subTotal");
-        };
-
-        window.addEventListener("beforeunload", handleBeforeUnload);
-    });
+    //     window.addEventListener("beforeunload", handleBeforeUnload);
+    // });
 
     const contextValue = {
-        quantity,
-        finalAmount,
-        count,
-        showModal,
-        getCart,
-        subTotal,
-        productDetail,
-        productTotal,
-        isValid,
-        setIsValid,
-        addToCart,
-        handleDecrement,
-        handleIncrement,
-        handleCheckOut,
-        handleModal,
-        handleClose,
-        handleSubmit,
-        handleCount,
+        // quantity,
+        // finalAmount,
+        // count,
+        
+        // getCart,
+        // subTotal,
+        // productDetail,
+        // productTotal,
+        // isValid,
+        // setIsValid,
+        // addToCart,
+        // handleDecrement,
+        // handleIncrement,
+        // handleCheckOut,
+        // handleClose,
+        // handleSubmit,
+        // handleCount,
     }
 
     return (

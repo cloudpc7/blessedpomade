@@ -5,6 +5,9 @@
   grid-column: 1;
   align-self: start;
 }
+.navbar .container {
+  padding: 0;
+}
 .navbar .container .navbar-toggler {
   border: 2px solid #909090;
   border-radius: 0;

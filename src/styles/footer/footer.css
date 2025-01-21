@@ -1,11 +1,88 @@
 @import url("https://use.typekit.net/dax3jrh.css");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
-.footer-container .footer-row {
-  display: grid;
-  padding: 2rem;
-  grid-template-rows: repeat(2, mimax(min-content, max-content));
-  grid-template-columns: repeat(3, 1fr);
+.footer {
+  background-color: #222222;
+  color: #ffffff;
+  padding: 2rem 1rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  overflow: hidden;
 }
-.footer-container .footer-row .footer-title {
+.footer .business-image {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0;
+}
+.footer .business-image .blessed-logo {
+  width: 3rem;
+  height: 3rem;
+}
+.footer .business-image .blessed-title {
+  margin: 0;
+  font-size: 18px;
+  font-family: "trajan-pro-3", serif;
+  color: #ffffff;
+}
+.footer .footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  max-width: 1200px;
+}
+.footer .footer-content .col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0;
+}
+.footer .footer-content .col .footer-title {
   font-size: 1rem;
+  margin: 0;
+  font-family: "trajan-pro-3", serif;
+}
+.footer .footer-content .col p, .footer .footer-content .col a {
+  font-size: 14px;
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+.footer .footer-content .col .footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer .footer-content .col .footer-list li {
+  margin-bottom: 0.25rem;
+}
+.footer .footer-copyright {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0;
+  margin-top: 1rem;
+}
+.footer .footer-copyright .copyright-section, .footer .footer-copyright .developer-section {
+  font-size: 12px;
+  color: #ffffff;
+  line-height: 1.5;
+}
+.footer .footer-copyright .copyright-section .developer-copyright a, .footer .footer-copyright .developer-section .developer-copyright a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+.footer .footer-copyright .copyright-section .developer-copyright a:hover, .footer .footer-copyright .developer-section .developer-copyright a:hover {
+  color: #909090;
+}
+.footer .footer-copyright .copyright-section .copyright, .footer .footer-copyright .developer-section .copyright {
+  margin: 0;
+}
+.footer .footer-copyright .copyright-section .copyright .copy-right-logo, .footer .footer-copyright .developer-section .copyright .copy-right-logo {
+  font-size: 14px;
 }/*# sourceMappingURL=footer.css.map */

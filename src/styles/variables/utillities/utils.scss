@@ -30,7 +30,7 @@ $grid-gutter-widths: (
 
 @mixin cart-button {
     background-color: colors.colorTheme(appWhite);
-    color: colors.colorTheme(burntOrange);
+    color: colors.colorTheme(appBlack);
     padding: 0.5rem 1.5rem;
     border: 2px solid rgba(144,144,144, 0.1); // Subtle border
     border-radius: 0;
@@ -46,7 +46,8 @@ $grid-gutter-widths: (
 }
 
 @mixin add-button {
-    background-color: colors.colorTheme(appBlack);
+    background-color: colors.colorTheme(appWhite);
+    color: colors.colorTheme(appBlack);
     padding: 0.5rem 1.5rem;
     border-radius: 0;
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -64,5 +65,47 @@ $grid-gutter-widths: (
         background-color: darken(colors.colorTheme(burntOrange), 10%); // Darken the hover color slightly for click
         transform: translateY(0) scale(0.98); // Scale down and remove lift
         box-shadow: 0 1px 3px rgba(0,0,0,0.1); // Reduce shadow for pressed look
+    }
+}
+
+@mixin message-button {
+    background-color: colors.colorTheme(appWhite);
+    color: colors.colorTheme(burntOrange);
+    padding: 0.5rem 1.5rem;
+    border-radius: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+    &:hover {
+        background-color: colors.colorTheme(appBlack);
+        color: colors.colorTheme(appWhite);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    &:active {
+        // Click effect
+        background-color: darken(colors.colorTheme(burntOrange), 10%); // Darken the hover color slightly for click
+        transform: translateY(0) scale(0.98); // Scale down and remove lift
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1); // Reduce shadow for pressed look
+    }
+}
+
+@mixin count-button {
+    background-color: colors.colorTheme(burntOrange);
+    color: colors.colorTheme(appBlack);
+    padding: 0.5rem 1.5rem;
+    border: 2px solid rgba(144,144,144, 0.1); // Subtle border
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 0;
+     // Add a slight shadow
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+    &:hover {
+        background-color: colors.colorTheme(appBlack);
+        color: colors.colorTheme(appWhite);
+        transform: translateY(-2px); // Slight lift effect
+       
+        box-shadow: 0 2px 5px rgba(217,122,67,1.0); 
     }
 }

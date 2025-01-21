@@ -1,56 +1,57 @@
+@charset "UTF-8";
 @import url("https://use.typekit.net/dax3jrh.css");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+.product-section {
+  border: 2px solid #D97A43;
+}
 .product-section .product-container {
   position: relative;
-  min-height: 24rem;
-  border: 2px solid #D97A43;
-  box-sizing: border-box;
-  padding: 1rem;
+  min-height: 26rem;
 }
 .product-section .product-container .animate-div {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  background-color: #222222;
 }
 .product-section .product-container .animate-div .pomade-product-card {
   width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  height: auto;
+  display: grid;
+  grid-template-rows: repeat(3, minmax(min-content, max-content));
   align-items: center;
+  justify-content: center;
+  gap: 1rem;
   border: none;
   border-radius: 0;
-  background-color: #909090;
-  color: #ffffff;
+  background-color: transparent;
 }
 .product-section .product-container .animate-div .pomade-product-card .cart-items {
-  align-self: flex-end;
-  margin-top: 1rem;
-  margin-right: 1.5rem;
   display: flex;
+  align-self: center;
+  justify-self: center;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
 }
 .product-section .product-container .animate-div .pomade-product-card .cart-items .cart-icon {
   font-size: 1.5em;
-  color: #090D0C;
+  color: #ffffff;
 }
 .product-section .product-container .animate-div .pomade-product-card .cart-items .cart-count {
   position: relative;
   top: -0.5em;
   left: -0.5em;
   background-color: transparent;
-  color: white;
-  font-size: 0.8em;
+  color: #D97A43;
+  font-size: 1em;
   width: 1.5rem;
   height: 1.5rem;
 }
 .product-section .product-container .animate-div .pomade-product-card .cart-items .cart-btn {
   background-color: #ffffff;
-  color: #D97A43;
+  color: #090D0C;
   padding: 0.5rem 1.5rem;
   border: 2px solid rgba(144, 144, 144, 0.1);
   border-radius: 0;
@@ -65,19 +66,21 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .product-section .product-container .animate-div .pomade-product-card .product-img {
-  width: 6.5rem;
-  height: 6.5rem;
+  width: 7rem;
+  height: 7em;
   max-width: 100%;
+  align-self: center;
+  justify-self: center;
 }
 .product-section .product-container .animate-div .pomade-product-card .product-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  gap: 1rem;
   text-align: center;
-  flex-grow: 1;
+  color: #ffffff;
 }
 .product-section .product-container .animate-div .pomade-product-card .product-details .product-btn {
-  background-color: #090D0C;
+  background-color: #ffffff;
+  color: #090D0C;
   padding: 0.5rem 1.5rem;
   border-radius: 0;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -96,59 +99,195 @@
   transform: translateY(0) scale(0.98);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
+@media (max-width: 767px) {
+  .product-section .product-container .animate-div .pomade-product-card .product-details .product-btn {
+    font-size: 0.9em;
+    padding: 0.5em 1em;
+  }
+}
+.product-section .product-container .animate-div .pomade-product-card .product-details .product-title, .product-section .product-container .animate-div .pomade-product-card .product-details .product-price {
+  font-family: "Bebas Neue", serif;
+}
+@media (max-width: 767px) {
+  .product-section .product-container .animate-div .pomade-product-card .product-details .product-title, .product-section .product-container .animate-div .pomade-product-card .product-details .product-price {
+    font-size: 1.1em;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+}
 .product-section .product-container .animate-div .pomade-product-card .product-details .product-title {
   display: flex;
   gap: 0.5rem;
-  font-size: 1em;
-  margin-bottom: 0.5rem;
+  margin: 0;
+  justify-self: center;
 }
 .product-section .product-container .animate-div .pomade-product-card .product-details .product-price {
-  font-size: 1.1em;
-  margin-bottom: 1rem;
+  margin: 0;
 }
-@media screen and (min-width: 768px) {
-  .product-section .product-container {
-    padding: 1.5rem;
-  }
-  .product-section .product-container .pomade-product-card .cart-items .cart-btn, .product-section .product-container .pomade-product-card .cart-items .cart-icon {
-    font-size: 1em;
-  }
-  .product-section .product-container .pomade-product-card .product-img {
-    width: 8rem;
-    height: 8rem;
-  }
-  .product-section .product-container .pomade-product-card .product-details .product-btn {
-    padding: 0.5rem 2rem;
-    font-size: 1em;
-  }
-  .product-section .product-container .pomade-product-card .product-details .product-title {
-    gap: 1rem;
-    font-size: 1.2em;
-  }
-  .product-section .product-container .pomade-product-card .product-details .product-price {
-    font-size: 1.3em;
-  }
+.product-section .product-container .animate-div .cart-product-card {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  border: none;
+  text-align: center;
+  border-radius: 0;
+  background-color: transparent;
 }
-@media screen and (min-width: 1024px) {
-  .product-section .product-container {
-    padding: 2rem;
-  }
-  .product-section .product-container .pomade-product-card .cart-items .cart-btn, .product-section .product-container .pomade-product-card .cart-items .cart-icon {
-    font-size: 1.2em;
-  }
-  .product-section .product-container .pomade-product-card .product-img {
-    width: 10rem;
-    height: 10rem;
-  }
-  .product-section .product-container .pomade-product-card .product-details .product-btn {
-    padding: 0.5rem 2.5rem;
+.product-section .product-container .animate-div .cart-product-card .product-img {
+  width: 7rem;
+  height: 7em;
+  max-width: 100%;
+  justify-self: center;
+}
+.product-section .product-container .animate-div .cart-product-card .product-title {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0;
+  justify-self: center;
+  color: #ffffff;
+  font-family: "Bebas Neue", serif;
+}
+@media (max-width: 767px) {
+  .product-section .product-container .animate-div .cart-product-card .product-title {
     font-size: 1.1em;
+    line-height: 1.5;
+    font-weight: 500;
   }
-  .product-section .product-container .pomade-product-card .product-details .product-title {
-    gap: 1.5rem;
-    font-size: 1.5em;
+}
+.product-section .product-container .animate-div .cart-product-card .cart-details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(min-content, max-content));
+  color: #ffffff;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+  justify-content: space-evenly;
+}
+.product-section .product-container .animate-div .cart-product-card .cart-details .cart-item {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(min-content, max-content));
+  text-align: center;
+  gap: 0.5rem;
+}
+@media (max-width: 767px) {
+  .product-section .product-container .animate-div .cart-product-card .cart-details .cart-item {
+    font-size: 0.9em;
+    padding: 0.5rem;
   }
-  .product-section .product-container .pomade-product-card .product-details .product-price {
-    font-size: 1.6em;
+}
+.product-section .product-container .animate-div .cart-product-card .cart-details .quantity-control {
+  grid-column: 1/span 3;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-self: center;
+}
+.product-section .product-container .animate-div .cart-product-card .cart-details .quantity-control .cart-count {
+  align-self: center;
+}
+.product-section .product-container .animate-div .cart-product-card .cart-details .quantity-control .quantity-btn {
+  background-color: #D97A43;
+  color: #090D0C;
+  padding: 0.5rem 1.5rem;
+  border: 2px solid rgba(144, 144, 144, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+  transition: all 0.3s ease;
+  font-size: 0.9em;
+}
+.product-section .product-container .animate-div .cart-product-card .cart-details .quantity-control .quantity-btn:hover {
+  background-color: #090D0C;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgb(217, 122, 67);
+}
+.product-section .product-container .animate-div .cart-product-card .cart-details .cart-form {
+  grid-column: 1/span 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  justify-self: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+.product-section .product-container .animate-div .cart-product-card .cart-details .cart-form .cart-check {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 0;
+  gap: 0.5rem;
+}
+@media (max-width: 767px) {
+  .product-section .product-container .animate-div .cart-product-card .cart-details .cart-form .cart-check {
+    gap: 0.3rem;
   }
+  .product-section .product-container .animate-div .cart-product-card .cart-details .cart-form .cart-check .term-link {
+    font-size: 0.85em;
+  }
+}
+.product-section .product-container .animate-div .cart-product-card .cart-details .cart-form .cart-check .form-check-input {
+  margin: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.product-section .product-container .animate-div .cart-product-card .cart-details .cart-form .cart-check .form-check-input:hover {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+.product-section .product-container .animate-div .cart-product-card .cart-details .cart-form .cart-check .form-check-input:checked {
+  background-color: #D97A43;
+  border-color: #090D0C;
+}
+.product-section .product-container .animate-div .cart-product-card .cart-details .cart-form .cart-check .form-check-input::-webkit-outer-spin-button, .product-section .product-container .animate-div .cart-product-card .cart-details .cart-form .cart-check .form-check-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.product-section .product-container .animate-div .cart-product-card .cart-details .cart-form .cart-check .form-check-input:checked::before {
+  content: "✓";
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+}
+.product-section .product-container .animate-div .cart-product-card .cart-details .cart-form .cart-check .form-check-label {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  text-underline-offset: 4px;
+}
+.product-section .product-container .animate-div .cart-product-card .cart-details .cart-form .cart-check .form-check-label .term-link {
+  color: #ffffff;
+  text-decoration-color: #D97A43;
+}
+.product-section .product-container .animate-div .cart-product-card .cart-details .cart-form .cart-check .form-check-label .term-link:hover {
+  color: #D97A43;
+  text-decoration-color: #909090;
+}
+.product-section .product-container .animate-div .cart-product-card .cart-details .cart-form .cart-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+@media (max-width: 767px) {
+  .product-section .product-container .animate-div .cart-product-card .cart-details .cart-form .cart-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+.product-section .product-container .animate-div .cart-product-card .cart-details .cart-form .cart-btn {
+  background-color: #ffffff;
+  color: #090D0C;
+  padding: 0.5rem 1.5rem;
+  border: 2px solid rgba(144, 144, 144, 0.1);
+  border-radius: 0;
+  box-shadow: 0 2px 5px rgb(217, 122, 67);
+  transition: all 0.3s ease;
+  font-size: 0.9em;
+}
+.product-section .product-container .animate-div .cart-product-card .cart-details .cart-form .cart-btn:hover {
+  background-color: #D97A43;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }/*# sourceMappingURL=product.css.map */

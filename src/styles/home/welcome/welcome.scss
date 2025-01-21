@@ -1,28 +1,59 @@
 @use '../../variables/fonts/fonts.scss' as font;
+@use '../../variables/colors/colors.scss' as colors;
+
 .welcome-container {
     .welcome-row {
         display: grid;
-        padding: 2rem;
+        padding: 2rem 1rem;  // Reduce side padding for mobile
         text-align: center;
         gap: 1rem;
-        .welcome-title, .welcome-statment {
-            margin: 0;
-
-        }
+        align-items: center;
 
         .welcome-title {
             font-weight: 600;
-            font-size: 1.25rem;
+            font-size: 1.5rem;  // Smaller for mobile, but still impactful
             @include font.font-theme(title);
+            color: colors.colorTheme(burntOrange);
+            margin-bottom: 1rem;
+            
+            @media (min-width: 768px) {  // Adjust for tablets and desktops
+                font-size: 2rem;
+            }
         }
 
         .welcome-statement {
-            padding: 0 1.5rem;
-            font-size: 14px;
+            padding: 0;
+            font-size: 14px;  // Base size for mobile
             letter-spacing: 0.0675rem;
             line-height: 1.47;
             font-weight: 300;
             @include font.font-theme(default);
+            text-align: left;  // Left align for readability on smaller screens
+
+            ul {
+                list-style-type: none;
+                padding-left: 0;
+
+                li {
+                    margin-bottom: 0.5rem;
+                    font-weight: 400;
+                    color: colors.colorTheme(appDarkGrey);
+
+                    @media (min-width: 768px) {  // Adjust for larger screens
+                        margin-bottom: 0.75rem;
+                    }
+                }
+            }
+
+            strong {
+                color: colors.colorTheme(burntOrange);
+            }
+
+            @media (min-width: 768px) {  // Adjust for tablets and desktops
+                font-size: 16px;
+                line-height: 1.6;
+                padding: 0 1.5rem;  // Increase padding for larger screens
+            }
         }
-   }
+    }
 }

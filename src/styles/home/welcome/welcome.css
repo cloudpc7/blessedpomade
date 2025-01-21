@@ -2,23 +2,53 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 .welcome-container .welcome-row {
   display: grid;
-  padding: 2rem;
+  padding: 2rem 1rem;
   text-align: center;
   gap: 1rem;
-}
-.welcome-container .welcome-row .welcome-title, .welcome-container .welcome-row .welcome-statment {
-  margin: 0;
+  align-items: center;
 }
 .welcome-container .welcome-row .welcome-title {
   font-weight: 600;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-family: "trajan-pro-3", serif;
+  color: #D97A43;
+  margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  .welcome-container .welcome-row .welcome-title {
+    font-size: 2rem;
+  }
 }
 .welcome-container .welcome-row .welcome-statement {
-  padding: 0 1.5rem;
+  padding: 0;
   font-size: 14px;
   letter-spacing: 0.0675rem;
   line-height: 1.47;
   font-weight: 300;
   font-family: "Bebas Neue", serif;
+  text-align: left;
+}
+.welcome-container .welcome-row .welcome-statement ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+.welcome-container .welcome-row .welcome-statement ul li {
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+  color: #222222;
+}
+@media (min-width: 768px) {
+  .welcome-container .welcome-row .welcome-statement ul li {
+    margin-bottom: 0.75rem;
+  }
+}
+.welcome-container .welcome-row .welcome-statement strong {
+  color: #D97A43;
+}
+@media (min-width: 768px) {
+  .welcome-container .welcome-row .welcome-statement {
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 0 1.5rem;
+  }
 }/*# sourceMappingURL=welcome.css.map */

@@ -5,13 +5,18 @@
   width: 100%;
   box-sizing: border-box;
   overflow: hidden;
+  padding: 0;
 }
 .home-container .home {
   display: grid;
   grid-template-rows: repeat(6, minmax(min-content, max-content));
   width: 100%;
+  max-width: 100%;
   align-self: center;
   justify-self: center;
+}
+.home-container .home .col {
+  padding: 0;
 }
 .home-container .hero-section, .home-container .footer-section {
   width: 100%;

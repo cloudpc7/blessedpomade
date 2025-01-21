@@ -3,16 +3,68 @@
 @use '../../variables/colors/colors.scss' as colors;
 
 .contact-container {
-    display: grid;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: colors.colorTheme(burntOrange);
+    padding: 2rem 1rem;
     .contact-title {
         font-weight: 600;
-        font-size: 1.25rem;
+        font-size: 1.5rem;
         @include font.font-theme(title);
-        margin: 0;
+        color: colors.colorTheme(appWhite); 
+        margin-bottom: 1rem;
     }
     .contact-form {
-        padding: 2rem;
-        text-align: start;
+        width: 100%;
+        background-color: colors.colorTheme(appDarkGrey);
+        padding: 1rem;
+        border-radius: 4px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .form-item {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1rem;
+            @include font.font-theme(default);
+            .form-label {
+                margin-bottom: 0.25rem;
+                font-weight: 500;
+                letter-spacing: 0.02em;
+                color:colors.colorTheme(burntOrange);
+            }
+            .form-control {
+                border-radius: 4px;
+                padding: 0.5rem;
+                border: 1px solid colors.colorTheme(appGrey);
+                &:focus {
+                    border-color: colors.colorTheme(burntOrange);
+                    box-shadow: 0 0 0 0.2rem rgba(colors.colorTheme(burntOrange), 0.25);
+                }
+                &::placeholder {
+                    color: colors.colorTheme(appDarkGrey);
+                    opacity: 0.6; 
+                    font-style: italic; 
+                }
+            }
+
+            .invalid-feedback {
+                color: colors.colorTheme(appRed);
+                font-size: 0.875rem;
+                position: static;
+                margin-top: 0.25rem;
+            }
+            .message-btn {
+                @include util.message-button();
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                padding: 0.5rem 1rem;
+                letter-spacing: 0.02em;
+                .btn-text {
+                    margin-left: 0.5rem;
+                }
+            }
+        }
     }
 }

@@ -7,6 +7,8 @@ $color-theme: (
     sand: #F2D1B3,
     appWhite: #ffffff,
     lightGrey: #909090,
+    appGrey: #333333,
+    appDarkGrey: #222222,
 );
 
 @function colorTheme($key) {

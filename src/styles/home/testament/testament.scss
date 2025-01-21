@@ -3,9 +3,9 @@
 @use '../../variables/colors/colors.scss' as colors;
 
 .testament-container {
+    padding: 2rem;
     .testament-row {
         display: grid;
-        padding: 2rem;
         .testament-col {
             display: grid;
             text-align: center;

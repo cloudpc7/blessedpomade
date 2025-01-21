@@ -14,17 +14,9 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-          
-          <GoogleAddressProvider>
-            <TransactionProvider>
-              <ProductProvider>
-              <StripeProvider>
-                <App />
-                </StripeProvider>
-              </ProductProvider>
-            </TransactionProvider>
-          </GoogleAddressProvider>
-          
+        <ProductProvider>
+        <App />
+        </ProductProvider>
       </BrowserRouter>
     </Provider>    
   </React.StrictMode>

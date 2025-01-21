@@ -3,18 +3,18 @@ import Header from '../components/Header';
 import pomadeHero from '../app/assets/images/pomade-mobile.png';
 import '../styles/home/home.scss';
 import PomadeSale from '../features/modals/PomadeSale';
-import { useContext } from 'react';
-import ProductContext from '../ProductContext';
 import Welcome from '../components/Welcome';
 import PomadeProduct from '../components/PomadeProduct';
 import Faqs from '../components/Faqs';
 import Testament from '../components/Testament';
-import Buy from '../components/Buy';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
-
+import { useState, useEffect } from 'react';
 const HomePage = () => {
-    const {handleModal, showModal} = useContext(ProductContext);
+   const [showModal, setShowModal] = useState(false);
+   const handleModal = () => {
+    setShowModal(prevState => !prevState);
+};
     return (
         <Container className="home-container">
             <Row className="hero-section">
@@ -28,11 +28,11 @@ const HomePage = () => {
                     </Card>
                 </Col>
                 {
-                    showModal && <PomadeSale showModal={showModal}/>
+                    showModal && <PomadeSale showModal={showModal} onClose={() => setShowModal(false)}/>
                 }
             </Row>
             <Row className="home">
-                <Col>
+                <Col className="welcome-section">
                   <Welcome /> 
                 </Col>
                 <Col className="product-section">
@@ -48,10 +48,8 @@ const HomePage = () => {
                     <Contact />
                 </Col>
             </Row>
-            <Row>
-                <Col className="footer-section">
-                    <Footer />
-                </Col>
+            <Row className="footer">
+                <Footer />
             </Row>
         </Container>
     )
