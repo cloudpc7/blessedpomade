@@ -28,6 +28,9 @@
             line-height: 1;
             font-size: 1.125rem;
             color: colors.colorTheme(burntOrange);
+            @media (min-width: 576px) {
+              font-size: 1.5rem;
+            }
           }
           .pomade-logo {
             width: 3rem;

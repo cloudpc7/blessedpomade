@@ -19,6 +19,12 @@
             max-width: 80%;
             margin: 0 auto;
             color: colors.colorTheme(burntOrange);
+            @media (min-width: 576px) {
+                max-width: 65%;
+            }
+            @media (min-width: 768px) {
+                max-width: 100%;
+            }
             @media (min-width: 992px) {
                 grid-column: 1 / -1;
                 align-self: start;

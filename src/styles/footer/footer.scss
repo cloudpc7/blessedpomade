@@ -31,7 +31,7 @@
     .footer-content {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        gap: 1rem;
+        gap: 1.125rem;
         width: 100%;
         max-width: 1200px;
 
@@ -58,6 +58,18 @@
 
                 li {
                     margin-bottom: 0.25rem;
+                }
+            }
+
+            .email-link {
+                align-self: start;
+                text-decoration: underline;
+                text-underline-offset: 6px;
+                color: colors.colorTheme(burntOrange);
+                text-decoration-color: colors.colorTheme(appWhite);
+                &:hover {
+                    color: colors.colorTheme(appWhite);
+                    text-decoration-color: colors.colorTheme(burntOrange);
                 }
             }
         }

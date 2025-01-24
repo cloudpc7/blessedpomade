@@ -33,7 +33,7 @@ const Welcome = () => {
                         className="email-link" 
                         to="mailto:alex.85marroquin@gmail.com"
                     >
-                        alex.85marroquin@gmail.com
+                        Alex
                     </Link>
                 </Col>
                 <Col className="policy-section">

@@ -28,7 +28,7 @@
                     @include util.card-img-overlay-style;
                     
                     .call-action {
-                       @include util.call-action;
+                       @include util.call-action();
                     }
 
                     .card-title {
