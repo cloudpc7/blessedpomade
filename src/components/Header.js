@@ -37,7 +37,7 @@ const Header = () => {
                 >
                     <Offcanvas.Header closeButton>
                         <Image className='pomade' src={pomadeLogo} alt='praying hands with blue background' />
-                            Blessed Pomade 
+                            <h2 className="nav-title">Blessed Pomade</h2>
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <Nav className="navbar-nav"> 

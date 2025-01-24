@@ -1,103 +1,94 @@
 @use 'sass:math';
-@use 'sass:color';
-@use '../colors/colors.scss' as colors;
-@import url("https://use.typekit.net/dax3jrh.css");
-@import url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
 
 // Font Families
-$defaultFont : 'League Gothic', serif;
-$titleFont : 'trajan-pro-3', serif;
+$defaultFont: 'League Gothic', serif;
+$titleFont: 'trajan-pro-3', serif;
 
-// Define letter spacing for different uses
-$letter-spacing: (
-    tight: -0.02em,
-    normal: 0,
-    loose: 0.05em,
-    title: 0.02em,  // For titles, slightly wider for readability
-    button: 0.03em, // For buttons, slightly more space for touch targets
-    caption: 0.01em // For captions or small text
+// Font Sizes
+$base-font-size: 16px;
+$font-sizes: (
+    'h1': (xs: 2.5rem, sm: 3rem, md: 3.5rem, lg: 4rem, xl: 4.5rem),
+    'h2': (xs: 2rem, sm: 2.5rem, md: 3rem, lg: 3.5rem, xl: 4rem),
+    'h3': (xs: 1.75rem, sm: 2rem, md: 2.25rem, lg: 2.5rem, xl: 2.75rem),
+    'h4': (xs: 1.5rem, sm: 1.75rem, md: 2rem, lg: 2.25rem, xl: 2.5rem),
+    'h5': (xs: 1.25rem, sm: 1.5rem, md: 1.75rem, lg: 2rem, xl: 2.25rem),
+    'h6': (xs: 1rem, sm: 1.125rem, md: 1.25rem, lg: 1.5rem, xl: 1.75rem),
+    'p': (xs: 1rem, sm: 1.125rem, md: 1.25rem, lg: 1.375rem, xl: 1.5rem),
+    'small': (xs: 0.875rem, sm: 0.9375rem, md: 1rem, lg: 1.0625rem, xl: 1.125rem),
+    'button': (xs: 1rem, sm: 1.125rem, md: 1.25rem, lg: 1.375rem, xl: 1.5rem), // For buttons and call to actions
 );
 
-// Update font themes to include letter-spacing
+// Letter Spacing
+$letter-spacing: (
+    'h1': 0.02em,
+    'h2': 0.015em,
+    'h3': 0.01em,
+    'h4': 0.005em,
+    'h5': 0,
+    'h6': 0,
+    'p': 0.01em, // Adjusted for paragraphs
+    'small': 0,
+    'button': 0.03em, // More spacing for buttons for better touch targets and visual prominence
+);
+
+// Line Height
+$line-heights: (
+    'h1': 1.2,
+    'h2': 1.3,
+    'h3': 1.4,
+    'h4': 1.5,
+    'h5': 1.6,
+    'h6': 1.6,
+    'p': 1.6,
+    'small': 1.5,
+    'button': 1.4, // Line height for buttons
+);
+
+@function get-font-size($element, $breakpoint: 'xs') {
+    $size-map: map-get($font-sizes, $element);
+    @return map-get($size-map, $breakpoint);
+}
+
+@function get-letter-spacing($element) {
+    @return map-get($letter-spacing, $element);
+}
+
+@function get-line-height($element) {
+    @return map-get($line-heights, $element);
+}
+
+@mixin responsive-font-size($element) {
+    font-size: get-font-size($element);
+    letter-spacing: get-letter-spacing($element);
+    line-height: get-line-height($element);
+
+    @each $breakpoint, $size in (
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px
+    ) {
+        @media (min-width: $size) {
+            font-size: get-font-size($element, $breakpoint);
+        }
+    }
+}
+
+// Font Themes
 $font-themes: (
     default: (
         font-family: $defaultFont,
-        color: inherit,
-        letter-spacing: map-get($letter-spacing, normal)
     ),
     title: (
         font-family: $titleFont,
-        color: colors.colorTheme(burntOrange),
-        letter-spacing: map-get($letter-spacing, title)
     ),
-    button: (
-        font-family: $defaultFont,
-        color: colors.colorTheme(appBlack),
-        letter-spacing: map-get($letter-spacing, button)
-    ),
-    caption: (
-        font-family: $defaultFont,
-        color: colors.colorTheme(appGrey),
-        letter-spacing: map-get($letter-spacing, caption)
-    )
 );
 
 @mixin font-theme($theme-name) {
     $theme: map-get($font-themes, $theme-name);
     @if $theme {
         font-family: map-get($theme, font-family);
-        font-weight: map-get($theme, font-weight, normal);
-        line-height: map-get($theme, line-height, 1.5);
-        letter-spacing: map-get($theme, letter-spacing, normal);
-        color: map-get($theme, color, inherit);
-        text-transform: map-get($theme, text-transform, none);
-      } @else {
+    } @else {
         @error "No font theme found for `#{$theme-name}`";
-      }
-};
-
-$title: (
-    xs: 1.125rem,
-);
-
-@function title($breakpoint) {
-    @return map-get($title, $breakpoint);
-};
-
-$subTitle: (
-    xs: 1.25rem,
-);
-
-@function subTitle($breakpoint) {
-    @return map-get($subTitle, $breakpoint);
-};
-
-$default: (
-    xs: 1rem,
-    letter-spacing: 0.2em,
-);
-
-@function default($breakpoint) {
-    @return map-get($default, $breakpoint);
-}
-
-// New utilities for text transformation
-$text-transformations: (
-    uppercase: uppercase,
-    lowercase: lowercase,
-    capitalize: capitalize,
-    none: none
-);
-
-@function text-transform($transformation) {
-    @return map-get($text-transformations, $transformation, none);
-}
-
-@mixin text-transform($transformation) {
-    text-transform: text-transform($transformation);
-}
-
-// New mixin for custom letter-spacing
-@mixin custom-letter-spacing($spacing) {
-    letter-spacing: map-get($letter-spacing, $spacing, normal);
+    }
 }

@@ -45,6 +45,7 @@ $global-gutter-widths: (
     border-radius: 0;
     padding: 0.5rem 1rem;
     @include font.font-theme(title);
+    @include text-style(1rem, 300, inherit, 1.6,left );
     cursor: pointer;
     transition: all 0.3s ease;
 
@@ -66,14 +67,16 @@ $global-gutter-widths: (
     justify-self: end;
     margin-top: 1rem;
     margin-right: 1rem;
-
+    color: colors.colorTheme(burntOrange);
+    @media (min-width: 48rem) {
+        margin-right: 0;
+    }
     &:hover {
         background-color: colors.colorTheme(burntOrange);
         color: colors.colorTheme(appWhite);
     }
 
     @media (min-width: 992px) {
-        margin: 0;
         align-self: start;
         justify-self: center;
         padding: 1rem 2rem;
@@ -86,11 +89,11 @@ $global-gutter-widths: (
 }
 
 @mixin cart-button {
-    @include button-base(colors.colorTheme(appWhite), colors.colorTheme(appBlack), rgba(144,144,144, 0.1));
     padding: 0.5rem 1.5rem;
     box-shadow: 0 2px 5px rgba(217,122,67,1.0);
-    font-size: 0.9em;
-
+    background-color: colors.colorTheme(appWhite);
+    color: colors.colorTheme(burntOrange);
+    border: none;
     &:hover {
         background-color: colors.colorTheme(burntOrange);
         color: colors.colorTheme(appWhite);
@@ -99,11 +102,33 @@ $global-gutter-widths: (
     }
 }
 
+@mixin product-button {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-width: 10rem;
+    align-self: center;
+    justify-self: center;
+    background-color: colors.colorTheme(appWhite);
+    color: colors.colorTheme(burntOrange);
+    border: none;
+    padding: 0.5rem 1.25rem;
+    margin-bottom: 1rem;
+    &:hover {
+        background-color: colors.colorTheme(burntOrange);
+        color: colors.colorTheme(appWhite);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    &:active {
+        background-color: darken(colors.colorTheme(burntOrange), 10%);
+        transform: translateY(0) scale(0.98);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+}
+
 @mixin add-button {
     @include button-base(colors.colorTheme(appWhite), colors.colorTheme(appBlack), rgba(0, 0, 0, 0.1));
     padding: 0.5rem 1.5rem;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    font-size: 0.9em;
     max-width: 10rem;
     align-self: center;
     justify-self: center;
@@ -255,7 +280,7 @@ $global-gutter-widths: (
 // Product Styles
 @mixin product-container-style {
     position: relative;
-    min-height: 27rem;
+    min-height: 28rem;
 }
 
 @mixin animate-div-style {

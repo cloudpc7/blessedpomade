@@ -1,24 +1,16 @@
-@use '../../variables/fonts/fonts.scss' as font;
 @use '../../variables/colors/colors.scss' as colors;
 
 .faqs-container {
     .faqs-row {
         display: flex;
         flex-direction: column;
-        padding: 1rem; // Reduced padding for mobile-first approach
-        gap: 1rem; // Space between FAQ items
+        padding: 1rem; 
+        gap: 1rem; 
 
         .faqs-title {
-            font-size: 1.5rem;
-            font-weight: 600;
             margin-bottom: 1rem;
             text-align: center;
             color: colors.colorTheme(burntOrange);
-            @include font.font-theme(title);
-
-            @media (min-width: 768px) { // Larger screens
-                font-size: 2rem;
-            }
         }
 
         .faq-item {
@@ -28,18 +20,12 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
             .faq-question {
-                font-size: 1rem;
-                font-weight: 600;
                 color: colors.colorTheme(burntOrange);
                 margin-bottom: 0.5rem;
-                @include font.font-theme(title);
             }
 
             .faq-answer {
-                font-size: 0.9rem;
-                line-height: 1.5; // Improved readability
                 color: colors.colorTheme(appDarkGrey);
-                @include font.font-theme(default);
             }
         }
     }

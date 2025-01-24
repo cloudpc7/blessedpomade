@@ -58,7 +58,7 @@ const Contact = () => {
                     handleBlur,
                     touched,
                     isValid,
-                    dirty, // Added to check if form has been modified
+                    dirty,
                     errors,
                     values,
                 }) => (
@@ -83,9 +83,10 @@ const Contact = () => {
                             <Button 
                                 className="message-btn" 
                                 type="submit" 
-                                disabled={!isValid || !dirty} // Button only enabled if form is valid and has been changed
+                                disabled={!isValid || !dirty}
+                                aria-label="Send message"
                             >
-                                <FontAwesomeIcon icon={faPaperPlane} />
+                                <FontAwesomeIcon icon={faPaperPlane} aria-hidden="true" />
                                 <span className="btn-text">Send</span>
                             </Button>
                         </Form.Group>

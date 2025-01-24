@@ -1,18 +1,14 @@
-@use '../variables/fonts/fonts.scss' as font;
 @use '../variables/utillities/utils.scss' as util;
 @use '../variables/colors/colors.scss' as colors;
 
-// Define mixins for common styles
 .home-container {
     @include util.section-style;
     display: grid;
     overflow: hidden;
-    
     .home {
         display: grid;
         grid-template-rows: repeat(6, minmax(min-content, max-content));
         @include util.section-style;
-        
         .col {
             padding: 0;
         }

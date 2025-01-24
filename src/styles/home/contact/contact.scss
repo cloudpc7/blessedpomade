@@ -1,4 +1,3 @@
-@use '../../variables/fonts/fonts.scss' as font;
 @use '../../variables/utillities/utils.scss' as util;
 @use '../../variables/colors/colors.scss' as colors;
 
@@ -9,9 +8,6 @@
     background-color: colors.colorTheme(burntOrange);
     padding: 2rem 1rem;
     .contact-title {
-        font-weight: 600;
-        font-size: 1.5rem;
-        @include font.font-theme(title);
         color: colors.colorTheme(appWhite); 
         margin-bottom: 1rem;
     }
@@ -27,16 +23,12 @@
             margin-bottom: 1rem;
             .form-label {
                 margin-bottom: 0.25rem;
-                font-weight: 500;
-                letter-spacing: 0.02em;
                 color:colors.colorTheme(burntOrange);
-                @include font.font-theme(default);
             }
             .form-control {
                 border-radius: 4px;
                 padding: 0.5rem;
                 border: 1px solid colors.colorTheme(appGrey);
-                @include font.font-theme(default);
                 &:focus {
                     border-color: colors.colorTheme(burntOrange);
                     box-shadow: 0 0 0 0.2rem rgba(colors.colorTheme(burntOrange), 0.25);
@@ -45,16 +37,13 @@
                     color: colors.colorTheme(appDarkGrey);
                     opacity: 0.6; 
                     font-style: italic; 
-                    @include font.font-theme(default);
                 }
             }
 
             .invalid-feedback {
                 color: colors.colorTheme(appRed);
-                font-size: 0.875rem;
                 position: static;
                 margin-top: 0.25rem;
-                @include font.font-theme(default);
             }
             .message-btn {
                 @include util.message-button();
@@ -63,8 +52,6 @@
                 justify-content: center;
                 gap: 0.5rem;
                 padding: 0.5rem 1rem;
-                letter-spacing: 0.02em;
-                @include font.font-theme(title);
                 .btn-text {
                     margin-left: 0.5rem;
                 }

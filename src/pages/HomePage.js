@@ -65,18 +65,18 @@ const HomePage = () => {
                             {showCallToAction && (
                                 <div className="call-action-container">
                                     {transitions((styles, item) => item ? 
-                                        <animated.h2 
-                                            className="h2 call-action-title blessed-title" 
+                                        <animated.h1 
+                                            className="h1 call-action-title blessed-title" 
                                             style={{...styles, position: 'absolute', color: colors.burntOrange }}
                                         >
                                             <span className="blessed">Blessed</span> Pomade
-                                        </animated.h2> : 
-                                        <animated.h2 
-                                            className="h2 call-action-title" 
+                                        </animated.h1> : 
+                                        <animated.h1 
+                                            className="h1 call-action-title" 
                                             style={{...styles, position: 'absolute' }}
                                         >
                                             Feel Fresh, Feel Blessed
-                                        </animated.h2>
+                                        </animated.h1>
                                     )}
                                 </div>
                             )}

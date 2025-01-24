@@ -25,10 +25,10 @@ const Testament = () => {
     const handlePrev = () => setActiveIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
 
     const springProps = useSpring({
-        from: { opacity: 0 },
-        to: { opacity: 1 },
-        reset: true,
-        config: { mass: 1, tension: 170, friction: 26 },
+        // from: { opacity: 0 },
+        // to: { opacity: 1 },
+        // reset: true,
+        // config: { mass: 1, tension: 170, friction: 26 },
     });
 
     return (
@@ -41,8 +41,8 @@ const Testament = () => {
                             <p className="testament">{testimonials[activeIndex].text}</p>
                             <small className="testament-name">- {testimonials[activeIndex].name}</small>
                             <div className="carousel-nav">
-                                <button onClick={handlePrev} className="carousel-prev">‹</button>
-                                <button onClick={handleNext} className="carousel-next">›</button>
+                                <button onClick={handlePrev} className="carousel-prev" aria-label="Previous testimonial">‹</button>
+                                <button onClick={handleNext} className="carousel-next" aria-label="Next testimonial">›</button>
                             </div>
                         </div>
                     </div>

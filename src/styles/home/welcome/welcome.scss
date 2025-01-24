@@ -8,24 +8,19 @@
         grid-template-columns: 1fr;
         gap: 2rem;
         padding: 1rem;
-
         @media (min-width: 992px) {
             grid-template-columns: 1fr 1fr;
             align-items: start;
         }
 
         .welcome-title {
-            @include util.text-style(2.5rem, 600, colors.colorTheme(burntOrange), 1);
-            @include font.font-theme(title);
-            margin-bottom: 1rem;
             text-align: center;
-
-            @media (min-width: 768px) { 
-                font-size: 2rem;
-            }
-
+            margin: 0;
+            max-width: 80%;
+            margin: 0 auto;
+            color: colors.colorTheme(burntOrange);
             @media (min-width: 992px) {
-                grid-column: 1 / -1; // Spans both columns
+                grid-column: 1 / -1;
                 align-self: start;
                 justify-self: center;
                 margin: 0;
@@ -33,9 +28,6 @@
         }
 
         .welcome-statement {
-            padding: 0;
-            
-            letter-spacing: 0.0675rem;
             grid-column: 1 / span 2;
             @media (min-width: 992px) {
                 display: grid;
@@ -45,36 +37,24 @@
 
             .statement-left {
                 margin-bottom: 1rem;
-                @include util.text-style(16px, 300, inherit, 1.6, left);
                 @media (min-width: 992px) {
                     margin-bottom: 0;
-                    @include util.text-style(1.125rem, 300, inherit, 1.6, left);
                 }
             }
 
             .statement-right {
-                @include util.list-style(column, 0.5rem); // Changed direction to column
+                @include util.list-style(column, 0.5rem);
                 padding-left: 0;
-                
                 @media (min-width: 992px) {
-                    // No need for grid here, since we want items to stack vertically
                     display: block; 
                 }
-                
                 li {
                     @include util.list-item-style(rgba(colors.colorTheme(appDarkGrey), 0.1), 0.5rem 1rem, 15px);
 
-                    // Remove these flex settings as they're not needed for vertical layout
                     @media (min-width: 576px) { 
                         margin: 0 0 0.5rem;
                     }
-
-                    @media (min-width: 768px) { 
-                        font-size: 16px; 
-                    }
-
                     @media (min-width: 992px) { 
-                        // Ensure full width within column
                         width: 100%; 
                     }
                 }
@@ -83,11 +63,9 @@
 
             strong {
                 color: colors.colorTheme(burntOrange);
-                font-weight: 600;
             }
 
             @media (min-width: 768px) {
-                font-size: 18px;
                 padding: 0 1.5rem;
             }
         }

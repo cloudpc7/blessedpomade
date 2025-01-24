@@ -1,10 +1,8 @@
-@use '../../variables/fonts/fonts.scss' as font;
 @use '../../variables/utillities/utils.scss' as util;
 @use '../../variables/colors/colors.scss' as colors;
 
 .product-section {
     border: 2px solid colors.colorTheme(burntOrange);
- 
     .product-container {
         @include util.product-container-style;
         .animate-div {
@@ -32,7 +30,6 @@
                     .cart-items {
                         @include util.cart-items-style;
                         .cart-icon {
-                            font-size: 1.5em;
                             color: colors.colorTheme(appWhite);
                         }
 
@@ -42,14 +39,12 @@
                             left: -0.5em;
                             background-color: transparent; 
                             color: colors.colorTheme(burntOrange);
-                            font-size: 1em;
                             width: 1.5rem;
                             height: 1.5rem;
                         }
 
                         .cart-btn {
                             @include util.cart-button();
-                            @include font.font-theme(title);
                         }
                     }
 
@@ -64,16 +59,11 @@
                     .product-details {
                         @include util.product-details-style;
                         .product-btn {
-                            @include util.add-button();
-                            text-transform: uppercase;
-                            @include font.font-theme(default);
+                            @include util.product-button();
                         }
 
                         .product-title, .product-price {
                             @media (max-width: 767px) {
-                                font-size: 1.1em;
-                                line-height: 1.5;
-                                font-weight: 500;
                             }
                         }
 
@@ -93,6 +83,7 @@
 
                 .special-offer-card {
                     @include util.card-style;
+                    padding: 1rem;
                     height: 100%;
                     background-color: colors.colorTheme(appGrey);
                     border: 1px solid colors.colorTheme(burntOrange);
@@ -104,7 +95,6 @@
                     }
                     .card-title {
                         @include util.text-style(2rem, 700, colors.colorTheme(burntOrange), 1.2); // Increased font size
-                        @include font.font-theme(title);
                     }
 
                     .card-text {
@@ -132,11 +122,7 @@
                     margin: 0;
                     justify-self: center;
                     color: colors.colorTheme(appWhite);
-                    @include font.font-theme(default);
                     @media (max-width: 767px) {
-                        font-size: 1.1em;
-                        line-height: 1.5;
-                        font-weight: 500;
                     }
                 }
 
@@ -145,7 +131,6 @@
                     .cart-item {
                         @include util.cart-item-style;
                         @media (max-width: 767px) {
-                            font-size: 0.9em;
                             padding: 0.5rem;
                         }
                     }
@@ -167,7 +152,6 @@
                             @media (max-width: 767px) {
                                 gap: 0.3rem;
                                 .term-link {
-                                    font-size: 0.85em;
                                 }
                             }
                             .form-check-input {
@@ -187,7 +171,6 @@
             
                         .cart-btn {
                             @include util.cart-button();
-                            @include font.font-theme(title);
                         }
                     }
                 }

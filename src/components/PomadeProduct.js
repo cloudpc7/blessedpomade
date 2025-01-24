@@ -71,6 +71,7 @@ const PomadeProduct = () => {
                                                 type="submit" 
                                                 className="cart-btn"
                                                 onClick={() => setView('cart')}
+                                                aria-label="Go to Cart"
                                             >
                                                 Go to Cart
                                             </Button> 
@@ -82,16 +83,15 @@ const PomadeProduct = () => {
                                         alt="Blessed Pomade hair pomade product"
                                     />
                                     <Card.Body className="product-details">
-                                        <Card.Text  
-                                            className="product-title"
-                                        >
-                                            blessed pomade 
+                                        <p className="product-title">
+                                            Blessed Pomade 
                                             <span className="weight">4.250z</span>
-                                        </Card.Text>
+                                        </p>
                                         <Card.Text className="product-price">$13.99</Card.Text>
                                         <Button  
                                             className="product-btn"
                                             onClick={addToCart}
+                                            aria-label="Add Blessed Pomade to Cart"
                                         >
                                             Add to Cart
                                         </Button>
@@ -101,8 +101,7 @@ const PomadeProduct = () => {
                             <Col xs={12} lg={6} className="special-offer-col">
                                 <Card className="special-offer-card">
                                     <Card.Body>
-                                        <Card.Title>Special Offer</Card.Title>
-
+                                        <h4 className="card-title">Special Offer</h4>
                                         <Card.Text>Buy two Get One Free!</Card.Text>
                                         <Card.Text>Use Code: BeBlessed</Card.Text>
                                     </Card.Body>
@@ -116,10 +115,10 @@ const PomadeProduct = () => {
                                 src={pomade}
                                 alt="Blessed Pomade hair pomade product"   
                             />
-                            <Card.Text className="product-title">
+                            <p className="product-title">
                                 Blessed Pomade
                                 <span className="weight">4.250z</span>
-                            </Card.Text>
+                            </p>
                             <Card.Body className="cart-details">
                                 <div className="cart-item">
                                     <Card.Text>Product Price</Card.Text>
@@ -138,6 +137,7 @@ const PomadeProduct = () => {
                                         variant="outline-secondary" 
                                         onClick={handleDecrement} 
                                         className="quantity-btn"
+                                        aria-label="Decrease Quantity"
                                     >
                                         <FontAwesomeIcon icon={faMinus} />
                                     </Button>
@@ -146,6 +146,7 @@ const PomadeProduct = () => {
                                         variant="outline-secondary" 
                                         onClick={handleIncrement} 
                                         className="quantity-btn"
+                                        aria-label="Increase Quantity"
                                     >
                                         <FontAwesomeIcon icon={faPlus} />
                                     </Button>
@@ -169,12 +170,14 @@ const PomadeProduct = () => {
                                             onClick={handleSubmit}
                                             type="submit"
                                             disabled={!check}
+                                            aria-label="Proceed to Checkout"
                                         >
                                             Checkout
                                         </Button>
                                         <Button  
                                             className="cart-btn"
                                             onClick={handleGoBack}
+                                            aria-label="Return to Product View"
                                         >
                                             Go Back
                                         </Button>

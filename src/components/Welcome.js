@@ -5,7 +5,7 @@ const Welcome = () => {
     return (
         <Container className="welcome-container">
             <div className="welcome-content">
-                <h1 className="h1 welcome-title">Feel Fresh, Feel Blessed</h1>
+                <h2 className="h2 welcome-title">Feel Fresh, Feel Blessed</h2>
                 <div className="welcome-statement">
                     <p className="statement-left">Welcome to BlessedPomade.com, where you can find the best <strong>water-based hair pomade</strong> that not only styles your hair effortlessly but also ensures it feels fresh and blessed. Our <strong>natural hair pomade</strong> is designed for those who seek simplicity in styling with the assurance of easy wash-out, leaving your hair healthy and vibrant.</p>
                     <ul className="statement-right">

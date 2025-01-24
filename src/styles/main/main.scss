@@ -1,23 +1,52 @@
 @use 'sass:math';
-@use 'sass:color';
 @use '../reset/reset.scss';
 @use '../variables/fonts/fonts.scss' as font;
 
 body {
     box-sizing: border-box;
     @include font.font-theme(default);
-    @include font.text-transform(none);
-    .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-size: font.get-font-size('p', 'xs');
+
+    h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
         @include font.font-theme(title);
-        @include font.text-transform(none); // Override potential uppercase for titles
+        @include font.responsive-font-size('h1');
     }
 
-    .h1 {
-        font-size: font.title(xs);
-    }
+    h1, .h1 { @include font.responsive-font-size('h1'); }
+    h2, .h2 { @include font.responsive-font-size('h2'); }
+    h3, .h3 { @include font.responsive-font-size('h3'); }
+    h4, .h4 { @include font.responsive-font-size('h4'); }
+    h5, .h5 { @include font.responsive-font-size('h5'); }
+    h6, .h6 { @include font.responsive-font-size('h6'); }
 
-    p {
+    p, a, .link, .card-text {
         @include font.font-theme(default);
+        @include font.responsive-font-size('p');
+    }
+
+    small {
+        @include font.font-theme(default);
+        @include font.responsive-font-size('small');
+    }
+
+    button, .btn, .call-action {
+        @include font.font-theme(title);
+        @include font.responsive-font-size('button');
+    }
+
+    .card-title {
+        @include font.font-theme(title); 
+        @include font.responsive-font-size('h4');
+    }
+    .modal-header {
+        h5, h6 {
+            @include font.font-theme(title);
+            @include font.responsive-font-size('h5');
+        }
+    }
+    .navbar {
+        @include font.font-theme(default);  
+        font-size: font.get-font-size('small');
     }
 
     .pac-container {

@@ -10,17 +10,17 @@ const Welcome = () => {
         <footer className="footer">
             <div className="business-image">
                 <Image className="blessed-logo" src={pomadeLogo} alt="praying hand on top of a blue background"/>
-                <h4 className="h4 blessed-title">Blessed Pomade</h4>
+                <h3 className="h3 blessed-title">Blessed Pomade</h3>
             </div>
             <Row className="footer-content">
                 <Col className="social-section">
-                    <h4 className="h4 footer-title">Follow Us</h4>
-                    <a href="https://instagram.com/clouddropdesigns" target="_blank" rel="noopener noreferrer">
+                    <h5 className="h5 footer-title">Follow Us</h5>
+                    <a href="https://instagram.com/clouddropdesigns" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
                         <FontAwesomeIcon icon={faInstagram} size="2x" />
                     </a>
                 </Col>
                 <Col className="about-section">
-                    <h4 className="h4 footer-title">About</h4>
+                    <h5 className="h5 footer-title">About</h5>
                     <ul className="footer-list">
                         <li>Product</li>
                         <li>Blessed Pomade</li>
@@ -28,16 +28,16 @@ const Welcome = () => {
                     </ul>
                 </Col>
                 <Col className="contact-section">
-                    <h4 className="h4 footer-title">Contact</h4>
+                    <h5 className="h5 footer-title">Contact</h5>
                     <Link 
                         className="email-link" 
-                        href="mailto:alex.85marroquin@gmail.com"
+                        to="mailto:alex.85marroquin@gmail.com"
                     >
                         alex.85marroquin@gmail.com
                     </Link>
                 </Col>
                 <Col className="policy-section">
-                    <h4 className="h4 footer-title">Info</h4>
+                    <h5 className="h5 footer-title">Info</h5>
                     <ul className="footer-list">
                         <li>Privacy Policy</li>
                         <li>Site Map</li>

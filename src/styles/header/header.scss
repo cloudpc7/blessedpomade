@@ -1,12 +1,10 @@
 @use '../variables/utillities/utils.scss' as util;
 @use '../variables/colors/colors.scss' as colors;
 @use '../variables/fonts/fonts.scss' as font;
-
 .navbar {
     grid-row: 1;
     grid-column: 1;
     align-self: start;
-    
     .container {
         @include util.no-padding; 
         .navbar-toggler {
@@ -26,12 +24,19 @@
     cursor: pointer;
     
     .offcanvas-header {
-        @include util.offcanvas-header-style;
-        display: grid;
-        grid-template-rows: repeat(2, minmax(min-content,max-content));
-        @include util.responsive-spacing(gap); 
+        display: flex;
+        gap: 0.5rem;
+        @media (min-width: 62rem) {
+            @include util.offcanvas-header-style;
+            display: grid;
+            grid-template-rows: repeat(2, minmax(min-content,max-content));
+            @include util.responsive-spacing(gap); 
+        }
         overflow: hidden;
-        
+        .nav-title {
+            color: colors.colorTheme(appWhite);
+            font-size: 1.125rem;
+        }
         .pomade {
             @include util.header-logo-style;
             grid-row: 1;
@@ -55,6 +60,7 @@
             .shop {
                 letter-spacing: 0.2em;
                 @include font.font-theme(title);
+                color: colors.colorTheme(appWhite);
             }
         }
     }
