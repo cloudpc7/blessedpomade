@@ -1,17 +1,20 @@
 @import url("https://use.typekit.net/dax3jrh.css");
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=League+Gothic&display=swap");
 .home-container {
-  display: grid;
   width: 100%;
-  box-sizing: border-box;
-  overflow: hidden;
   padding: 0;
+  box-sizing: border-box;
+  align-self: center;
+  justify-self: center;
+  display: grid;
+  overflow: hidden;
 }
 .home-container .home {
   display: grid;
   grid-template-rows: repeat(6, minmax(min-content, max-content));
   width: 100%;
-  max-width: 100%;
+  padding: 0;
+  box-sizing: border-box;
   align-self: center;
   justify-self: center;
 }
@@ -43,29 +46,47 @@
   gap: 0.5rem;
 }
 .home-container .hero-section .col .card .card-img-overlay .call-action, .home-container .footer-section .col .card .card-img-overlay .call-action {
-  grid-row: 1;
-  grid-column: 2;
-  align-self: start;
-  justify-self: end;
   background-color: transparent;
   color: #D97A43;
-  border: 3px solid #909090;
+  border: 1px solid #909090;
   border-radius: 0;
+  padding: 0.5rem 1rem;
+  font-family: "trajan-pro-3", serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
   font-weight: bold;
   font-size: 1.125rem;
   text-align: center;
   padding: 0.3125rem 0.875rem;
   letter-spacing: 0.08em;
+  max-width: 10rem;
+  max-height: 3.5rem;
+  align-self: start;
+  justify-self: end;
   margin-top: 1rem;
   margin-right: 1rem;
+}
+.home-container .hero-section .col .card .card-img-overlay .call-action:hover, .home-container .footer-section .col .card .card-img-overlay .call-action:hover {
+  background-color: rgba(0, 0, 0, 0);
 }
 .home-container .hero-section .col .card .card-img-overlay .call-action:hover, .home-container .footer-section .col .card .card-img-overlay .call-action:hover {
   background-color: #D97A43;
   color: #ffffff;
 }
+@media (min-width: 992px) {
+  .home-container .hero-section .col .card .card-img-overlay .call-action, .home-container .footer-section .col .card .card-img-overlay .call-action {
+    margin: 0;
+    align-self: start;
+    justify-self: center;
+    padding: 1rem 2rem;
+    max-width: 100%;
+    max-height: 100%;
+    grid-row: 1;
+    grid-column: 1;
+    margin-top: 1rem;
+  }
+}
 .home-container .hero-section .col .card .card-img-overlay .card-title, .home-container .footer-section .col .card .card-img-overlay .card-title {
-  grid-row: 2;
-  grid-column: 1/span 2;
   color: #ffffff;
   align-self: end;
   justify-self: start;
@@ -73,16 +94,56 @@
   font-size: 1.5rem;
   font-weight: 600;
   padding: 0;
+  grid-row: 2;
+  grid-column: 1/span 2;
 }
 .home-container .hero-section .col .card .card-img-overlay .card-body, .home-container .footer-section .col .card .card-img-overlay .card-body {
-  grid-row: 3;
-  grid-column: 1/span 2;
   display: flex;
   justify-content: start;
   align-items: start;
   width: 100%;
+  grid-row: 3;
+  grid-column: 1/span 2;
 }
 .home-container .hero-section .col .card .card-img-overlay .card-body .card-text, .home-container .footer-section .col .card .card-img-overlay .card-body .card-text {
+  font-size: 1rem;
+  font-weight: normal;
   color: #ffffff;
+  line-height: 1;
+  text-align: center;
   padding: 0;
+}
+
+@media (min-width: 992px) {
+  .hero-section .col .card .card-img-overlay {
+    display: grid;
+    grid-template-rows: repeat(4, minmax(min-content, max-content));
+    grid-template-columns: repeat(4, minmax(min-content, max-content));
+  }
+  .hero-section .col .card .card-img-overlay .call-action-container {
+    grid-row: 2;
+    grid-column: 1;
+    align-self: start;
+    justify-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    width: 100%;
+  }
+  .hero-section .col .card .card-img-overlay .call-action-container .call-action-title {
+    position: absolute;
+    top: -3rem;
+    left: 7.5rem;
+    max-width: 50%;
+    color: #ffffff;
+    margin: 0;
+    cursor: pointer;
+  }
+  .hero-section .col .card .card-img-overlay .call-action-container .call-action-title .blessed-title {
+    color: #ffffff;
+  }
+  .hero-section .col .card .card-img-overlay .call-action-container .call-action-title .blessed {
+    color: #D97A43;
+  }
 }/*# sourceMappingURL=home.css.map */

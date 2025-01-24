@@ -1,5 +1,5 @@
 @import url("https://use.typekit.net/dax3jrh.css");
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=League+Gothic&display=swap");
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -70,10 +70,16 @@ input {
 
 body {
   box-sizing: border-box;
-  font-family: "Bebas Neue", serif;
+  font-family: "League Gothic", serif;
 }
 body .h1, body .h2, body .h3, body .h4, body .h5, body .h6 {
   font-family: "trajan-pro-3", serif;
+}
+body .h1 {
+  font-size: 2rem;
+}
+body p {
+  font-family: "League Gothic", serif;
 }
 body .pac-container {
   z-index: 2050;

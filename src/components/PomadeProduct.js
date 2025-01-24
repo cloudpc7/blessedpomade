@@ -1,4 +1,4 @@
-import { Container, Form, Card, Button } from 'react-bootstrap';
+import { Container, Form, Card, Button, Row, Col } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import { Formik } from 'formik';
 import pomade from '../app/assets/images/pomad_small.png';
@@ -22,8 +22,8 @@ const PomadeProduct = () => {
     const handleSubmit = () => {};
     const handleGoBack = () => setView('product');
 
-     // Function to increase cart count
-     const handleIncrement = () => {
+    // Function to increase cart count
+    const handleIncrement = () => {
         setCartCount(prev => prev + 1);
     };
 
@@ -47,9 +47,8 @@ const PomadeProduct = () => {
     });
 
     return (
-       <Container className="product-container">
-        {
-            transitions((styles, item) => (
+        <Container className="product-container">
+            {transitions((styles, item) => (
                 <animated.div
                     className="animate-div"
                     style={{
@@ -61,41 +60,55 @@ const PomadeProduct = () => {
                     }}
                 >
                     {item === 'product' ? (
-                        <Card className="pomade-product-card">
-                            {cartCount > 0 && (
-                                <div className="cart-items">
-                                    <FontAwesomeIcon className="cart-icon" icon={faShoppingCart} size="2x" />
-                                    <span className="cart-count">{cartCount}</span>
-                                    <Button 
-                                        type="submit" 
-                                        className="cart-btn"
-                                        onClick={() => setView('cart')}
-                                    >
-                                        Go to Cart
-                                    </Button> 
-                                </div>
-                            )}
-                            <Card.Img 
-                                className="product-img"
-                                src={pomade}
-                                alt="Blessed Pomade hair pomade product"
-                            />
-                            <Card.Body className="product-details">
-                                <Card.Text  
-                                    className="product-title"
-                                >
-                                blessed pomade 
-                                <span className="weight">4.250z</span>
-                                </Card.Text>
-                                <Card.Text className="product-price">$13.99</Card.Text>
-                                <Button  
-                                    className="product-btn"
-                                    onClick={addToCart}
-                                >
-                                    Add to Cart
-                                </Button>
-                            </Card.Body>
-                        </Card>
+                        <Row className="product-row">
+                            <Col xs={12} lg={6} className="product-col">
+                                <Card className="pomade-product-card">
+                                    {cartCount > 0 && (
+                                        <div className="cart-items">
+                                            <FontAwesomeIcon className="cart-icon" icon={faShoppingCart} size="2x" />
+                                            <span className="cart-count">{cartCount}</span>
+                                            <Button 
+                                                type="submit" 
+                                                className="cart-btn"
+                                                onClick={() => setView('cart')}
+                                            >
+                                                Go to Cart
+                                            </Button> 
+                                        </div>
+                                    )}
+                                    <Card.Img 
+                                        className="product-img"
+                                        src={pomade}
+                                        alt="Blessed Pomade hair pomade product"
+                                    />
+                                    <Card.Body className="product-details">
+                                        <Card.Text  
+                                            className="product-title"
+                                        >
+                                            blessed pomade 
+                                            <span className="weight">4.250z</span>
+                                        </Card.Text>
+                                        <Card.Text className="product-price">$13.99</Card.Text>
+                                        <Button  
+                                            className="product-btn"
+                                            onClick={addToCart}
+                                        >
+                                            Add to Cart
+                                        </Button>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                            <Col xs={12} lg={6} className="special-offer-col">
+                                <Card className="special-offer-card">
+                                    <Card.Body>
+                                        <Card.Title>Special Offer</Card.Title>
+
+                                        <Card.Text>Buy two Get One Free!</Card.Text>
+                                        <Card.Text>Use Code: BeBlessed</Card.Text>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        </Row>
                     ) : (
                         <Card className="cart-product-card">
                             <Card.Img 
@@ -171,9 +184,8 @@ const PomadeProduct = () => {
                         </Card>
                     )}
                 </animated.div>
-            ))
-        }
-       </Container>
+            ))}
+        </Container>
     );
 };
 

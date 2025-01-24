@@ -1,12 +1,13 @@
 @import url("https://use.typekit.net/dax3jrh.css");
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=League+Gothic&display=swap");
 .navbar {
   grid-row: 1;
   grid-column: 1;
   align-self: start;
 }
 .navbar .container {
-  padding: 0;
+  padding: 1rem;
+  @continue;
 }
 .navbar .container .navbar-toggler {
   border: 2px solid #909090;
@@ -17,29 +18,72 @@
 }
 
 .offcanvas {
-  display: grid;
   background-color: #090D0C;
+  padding: 1rem;
+  @continue;
+  display: grid;
   grid-template-rows: repeat(2, minmax(min-content, max-content));
   cursor: pointer;
-  padding: 1rem;
+}
+@media (min-width: 576px) {
+  .offcanvas {
+    padding: 1.5rem;
+  }
+}
+@media (min-width: 768px) {
+  .offcanvas {
+    padding: 2rem;
+  }
+}
+@media (min-width: 992px) {
+  .offcanvas {
+    padding: 2.5rem;
+  }
+}
+@media (min-width: 1200px) {
+  .offcanvas {
+    padding: 3rem;
+  }
 }
 .offcanvas .offcanvas-header {
+  color: #ffffff;
+  letter-spacing: 0.08rem;
+  font-family: "trajan-pro-3", serif;
   display: grid;
   grid-template-rows: repeat(2, minmax(min-content, max-content));
   gap: 1rem;
-  color: #ffffff;
-  letter-spacing: 0.08rem;
+  @continue;
   overflow: hidden;
-  font-size: 1.25rem;
+}
+@media (min-width: 576px) {
+  .offcanvas .offcanvas-header {
+    gap: 1.5rem;
+  }
+}
+@media (min-width: 768px) {
+  .offcanvas .offcanvas-header {
+    gap: 2rem;
+  }
+}
+@media (min-width: 992px) {
+  .offcanvas .offcanvas-header {
+    gap: 2.5rem;
+  }
+}
+@media (min-width: 1200px) {
+  .offcanvas .offcanvas-header {
+    gap: 3rem;
+  }
 }
 .offcanvas .offcanvas-header .pomade {
-  grid-row: 1;
-  justify-self: start;
   max-width: 2rem;
   max-height: 2rem;
+  grid-row: 1;
+  justify-self: start;
 }
 .offcanvas .offcanvas-header .btn-close {
   background-color: #ffffff;
+  border-radius: 0;
   grid-row: 1;
   justify-self: end;
   align-self: start;
@@ -53,6 +97,40 @@
   color: #D97A43;
 }
 .offcanvas .offcanvas-body .navbar-nav .shop {
-  font-size: 1.125rem;
   letter-spacing: 0.2em;
+  font-family: "trajan-pro-3", serif;
+}
+
+@media (min-width: 992px) {
+  .navbar {
+    grid-row: 1;
+    grid-column: 2;
+  }
+  .navbar .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .navbar .navbar-toggler {
+    display: none;
+  }
+  .offcanvas {
+    grid-row: 1;
+    grid-column: 2;
+    display: flex;
+    background-color: transparent;
+    padding: 0;
+  }
+  .offcanvas .offcanvas-header {
+    display: none;
+  }
+  .offcanvas .offcanvas-body {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+  }
+  .offcanvas .offcanvas-body .navbar-nav {
+    flex-direction: row;
+    gap: 1.5rem;
+    align-items: center;
+  }
 }/*# sourceMappingURL=header.css.map */

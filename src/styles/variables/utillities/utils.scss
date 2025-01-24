@@ -1,59 +1,112 @@
 @use '../colors/colors.scss' as colors;
+@use '../../variables/fonts/fonts.scss' as font;
 
-$grid-gutter-widths: (
-    default: 0,
+$global-gutter-widths: (
     xs: 1rem,
     sm: 1.5rem,
+    md: 2rem,
+    lg: 2.5rem,
+    xl: 3rem
 );
 
-@function gutter($breakpoint) {
-    @return map-get($grid-gutter-widths, $breakpoint);
+@function global-gutter($breakpoint) {
+    @return map-get($global-gutter-widths, $breakpoint);
+};
+
+@mixin responsive-spacing($property: padding, $direction: '', $gutter-map: $global-gutter-widths) {
+    #{$property}#{$direction}: global-gutter(xs);
+
+    @each $breakpoint, $value in $gutter-map {
+        @if $breakpoint == xs {
+            @continue;
+        }
+        @else {
+            @media (min-width: #{map-get((
+                sm: 576px,
+                md: 768px,
+                lg: 992px,
+                xl: 1200px
+            ), $breakpoint)}) {
+                #{$property}#{$direction}: global-gutter($breakpoint);
+            }
+        }
+    }
 }
 
+@mixin no-padding {
+    @include responsive-spacing(padding, $gutter-map: (xs: 0));
+}
+
+// Button Styles
+@mixin button-base($bg-color, $text-color, $border-color) {
+    background-color: $bg-color;
+    color: $text-color;
+    border: 1px solid $border-color;
+    border-radius: 0;
+    padding: 0.5rem 1rem;
+    @include font.font-theme(title);
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: darken($bg-color, 10%);
+    }
+}
 
 @mixin call-action {
-    background-color: transparent;
-    color: colors.colorTheme(burntOrange);
-    border: 3px solid #909090;
-    border-radius: 0;
+    @include button-base(transparent, colors.colorTheme(burntOrange), colors.colorTheme(lightGrey));
     font-weight: bold;
     font-size: 1.125rem;
     text-align: center;
     padding: 0.3125rem 0.875rem;
     letter-spacing: 0.08em;
+    max-width: 10rem;
+    max-height: 3.5rem;
+    align-self: start;
+    justify-self: end;
+    margin-top: 1rem;
+    margin-right: 1rem;
 
     &:hover {
         background-color: colors.colorTheme(burntOrange);
         color: colors.colorTheme(appWhite);
+    }
+
+    @media (min-width: 992px) {
+        margin: 0;
+        align-self: start;
+        justify-self: center;
+        padding: 1rem 2rem;
+        max-width: 100%;
+        max-height: 100%;
+        grid-row: 1;
+        grid-column: 1;
+        margin-top: 1rem;
     }
 }
 
 @mixin cart-button {
-    background-color: colors.colorTheme(appWhite);
-    color: colors.colorTheme(appBlack);
+    @include button-base(colors.colorTheme(appWhite), colors.colorTheme(appBlack), rgba(144,144,144, 0.1));
     padding: 0.5rem 1.5rem;
-    border: 2px solid rgba(144,144,144, 0.1); // Subtle border
-    border-radius: 0;
-    box-shadow: 0 2px 5px rgba(217,122,67,1.0); // Add a slight shadow
-    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(217,122,67,1.0);
     font-size: 0.9em;
+
     &:hover {
         background-color: colors.colorTheme(burntOrange);
         color: colors.colorTheme(appWhite);
-        transform: translateY(-2px); // Slight lift effect
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 }
 
 @mixin add-button {
-    background-color: colors.colorTheme(appWhite);
-    color: colors.colorTheme(appBlack);
+    @include button-base(colors.colorTheme(appWhite), colors.colorTheme(appBlack), rgba(0, 0, 0, 0.1));
     padding: 0.5rem 1.5rem;
-    border-radius: 0;
-    border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
     font-size: 0.9em;
+    max-width: 10rem;
+    align-self: center;
+    justify-self: center;
     &:hover {
         background-color: colors.colorTheme(burntOrange);
         color: colors.colorTheme(appWhite);
@@ -61,22 +114,32 @@ $grid-gutter-widths: (
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     &:active {
-        // Click effect
-        background-color: darken(colors.colorTheme(burntOrange), 10%); // Darken the hover color slightly for click
-        transform: translateY(0) scale(0.98); // Scale down and remove lift
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1); // Reduce shadow for pressed look
+        background-color: darken(colors.colorTheme(burntOrange), 10%);
+        transform: translateY(0) scale(0.98);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+}
+
+@mixin count-button {
+    @include button-base(colors.colorTheme(burntOrange), colors.colorTheme(appBlack), rgba(144,144,144, 0.1));
+    padding: 0.5rem 1.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    font-size: 0.9em;
+
+    &:hover {
+        background-color: colors.colorTheme(appBlack);
+        color: colors.colorTheme(appWhite);
+        transform: translateY(-2px);
+        box-shadow: 0 2px 5px rgba(217,122,67,1.0);
     }
 }
 
 @mixin message-button {
-    background-color: colors.colorTheme(appWhite);
-    color: colors.colorTheme(burntOrange);
+    @include button-base(colors.colorTheme(appWhite), colors.colorTheme(burntOrange), rgba(0, 0, 0, 0.1));
     padding: 0.5rem 1.5rem;
-    border-radius: 0;
-    border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
     font-size: 0.9em;
+
     &:hover {
         background-color: colors.colorTheme(appBlack);
         color: colors.colorTheme(appWhite);
@@ -84,28 +147,302 @@ $grid-gutter-widths: (
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     &:active {
-        // Click effect
-        background-color: darken(colors.colorTheme(burntOrange), 10%); // Darken the hover color slightly for click
-        transform: translateY(0) scale(0.98); // Scale down and remove lift
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1); // Reduce shadow for pressed look
+        background-color: darken(colors.colorTheme(burntOrange), 10%);
+        transform: translateY(0) scale(0.98);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
 }
 
-@mixin count-button {
-    background-color: colors.colorTheme(burntOrange);
-    color: colors.colorTheme(appBlack);
-    padding: 0.5rem 1.5rem;
-    border: 2px solid rgba(144,144,144, 0.1); // Subtle border
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 0;
-     // Add a slight shadow
-    transition: all 0.3s ease;
-    font-size: 0.9em;
+// Header Styles
+@mixin nav-item-style {
+    color: colors.colorTheme(appWhite);
+    width: min-content;
     &:hover {
-        background-color: colors.colorTheme(appBlack);
-        color: colors.colorTheme(appWhite);
-        transform: translateY(-2px); // Slight lift effect
-       
-        box-shadow: 0 2px 5px rgba(217,122,67,1.0); 
+        color: colors.colorTheme(burntOrange);
     }
 }
+
+@mixin header-logo-style {
+    max-width: 2rem;
+    max-height: 2rem;
+}
+
+@mixin close-button-style($bg-color: colors.colorTheme(appWhite), $text-color: null, $border-color: null) {
+    background-color: $bg-color;
+    @if $text-color {
+        color: $text-color;
+    }
+    @if $border-color {
+        border: 1px solid $border-color;
+    }
+    border-radius: 0;
+}
+
+
+@mixin offcanvas-style {
+    background-color: colors.colorTheme(appBlack);
+    @include responsive-spacing(padding);
+}
+
+@mixin offcanvas-header-style {
+    color: colors.colorTheme(appWhite);
+    letter-spacing: 0.08rem;
+    @include font.font-theme(title);
+}
+
+// Layout Mixins
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-column-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin grid-layout($columns: 1fr, $rows: auto, $gap: 1rem) {
+    display: grid;
+    grid-template-columns: $columns;
+    grid-template-rows: $rows;
+    gap: $gap;
+}
+
+@mixin section-style {
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    align-self: center;
+    justify-self: center;
+}
+
+// Text Styles
+@mixin text-style($font-size, $font-weight, $color, $line-height: 1, $text-align: center) {
+    font-size: $font-size;
+    font-weight: $font-weight;
+    color: $color;
+    line-height: $line-height;
+    text-align: $text-align;
+}
+
+// List Styles
+@mixin list-item-style($bg-color, $padding, $font-size) {
+    background-color: $bg-color;
+    border-radius: 4px;
+    padding: $padding;
+    font-weight: 500;
+    text-align: start;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: $font-size;
+
+    &::before {
+        content: '✅';
+        margin-right: 0.5rem;
+    }
+}
+
+@mixin list-style($direction: column, $gap: 0.5rem) {
+    list-style-type: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: $direction;
+    gap: $gap;
+}
+
+// Product Styles
+@mixin product-container-style {
+    position: relative;
+    min-height: 27rem;
+}
+
+@mixin animate-div-style {
+    width: 100%;
+    height: 100%;
+    @include flex-center;
+    background-color: colors.colorTheme(appDarkGrey);
+}
+
+@mixin product-card-style {
+    width: 100%;
+    height: auto;
+    @include grid-layout(1fr, repeat(3, minmax(min-content,max-content)), 0rem); 
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    overflow: hidden;
+}
+
+@mixin cart-items-style {
+    @include flex-center;
+}
+
+@mixin product-img-style($width, $height) {
+    width: $width;
+    height: $height;
+    max-width: 100%;
+    align-self: center;
+    justify-self: center;
+}
+
+@mixin product-details-style {
+    @include grid-layout(1fr, auto, 1rem);
+    text-align: center;
+    color: colors.colorTheme(appWhite);
+}
+
+@mixin cart-details-style {
+    @include grid-layout(repeat(3, minmax(min-content,max-content)), auto, 1rem);
+    color: colors.colorTheme(appWhite);
+    justify-content: space-evenly;
+}
+
+@mixin cart-item-style {
+    @include grid-layout(1fr, repeat(2, minmax(min-content, max-content)), 0.5rem);
+    text-align: center;
+}
+
+@mixin quantity-control-style {
+    grid-column: 1 / span 3;
+    @include grid-layout(repeat(3,1fr), auto, 0.5rem);
+    align-self: center;
+}
+
+@mixin cart-form-style {
+    grid-column: 1 / span 3;
+    @include flex-column-center;
+    gap: 1rem;
+    padding-bottom: 1rem;
+}
+
+@mixin cart-check-style {
+    @include flex-center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+
+@mixin form-check-input-style {
+    margin: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    &:checked {
+        background-color: colors.colorTheme(burntOrange); 
+        border-color: colors.colorTheme(appBlack); 
+    }
+    
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    
+    &:checked::before {
+        content: '\2713'; 
+        color: white; 
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 12px;
+    }
+}
+
+@mixin form-check-label-style {
+    display: inline-flex; 
+    align-items: center; 
+    justify-self: start; 
+    text-underline-offset: 4px;
+}
+
+@mixin term-link-style {
+    color: colors.colorTheme(appWhite);
+    text-decoration-color: colors.colorTheme(burntOrange);
+    
+    &:hover {
+        color: colors.colorTheme(burntOrange);
+        text-decoration-color: colors.colorTheme(lightGrey);
+    }
+}
+
+@mixin cart-buttons-style {
+    @include flex-center;
+    gap: 0.5rem;
+    
+    @media (max-width: 767px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+}
+
+// Card Styles
+@mixin card-style {
+    width: 100%; 
+}
+
+@mixin card-img-style {
+    border-radius: 0;
+    width: 100%; 
+}
+
+@mixin card-img-overlay-style {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0; 
+    gap: 0.5rem;
+}
+
+@mixin card-title-style($font-size: 1.5rem, $font-weight: 600) {
+    color: colors.colorTheme(appWhite);
+    align-self: end;
+    justify-self: start;
+    max-width: 100%; 
+    font-size: $font-size;
+    font-weight: $font-weight;
+    padding: 0; 
+}
+
+@mixin card-body-style {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    width: 100%; 
+}
+
+// Modal Styles
+@mixin modal-container-style {
+    border-radius: 0;
+    border: 1px solid colors.colorTheme(appBlack);
+    background-color: colors.colorTheme(appGrey);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@mixin modal-content-style {
+    background-color: transparent;
+    padding: 1rem;
+}
+
+@mixin product-title-style {
+    @include font.font-theme(default);
+    display: flex;
+    gap: 0.5rem;
+    margin: 0;
+    justify-self: center;
+    color: colors.colorTheme(appWhite);
+    @media (max-width: 767px) {
+        font-size: 1.1em;
+        line-height: 1.5;
+        font-weight: 500;
+    }
+}
+
+$toggler-icon: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(217,122,67)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");

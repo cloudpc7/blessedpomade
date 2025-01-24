@@ -1,24 +1,40 @@
 @import url("https://use.typekit.net/dax3jrh.css");
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=League+Gothic&display=swap");
 .faqs-container .faqs-row {
-  display: grid;
-  padding: 2rem;
-}
-.faqs-container .faqs-row .faqs-col {
-  display: grid;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
   gap: 1rem;
 }
-.faqs-container .faqs-row .faqs-col .faqs-title {
-  font-size: 1.25rem;
+.faqs-container .faqs-row .faqs-title {
+  font-size: 1.5rem;
   font-weight: 600;
-  margin: 0;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #D97A43;
+  font-family: "trajan-pro-3", serif;
 }
-.faqs-container .faqs-row .faqs-col .faqs {
+@media (min-width: 768px) {
+  .faqs-container .faqs-row .faqs-title {
+    font-size: 2rem;
+  }
+}
+.faqs-container .faqs-row .faq-item {
+  background-color: rgba(34, 34, 34, 0.05);
+  border-radius: 4px;
   padding: 1rem;
-  font-family: "Bebas Neue", serif;
-  font-size: 14px;
-  letter-spacing: 0.0675rem;
-  line-height: 1.2;
-  font-weight: 300;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.faqs-container .faqs-row .faq-item .faq-question {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #D97A43;
+  margin-bottom: 0.5rem;
+  font-family: "trajan-pro-3", serif;
+}
+.faqs-container .faqs-row .faq-item .faq-answer {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #222222;
+  font-family: "League Gothic", serif;
 }/*# sourceMappingURL=faqs.css.map */

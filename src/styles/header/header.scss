@@ -1,47 +1,45 @@
-// toggler style background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(174,131,25,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-@use '../variables/fonts/fonts.scss' as font;
 @use '../variables/utillities/utils.scss' as util;
 @use '../variables/colors/colors.scss' as colors;
+@use '../variables/fonts/fonts.scss' as font;
 
 .navbar {
     grid-row: 1;
     grid-column: 1;
     align-self: start;
+    
     .container {
-        padding: 0;
+        @include util.no-padding; 
         .navbar-toggler {
             border: 2px solid colors.colorTheme(lightGrey);
             border-radius: 0;
             .navbar-toggler-icon {
-                background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(217,122,67)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+                background-image: util.$toggler-icon;
             } 
         }
     }
 }
 
 .offcanvas {
+    @include util.offcanvas-style;
     display: grid;
-    background-color: colors.colorTheme(appBlack);
     grid-template-rows: repeat(2, minmax(min-content,max-content));
     cursor: pointer;
-    padding: util.gutter(xs);
+    
     .offcanvas-header {
+        @include util.offcanvas-header-style;
         display: grid;
         grid-template-rows: repeat(2, minmax(min-content,max-content));
-        gap: 1rem;
-        color: colors.colorTheme(appWhite);
-        letter-spacing: 0.08rem;
+        @include util.responsive-spacing(gap); 
         overflow: hidden;
-        font-size: font.subTitle(xs);
+        
         .pomade {
+            @include util.header-logo-style;
             grid-row: 1;
             justify-self: start;
-            max-width: 2rem;
-            max-height: 2rem;
         }
 
         .btn-close {
-            background-color: colors.colorTheme(appWhite);
+            @include util.close-button-style;
             grid-row: 1;
             justify-self: end;
             align-self: start;
@@ -51,17 +49,50 @@
     .offcanvas-body {
         .navbar-nav {
             .link {
-                color: colors.colorTheme(appWhite);
-                width:min-content;
-
-                &:hover {
-                    color: colors.colorTheme(burntOrange);
-                }
+                @include util.nav-item-style;
             }
 
             .shop {
-                font-size: font.default(xs);
                 letter-spacing: 0.2em;
+                @include font.font-theme(title);
+            }
+        }
+    }
+}
+
+// Media query for screens >= 992px
+@media (min-width: 992px) {
+    .navbar {
+        grid-row: 1;
+        grid-column: 2;
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navbar-toggler {
+            display: none;
+        }
+    }
+
+    .offcanvas {
+        grid-row: 1;
+        grid-column: 2;
+        display: flex;
+        background-color: transparent;
+        padding: 0;
+        .offcanvas-header {
+            display: none;
+        }
+
+        .offcanvas-body {
+            display: flex;
+            justify-content: flex-end; 
+            padding: 0;
+            .navbar-nav {
+                flex-direction: row;
+                gap: 1.5rem;
+                align-items: center;
             }
         }
     }

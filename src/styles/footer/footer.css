@@ -1,5 +1,5 @@
 @import url("https://use.typekit.net/dax3jrh.css");
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=League+Gothic&display=swap");
 .footer {
   background-color: #222222;
   color: #ffffff;
@@ -24,8 +24,6 @@
 }
 .footer .business-image .blessed-title {
   margin: 0;
-  font-size: 18px;
-  font-family: "trajan-pro-3", serif;
   color: #ffffff;
 }
 .footer .footer-content {

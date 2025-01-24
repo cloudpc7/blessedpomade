@@ -58,6 +58,7 @@
     ]
   },
   "devDependencies": {
+    "@csstools/normalize.css": "^12.1.1",
     "sass": "^1.83.1"
   }
 }

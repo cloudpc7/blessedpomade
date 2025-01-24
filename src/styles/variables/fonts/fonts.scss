@@ -1,18 +1,44 @@
 @use 'sass:math';
 @use 'sass:color';
+@use '../colors/colors.scss' as colors;
 @import url("https://use.typekit.net/dax3jrh.css");
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
 
 // Font Families
-$defaultFont : 'Bebas Neue', serif;
+$defaultFont : 'League Gothic', serif;
 $titleFont : 'trajan-pro-3', serif;
 
+// Define letter spacing for different uses
+$letter-spacing: (
+    tight: -0.02em,
+    normal: 0,
+    loose: 0.05em,
+    title: 0.02em,  // For titles, slightly wider for readability
+    button: 0.03em, // For buttons, slightly more space for touch targets
+    caption: 0.01em // For captions or small text
+);
+
+// Update font themes to include letter-spacing
 $font-themes: (
     default: (
         font-family: $defaultFont,
+        color: inherit,
+        letter-spacing: map-get($letter-spacing, normal)
     ),
     title: (
         font-family: $titleFont,
+        color: colors.colorTheme(burntOrange),
+        letter-spacing: map-get($letter-spacing, title)
+    ),
+    button: (
+        font-family: $defaultFont,
+        color: colors.colorTheme(appBlack),
+        letter-spacing: map-get($letter-spacing, button)
+    ),
+    caption: (
+        font-family: $defaultFont,
+        color: colors.colorTheme(appGrey),
+        letter-spacing: map-get($letter-spacing, caption)
     )
 );
 
@@ -20,17 +46,18 @@ $font-themes: (
     $theme: map-get($font-themes, $theme-name);
     @if $theme {
         font-family: map-get($theme, font-family);
-        font-weight: map-get($theme, font-weight);
-        line-height: map-get($theme, line-height);
-        letter-spacing: map-get($theme, letter-spacing);
-        color: map-get($theme, color);
+        font-weight: map-get($theme, font-weight, normal);
+        line-height: map-get($theme, line-height, 1.5);
+        letter-spacing: map-get($theme, letter-spacing, normal);
+        color: map-get($theme, color, inherit);
+        text-transform: map-get($theme, text-transform, none);
       } @else {
         @error "No font theme found for `#{$theme-name}`";
       }
 };
 
 $title: (
-    xs: 2rem,
+    xs: 1.125rem,
 );
 
 @function title($breakpoint) {
@@ -46,9 +73,31 @@ $subTitle: (
 };
 
 $default: (
-    xs: 1.125rem,
+    xs: 1rem,
+    letter-spacing: 0.2em,
 );
 
 @function default($breakpoint) {
     @return map-get($default, $breakpoint);
+}
+
+// New utilities for text transformation
+$text-transformations: (
+    uppercase: uppercase,
+    lowercase: lowercase,
+    capitalize: capitalize,
+    none: none
+);
+
+@function text-transform($transformation) {
+    @return map-get($text-transformations, $transformation, none);
+}
+
+@mixin text-transform($transformation) {
+    text-transform: text-transform($transformation);
+}
+
+// New mixin for custom letter-spacing
+@mixin custom-letter-spacing($spacing) {
+    letter-spacing: map-get($letter-spacing, $spacing, normal);
 }

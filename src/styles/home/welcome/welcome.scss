@@ -1,58 +1,94 @@
 @use '../../variables/fonts/fonts.scss' as font;
 @use '../../variables/colors/colors.scss' as colors;
+@use '../../variables/utillities/utils.scss' as util;
 
 .welcome-container {
-    .welcome-row {
+    .welcome-content {
         display: grid;
-        padding: 2rem 1rem;  // Reduce side padding for mobile
-        text-align: center;
-        gap: 1rem;
-        align-items: center;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 1rem;
+
+        @media (min-width: 992px) {
+            grid-template-columns: 1fr 1fr;
+            align-items: start;
+        }
 
         .welcome-title {
-            font-weight: 600;
-            font-size: 1.5rem;  // Smaller for mobile, but still impactful
+            @include util.text-style(2.5rem, 600, colors.colorTheme(burntOrange), 1);
             @include font.font-theme(title);
-            color: colors.colorTheme(burntOrange);
             margin-bottom: 1rem;
-            
-            @media (min-width: 768px) {  // Adjust for tablets and desktops
+            text-align: center;
+
+            @media (min-width: 768px) { 
                 font-size: 2rem;
+            }
+
+            @media (min-width: 992px) {
+                grid-column: 1 / -1; // Spans both columns
+                align-self: start;
+                justify-self: center;
+                margin: 0;
             }
         }
 
         .welcome-statement {
             padding: 0;
-            font-size: 14px;  // Base size for mobile
+            
             letter-spacing: 0.0675rem;
-            line-height: 1.47;
-            font-weight: 300;
-            @include font.font-theme(default);
-            text-align: left;  // Left align for readability on smaller screens
+            grid-column: 1 / span 2;
+            @media (min-width: 992px) {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
 
-            ul {
-                list-style-type: none;
+            .statement-left {
+                margin-bottom: 1rem;
+                @include util.text-style(16px, 300, inherit, 1.6, left);
+                @media (min-width: 992px) {
+                    margin-bottom: 0;
+                    @include util.text-style(1.125rem, 300, inherit, 1.6, left);
+                }
+            }
+
+            .statement-right {
+                @include util.list-style(column, 0.5rem); // Changed direction to column
                 padding-left: 0;
-
+                
+                @media (min-width: 992px) {
+                    // No need for grid here, since we want items to stack vertically
+                    display: block; 
+                }
+                
                 li {
-                    margin-bottom: 0.5rem;
-                    font-weight: 400;
-                    color: colors.colorTheme(appDarkGrey);
+                    @include util.list-item-style(rgba(colors.colorTheme(appDarkGrey), 0.1), 0.5rem 1rem, 15px);
 
-                    @media (min-width: 768px) {  // Adjust for larger screens
-                        margin-bottom: 0.75rem;
+                    // Remove these flex settings as they're not needed for vertical layout
+                    @media (min-width: 576px) { 
+                        margin: 0 0 0.5rem;
+                    }
+
+                    @media (min-width: 768px) { 
+                        font-size: 16px; 
+                    }
+
+                    @media (min-width: 992px) { 
+                        // Ensure full width within column
+                        width: 100%; 
                     }
                 }
+
             }
 
             strong {
                 color: colors.colorTheme(burntOrange);
+                font-weight: 600;
             }
 
-            @media (min-width: 768px) {  // Adjust for tablets and desktops
-                font-size: 16px;
-                line-height: 1.6;
-                padding: 0 1.5rem;  // Increase padding for larger screens
+            @media (min-width: 768px) {
+                font-size: 18px;
+                padding: 0 1.5rem;
             }
         }
     }

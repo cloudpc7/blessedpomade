@@ -1,54 +1,119 @@
+@charset "UTF-8";
 @import url("https://use.typekit.net/dax3jrh.css");
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
-.welcome-container .welcome-row {
+@import url("https://fonts.googleapis.com/css2?family=League+Gothic&display=swap");
+.welcome-container .welcome-content {
   display: grid;
-  padding: 2rem 1rem;
-  text-align: center;
-  gap: 1rem;
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 1rem;
 }
-.welcome-container .welcome-row .welcome-title {
+@media (min-width: 992px) {
+  .welcome-container .welcome-content {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+.welcome-container .welcome-content .welcome-title {
+  font-size: 2.5rem;
   font-weight: 600;
-  font-size: 1.5rem;
-  font-family: "trajan-pro-3", serif;
   color: #D97A43;
+  line-height: 1;
+  text-align: center;
+  font-family: "trajan-pro-3", serif;
   margin-bottom: 1rem;
+  text-align: center;
 }
 @media (min-width: 768px) {
-  .welcome-container .welcome-row .welcome-title {
+  .welcome-container .welcome-content .welcome-title {
     font-size: 2rem;
   }
 }
-.welcome-container .welcome-row .welcome-statement {
-  padding: 0;
-  font-size: 14px;
-  letter-spacing: 0.0675rem;
-  line-height: 1.47;
-  font-weight: 300;
-  font-family: "Bebas Neue", serif;
-  text-align: left;
-}
-.welcome-container .welcome-row .welcome-statement ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-.welcome-container .welcome-row .welcome-statement ul li {
-  margin-bottom: 0.5rem;
-  font-weight: 400;
-  color: #222222;
-}
-@media (min-width: 768px) {
-  .welcome-container .welcome-row .welcome-statement ul li {
-    margin-bottom: 0.75rem;
+@media (min-width: 992px) {
+  .welcome-container .welcome-content .welcome-title {
+    grid-column: 1/-1;
+    align-self: start;
+    justify-self: center;
+    margin: 0;
   }
 }
-.welcome-container .welcome-row .welcome-statement strong {
-  color: #D97A43;
+.welcome-container .welcome-content .welcome-statement {
+  padding: 0;
+  letter-spacing: 0.0675rem;
+  grid-column: 1/span 2;
+}
+@media (min-width: 992px) {
+  .welcome-container .welcome-content .welcome-statement {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+.welcome-container .welcome-content .welcome-statement .statement-left {
+  margin-bottom: 1rem;
+  font-size: 16px;
+  font-weight: 300;
+  color: inherit;
+  line-height: 1.6;
+  text-align: left;
+}
+@media (min-width: 992px) {
+  .welcome-container .welcome-content .welcome-statement .statement-left {
+    margin-bottom: 0;
+    font-size: 1.125rem;
+    font-weight: 300;
+    color: inherit;
+    line-height: 1.6;
+    text-align: left;
+  }
+}
+.welcome-container .welcome-content .welcome-statement .statement-right {
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 0;
+}
+@media (min-width: 992px) {
+  .welcome-container .welcome-content .welcome-statement .statement-right {
+    display: block;
+  }
+}
+.welcome-container .welcome-content .welcome-statement .statement-right li {
+  background-color: rgba(34, 34, 34, 0.1);
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  text-align: start;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 15px;
+}
+.welcome-container .welcome-content .welcome-statement .statement-right li::before {
+  content: "✅";
+  margin-right: 0.5rem;
+}
+@media (min-width: 576px) {
+  .welcome-container .welcome-content .welcome-statement .statement-right li {
+    margin: 0 0 0.5rem;
+  }
 }
 @media (min-width: 768px) {
-  .welcome-container .welcome-row .welcome-statement {
+  .welcome-container .welcome-content .welcome-statement .statement-right li {
     font-size: 16px;
-    line-height: 1.6;
+  }
+}
+@media (min-width: 992px) {
+  .welcome-container .welcome-content .welcome-statement .statement-right li {
+    width: 100%;
+  }
+}
+.welcome-container .welcome-content .welcome-statement strong {
+  color: #D97A43;
+  font-weight: 600;
+}
+@media (min-width: 768px) {
+  .welcome-container .welcome-content .welcome-statement {
+    font-size: 18px;
     padding: 0 1.5rem;
   }
 }/*# sourceMappingURL=welcome.css.map */

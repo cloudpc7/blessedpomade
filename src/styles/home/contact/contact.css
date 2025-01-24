@@ -1,5 +1,5 @@
 @import url("https://use.typekit.net/dax3jrh.css");
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=League+Gothic&display=swap");
 .contact-container {
   display: flex;
   flex-direction: column;
@@ -25,18 +25,19 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
-  font-family: "Bebas Neue", serif;
 }
 .contact-container .contact-form .form-item .form-label {
   margin-bottom: 0.25rem;
   font-weight: 500;
   letter-spacing: 0.02em;
   color: #D97A43;
+  font-family: "League Gothic", serif;
 }
 .contact-container .contact-form .form-item .form-control {
   border-radius: 4px;
   padding: 0.5rem;
   border: 1px solid #333333;
+  font-family: "League Gothic", serif;
 }
 .contact-container .contact-form .form-item .form-control:focus {
   border-color: #D97A43;
@@ -46,25 +47,30 @@
   color: #222222;
   opacity: 0.6;
   font-style: italic;
+  font-family: "League Gothic", serif;
 }
 .contact-container .contact-form .form-item .form-control::placeholder {
   color: #222222;
   opacity: 0.6;
   font-style: italic;
+  font-family: "League Gothic", serif;
 }
 .contact-container .contact-form .form-item .invalid-feedback {
   font-size: 0.875rem;
   position: static;
   margin-top: 0.25rem;
+  font-family: "League Gothic", serif;
 }
 .contact-container .contact-form .form-item .message-btn {
   background-color: #ffffff;
   color: #D97A43;
-  padding: 0.5rem 1.5rem;
-  border-radius: 0;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
   transition: all 0.3s ease;
+  padding: 0.5rem 1.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   font-size: 0.9em;
   display: flex;
   align-items: center;
@@ -72,6 +78,10 @@
   gap: 0.5rem;
   padding: 0.5rem 1rem;
   letter-spacing: 0.02em;
+  font-family: "trajan-pro-3", serif;
+}
+.contact-container .contact-form .form-item .message-btn:hover {
+  background-color: #e6e6e6;
 }
 .contact-container .contact-form .form-item .message-btn:hover {
   background-color: #090D0C;
