@@ -1,6 +1,4 @@
 @charset "UTF-8";
-@import url("https://use.typekit.net/dax3jrh.css");
-@import url("https://fonts.googleapis.com/css2?family=League+Gothic&display=swap");
 .welcome-container .welcome-content {
   display: grid;
   grid-template-columns: 1fr;
@@ -14,18 +12,20 @@
   }
 }
 .welcome-container .welcome-content .welcome-title {
-  font-size: 2.5rem;
-  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  max-width: 80%;
+  margin: 0 auto;
   color: #D97A43;
-  line-height: 1;
-  text-align: center;
-  font-family: "trajan-pro-3", serif;
-  margin-bottom: 1rem;
-  text-align: center;
+}
+@media (min-width: 576px) {
+  .welcome-container .welcome-content .welcome-title {
+    max-width: 65%;
+  }
 }
 @media (min-width: 768px) {
   .welcome-container .welcome-content .welcome-title {
-    font-size: 2rem;
+    max-width: 100%;
   }
 }
 @media (min-width: 992px) {
@@ -37,8 +37,6 @@
   }
 }
 .welcome-container .welcome-content .welcome-statement {
-  padding: 0;
-  letter-spacing: 0.0675rem;
   grid-column: 1/span 2;
 }
 @media (min-width: 992px) {
@@ -48,22 +46,23 @@
     gap: 1rem;
   }
 }
+@media (min-width: 90rem) {
+  .welcome-container .welcome-content .welcome-statement {
+    gap: 2rem;
+  }
+}
 .welcome-container .welcome-content .welcome-statement .statement-left {
   margin-bottom: 1rem;
-  font-size: 16px;
-  font-weight: 300;
-  color: inherit;
-  line-height: 1.6;
-  text-align: left;
+  letter-spacing: 0.1em;
 }
 @media (min-width: 992px) {
   .welcome-container .welcome-content .welcome-statement .statement-left {
     margin-bottom: 0;
-    font-size: 1.125rem;
-    font-weight: 300;
-    color: inherit;
-    line-height: 1.6;
-    text-align: left;
+  }
+}
+@media (min-width: 90rem) {
+  .welcome-container .welcome-content .welcome-statement .statement-left {
+    padding: 3rem;
   }
 }
 .welcome-container .welcome-content .welcome-statement .statement-right {
@@ -79,6 +78,13 @@
     display: block;
   }
 }
+@media (min-width: 90rem) {
+  .welcome-container .welcome-content .welcome-statement .statement-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
 .welcome-container .welcome-content .welcome-statement .statement-right li {
   background-color: rgba(34, 34, 34, 0.1);
   border-radius: 4px;
@@ -86,7 +92,10 @@
   font-weight: 500;
   text-align: start;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  font-size: 15px;
+  font-family: "League Gothic", serif;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  line-height: 1.6;
 }
 .welcome-container .welcome-content .welcome-statement .statement-right li::before {
   content: "✅";
@@ -94,26 +103,40 @@
 }
 @media (min-width: 576px) {
   .welcome-container .welcome-content .welcome-statement .statement-right li {
-    margin: 0 0 0.5rem;
+    font-size: 1.125rem;
   }
 }
 @media (min-width: 768px) {
   .welcome-container .welcome-content .welcome-statement .statement-right li {
-    font-size: 16px;
+    font-size: 1.25rem;
+  }
+}
+@media (min-width: 992px) {
+  .welcome-container .welcome-content .welcome-statement .statement-right li {
+    font-size: 1.375rem;
+  }
+}
+@media (min-width: 1200px) {
+  .welcome-container .welcome-content .welcome-statement .statement-right li {
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 576px) {
+  .welcome-container .welcome-content .welcome-statement .statement-right li {
+    margin: 0 0 0.5rem;
   }
 }
 @media (min-width: 992px) {
   .welcome-container .welcome-content .welcome-statement .statement-right li {
     width: 100%;
+    padding: 1rem;
   }
 }
 .welcome-container .welcome-content .welcome-statement strong {
   color: #D97A43;
-  font-weight: 600;
 }
 @media (min-width: 768px) {
   .welcome-container .welcome-content .welcome-statement {
-    font-size: 18px;
     padding: 0 1.5rem;
   }
 }/*# sourceMappingURL=welcome.css.map */

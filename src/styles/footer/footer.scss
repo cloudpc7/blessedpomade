@@ -95,11 +95,20 @@
                         color: colors.colorTheme(lightGrey);
                     }
                 }
+
+                @media (min-width: 62rem) {
+                    display: flex;
+                    gap: 1rem;
+                }
             }
 
             .copyright {
                 margin: 0;
-                .copy-right-logo {
+                display: flex;
+                gap: 0.5rem;
+                @media (min-width: 62rem) {
+                    display: flex;
+                    gap: 1rem;
                 }
             }
         }

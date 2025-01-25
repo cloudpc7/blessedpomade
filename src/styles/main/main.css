@@ -1,5 +1,3 @@
-@import url("https://use.typekit.net/dax3jrh.css");
-@import url("https://fonts.googleapis.com/css2?family=League+Gothic&display=swap");
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -71,15 +69,317 @@ input {
 body {
   box-sizing: border-box;
   font-family: "League Gothic", serif;
+  font-size: 1rem;
 }
-body .h1, body .h2, body .h3, body .h4, body .h5, body .h6 {
+body h1, body .h1, body h2, body .h2, body h3, body .h3, body h4, body .h4, body h5, body .h5, body h6, body .h6 {
   font-family: "trajan-pro-3", serif;
+  font-size: 2.5rem;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
 }
-body .h1 {
+@media (min-width: 576px) {
+  body h1, body .h1, body h2, body .h2, body h3, body .h3, body h4, body .h4, body h5, body .h5, body h6, body .h6 {
+    font-size: 3rem;
+  }
+}
+@media (min-width: 768px) {
+  body h1, body .h1, body h2, body .h2, body h3, body .h3, body h4, body .h4, body h5, body .h5, body h6, body .h6 {
+    font-size: 3.5rem;
+  }
+}
+@media (min-width: 992px) {
+  body h1, body .h1, body h2, body .h2, body h3, body .h3, body h4, body .h4, body h5, body .h5, body h6, body .h6 {
+    font-size: 4rem;
+  }
+}
+@media (min-width: 1200px) {
+  body h1, body .h1, body h2, body .h2, body h3, body .h3, body h4, body .h4, body h5, body .h5, body h6, body .h6 {
+    font-size: 4.5rem;
+  }
+}
+body h1, body .h1 {
+  font-size: 2.5rem;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+@media (min-width: 576px) {
+  body h1, body .h1 {
+    font-size: 3rem;
+  }
+}
+@media (min-width: 768px) {
+  body h1, body .h1 {
+    font-size: 3.5rem;
+  }
+}
+@media (min-width: 992px) {
+  body h1, body .h1 {
+    font-size: 4rem;
+  }
+}
+@media (min-width: 1200px) {
+  body h1, body .h1 {
+    font-size: 4.5rem;
+  }
+}
+body h2, body .h2 {
   font-size: 2rem;
+  letter-spacing: 0.015em;
+  line-height: 1.3;
 }
-body p {
+@media (min-width: 576px) {
+  body h2, body .h2 {
+    font-size: 2.5rem;
+  }
+}
+@media (min-width: 768px) {
+  body h2, body .h2 {
+    font-size: 3rem;
+  }
+}
+@media (min-width: 992px) {
+  body h2, body .h2 {
+    font-size: 3.5rem;
+  }
+}
+@media (min-width: 1200px) {
+  body h2, body .h2 {
+    font-size: 4rem;
+  }
+}
+body h3, body .h3 {
+  font-size: 1.75rem;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+}
+@media (min-width: 576px) {
+  body h3, body .h3 {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 768px) {
+  body h3, body .h3 {
+    font-size: 2.25rem;
+  }
+}
+@media (min-width: 992px) {
+  body h3, body .h3 {
+    font-size: 2.5rem;
+  }
+}
+@media (min-width: 1200px) {
+  body h3, body .h3 {
+    font-size: 2.75rem;
+  }
+}
+body h4, body .h4 {
+  font-size: 1.5rem;
+  letter-spacing: 0.005em;
+  line-height: 1.5;
+}
+@media (min-width: 576px) {
+  body h4, body .h4 {
+    font-size: 1.75rem;
+  }
+}
+@media (min-width: 768px) {
+  body h4, body .h4 {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 992px) {
+  body h4, body .h4 {
+    font-size: 2.25rem;
+  }
+}
+@media (min-width: 1200px) {
+  body h4, body .h4 {
+    font-size: 2.5rem;
+  }
+}
+body h5, body .h5 {
+  font-size: 1rem;
+  letter-spacing: 0;
+  line-height: 1.6;
+}
+@media (min-width: 576px) {
+  body h5, body .h5 {
+    font-size: 1.125rem;
+  }
+}
+@media (min-width: 768px) {
+  body h5, body .h5 {
+    font-size: 1.25rem;
+  }
+}
+@media (min-width: 992px) {
+  body h5, body .h5 {
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 1200px) {
+  body h5, body .h5 {
+    font-size: 1.75rem;
+  }
+}
+body h6, body .h6 {
+  font-size: 1rem;
+  letter-spacing: 0;
+  line-height: 1.6;
+}
+@media (min-width: 576px) {
+  body h6, body .h6 {
+    font-size: 1.125rem;
+  }
+}
+@media (min-width: 768px) {
+  body h6, body .h6 {
+    font-size: 1.25rem;
+  }
+}
+@media (min-width: 992px) {
+  body h6, body .h6 {
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 1200px) {
+  body h6, body .h6 {
+    font-size: 1.75rem;
+  }
+}
+body p, body a, body .link, body .card-text {
   font-family: "League Gothic", serif;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  line-height: 1.6;
+}
+@media (min-width: 576px) {
+  body p, body a, body .link, body .card-text {
+    font-size: 1.125rem;
+  }
+}
+@media (min-width: 768px) {
+  body p, body a, body .link, body .card-text {
+    font-size: 1.25rem;
+  }
+}
+@media (min-width: 992px) {
+  body p, body a, body .link, body .card-text {
+    font-size: 1.375rem;
+  }
+}
+@media (min-width: 1200px) {
+  body p, body a, body .link, body .card-text {
+    font-size: 1.5rem;
+  }
+}
+body small {
+  font-family: "League Gothic", serif;
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+@media (min-width: 576px) {
+  body small {
+    font-size: 0.9375rem;
+  }
+}
+@media (min-width: 768px) {
+  body small {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 992px) {
+  body small {
+    font-size: 1.0625rem;
+  }
+}
+@media (min-width: 1200px) {
+  body small {
+    font-size: 1.125rem;
+  }
+}
+body button, body .btn, body .call-action {
+  font-family: "trajan-pro-3", serif;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  line-height: 1.4;
+}
+@media (min-width: 576px) {
+  body button, body .btn, body .call-action {
+    font-size: 1.125rem;
+  }
+}
+@media (min-width: 768px) {
+  body button, body .btn, body .call-action {
+    font-size: 1.25rem;
+  }
+}
+@media (min-width: 992px) {
+  body button, body .btn, body .call-action {
+    font-size: 1.375rem;
+  }
+}
+@media (min-width: 1200px) {
+  body button, body .btn, body .call-action {
+    font-size: 1.5rem;
+  }
+}
+body .card-title {
+  font-family: "trajan-pro-3", serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.005em;
+  line-height: 1.5;
+}
+@media (min-width: 576px) {
+  body .card-title {
+    font-size: 1.75rem;
+  }
+}
+@media (min-width: 768px) {
+  body .card-title {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 992px) {
+  body .card-title {
+    font-size: 2.25rem;
+  }
+}
+@media (min-width: 1200px) {
+  body .card-title {
+    font-size: 2.5rem;
+  }
+}
+body .modal-header h5, body .modal-header h6 {
+  font-family: "trajan-pro-3", serif;
+  font-size: 1rem;
+  letter-spacing: 0;
+  line-height: 1.6;
+}
+@media (min-width: 576px) {
+  body .modal-header h5, body .modal-header h6 {
+    font-size: 1.125rem;
+  }
+}
+@media (min-width: 768px) {
+  body .modal-header h5, body .modal-header h6 {
+    font-size: 1.25rem;
+  }
+}
+@media (min-width: 992px) {
+  body .modal-header h5, body .modal-header h6 {
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 1200px) {
+  body .modal-header h5, body .modal-header h6 {
+    font-size: 1.75rem;
+  }
+}
+body .navbar {
+  font-family: "League Gothic", serif;
+  font-size: 0.875rem;
 }
 body .pac-container {
   z-index: 2050;

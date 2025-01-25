@@ -1,7 +1,6 @@
-@use '../../variables/fonts/fonts.scss' as font;
 @use '../../variables/colors/colors.scss' as colors;
 @use '../../variables/utillities/utils.scss' as util;
-
+@use '../../variables/fonts/fonts.scss'as font;
 .welcome-container {
     .welcome-content {
         display: grid;
@@ -41,10 +40,19 @@
                 gap: 1rem;
             }
 
+            @media (min-width: 90rem) {
+                gap: 2rem;
+            }
+
             .statement-left {
                 margin-bottom: 1rem;
+                letter-spacing: 0.1em;
                 @media (min-width: 992px) {
                     margin-bottom: 0;
+                }
+
+                @media (min-width: 90rem) {
+                    padding: 3rem;
                 }
             }
 
@@ -54,17 +62,26 @@
                 @media (min-width: 992px) {
                     display: block; 
                 }
-                li {
-                    @include util.list-item-style(rgba(colors.colorTheme(appDarkGrey), 0.1), 0.5rem 1rem, 15px);
 
+                @media (min-width: 90rem) {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.5rem;
+                }
+
+                li {
+                    @include util.list-item-style(rgba(colors.colorTheme(appDarkGrey), 0.1), 0.5rem 1rem, null); // Remove fixed font-size
+                    @include font.font-theme(default); 
+                    @include font.responsive-font-size('p'); 
+            
                     @media (min-width: 576px) { 
                         margin: 0 0 0.5rem;
                     }
                     @media (min-width: 992px) { 
                         width: 100%; 
+                        padding: 1rem;
                     }
                 }
-
             }
 
             strong {

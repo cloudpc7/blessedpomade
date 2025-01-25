@@ -3,25 +3,26 @@
 
 .product-section {
     border: 2px solid colors.colorTheme(burntOrange);
+    @include util.section-style;
+    @include util.responsive-spacing(padding);
+
     .product-container {
         @include util.product-container-style;
         .animate-div {
             @include util.animate-div-style;
             .product-row {
-                display: flex;
-                flex-direction: column;
-                @media (min-width: 992px) {
-                    width: 100%;
-                    flex-direction: row;
-                    justify-content: space-between;
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 1rem;
+
+                @media (min-width: 62rem) {
+                    grid-template-columns: repeat(2, 1fr);
                     padding: 0 2rem;
                 }
                 
                 .product-col, .special-offer-col {
-                    padding: 0;
-                    @media (min-width: 992px) {
-                       
-                    }
+                    @include util.section-style;
+                    @include util.responsive-spacing(padding);
                 }
 
                 .pomade-product-card {
@@ -50,7 +51,7 @@
 
                     .product-img {
                         @include util.product-img-style(7rem, 7em);
-                        @media (min-width: 992px) {
+                        @media (min-width: 62rem) {
                             width: 10rem;
                             height: 10rem;
                         }
@@ -63,7 +64,8 @@
                         }
 
                         .product-title, .product-price {
-                            @media (max-width: 767px) {
+                            letter-spacing: 0.1em;
+                            @media (max-width: 48rem) {
                             }
                         }
 
@@ -84,21 +86,30 @@
                 .special-offer-card {
                     @include util.card-style;
                     padding: 1rem;
-                    height: 100%;
+                    height: auto; // Changed to auto to allow content-driven height
                     background-color: colors.colorTheme(appGrey);
                     border: 1px solid colors.colorTheme(burntOrange);
                     color: colors.colorTheme(appWhite);
                     text-align: center;
-                    @media(min-width: 992px) {
+                    @media(min-width: 62rem) {
                         display: grid;
                         align-items: center;
+                        min-width: 30rem;
+                        min-height: 30rem;
                     }
                     .card-title {
                         @include util.text-style(2rem, 700, colors.colorTheme(burntOrange), 1.2); // Increased font size
+                        @media (min-width: 62rem) {
+                            font-size: 3rem;
+                        }
+
                     }
 
                     .card-text {
                         @include util.text-style(1.5rem, 400, colors.colorTheme(appWhite), 1.5);
+                        @media (min-width: 62rem) {
+                            font-size: 2.25rem;
+                        }
                     }
                 }
             }
@@ -117,6 +128,7 @@
                 }
 
                 .product-title {
+                    @include util.product-title-style;
                     display: flex;
                     gap: 0.5rem;
                     margin: 0;

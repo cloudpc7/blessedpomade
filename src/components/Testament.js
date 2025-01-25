@@ -1,52 +1,73 @@
-import { useState } from 'react';
-import { useSpring, animated } from 'react-spring';
-import { Container } from 'react-bootstrap';
+import { useState, useEffect, useCallback } from 'react';
+import { useSpringCarousel } from 'react-spring-carousel';
+import { Container, Image } from 'react-bootstrap';
 import '../styles/home/testament/testament.scss';
 import hairstyle1 from '../app/assets/images/hairstyle1.png';
 import hairstyle2 from '../app/assets/images/hair2.png';
 import hairstyle3 from '../app/assets/images/hair3.png';
-
-const images = [
-    hairstyle1,
-    hairstyle2,
-    hairstyle3,
-];
-
+import ClientCard from './ClientCard';
 const Testament = () => {
-    const testimonials = [
-        { text: "Blessed Pomade has transformed my hair routine. No more greasy feeling, just fresh, stylish hair all day!", name: "John D.", image: images[0] },
-        { text: "I was skeptical about water-based pomades until I tried Blessed. The hold is impressive and it washes out so easily.", name: "Emily S.", image: images[1] },
-        { text: "My hair has never looked this good. It's natural, holds well, and doesn't damage my hair.", name: "Lucas M.", image: images[2] }
-    ];
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [itemsPerSlide, setItemsPerSlide] = useState(1);
 
-    const [activeIndex, setActiveIndex] = useState(0);
+    const testament = [
+        {
+            id: 1,
+            name:  "John D.",
+            image: hairstyle1,
+            text:  "Blessed Pomade has transformed my hair routine. No more greasy feeling, just fresh, stylish hair all day!"
+        },
+        {
+            id: 2,
+            name:  "John D.",
+            image: hairstyle2,
+            text:  "Blessed Pomade has transformed my hair routine. No more greasy feeling, just fresh, stylish hair all day!"
+        },
+        {
+            id: 3,
+            name:  "John D.",
+            image: hairstyle3,
+            text:  "Blessed Pomade has transformed my hair routine. No more greasy feeling, just fresh, stylish hair all day!"
+        },
+    ]
 
-    const handleNext = () => setActiveIndex((prev) => (prev + 1) % testimonials.length);
-    const handlePrev = () => setActiveIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-
-    const springProps = useSpring({
-        // from: { opacity: 0 },
-        // to: { opacity: 1 },
-        // reset: true,
-        // config: { mass: 1, tension: 170, friction: 26 },
+    useEffect(() => {
+        console.log(windowWidth);
+        const updateItemsPerSlide = () => {
+            const width = window.innerWidth;
+            if(width < 768) {
+                setItemsPerSlide(1);
+            } else if (width < 992) {
+                setItemsPerSlide(2);
+            } else {
+                setItemsPerSlide(1);
+            }
+            console.log(itemsPerSlide);
+        };
+        updateItemsPerSlide();
+        window.addEventListener('resize', updateItemsPerSlide);
+        return () => window.removeEventListener('resize', updateItemsPerSlide);
+      }, [itemsPerSlide]);
+    console.log(itemsPerSlide);
+    const { carouselFragment } = useSpringCarousel({
+        itemsPerslide: itemsPerSlide,
+        withLoop: true,
+        items: testament.map((testament, index) => ({
+            id: index.toString(),
+            renderItem: (
+                <div key={testament.id} className="use-spring-carousel-wrapper">
+                    <ClientCard testament={testament}/>
+                </div>
+            )
+        }))
+            
     });
 
     return (
         <Container className="testament-container">
             <h2 className="h2 testament-title">What Clients Say</h2>
-            <div className="carousel-container">
-                <animated.div style={springProps} className="carousel-content">
-                    <div className="testimonial-image" style={{ backgroundImage: `url(${testimonials[activeIndex].image})` }}>
-                        <div className="testimonial-overlay">
-                            <p className="testament">{testimonials[activeIndex].text}</p>
-                            <small className="testament-name">- {testimonials[activeIndex].name}</small>
-                            <div className="carousel-nav">
-                                <button onClick={handlePrev} className="carousel-prev" aria-label="Previous testimonial">‹</button>
-                                <button onClick={handleNext} className="carousel-next" aria-label="Next testimonial">›</button>
-                            </div>
-                        </div>
-                    </div>
-                </animated.div>
+            <div className="carousel">
+                {carouselFragment}
             </div>
         </Container>
     );

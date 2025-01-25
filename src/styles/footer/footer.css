@@ -1,5 +1,3 @@
-@import url("https://use.typekit.net/dax3jrh.css");
-@import url("https://fonts.googleapis.com/css2?family=League+Gothic&display=swap");
 .footer {
   background-color: #222222;
   color: #ffffff;
@@ -29,7 +27,7 @@
 .footer .footer-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 1rem;
+  gap: 1.125rem;
   width: 100%;
   max-width: 1200px;
 }
@@ -40,12 +38,9 @@
   padding: 0;
 }
 .footer .footer-content .col .footer-title {
-  font-size: 1rem;
   margin: 0;
-  font-family: "trajan-pro-3", serif;
 }
 .footer .footer-content .col p, .footer .footer-content .col a {
-  font-size: 14px;
   color: #ffffff;
   text-decoration: none;
   letter-spacing: 0.04em;
@@ -58,6 +53,17 @@
 .footer .footer-content .col .footer-list li {
   margin-bottom: 0.25rem;
 }
+.footer .footer-content .col .email-link {
+  align-self: start;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  color: #D97A43;
+  text-decoration-color: #ffffff;
+}
+.footer .footer-content .col .email-link:hover {
+  color: #ffffff;
+  text-decoration-color: #D97A43;
+}
 .footer .footer-copyright {
   display: flex;
   justify-content: space-between;
@@ -67,7 +73,6 @@
   margin-top: 1rem;
 }
 .footer .footer-copyright .copyright-section, .footer .footer-copyright .developer-section {
-  font-size: 12px;
   color: #ffffff;
   line-height: 1.5;
 }
@@ -78,9 +83,20 @@
 .footer .footer-copyright .copyright-section .developer-copyright a:hover, .footer .footer-copyright .developer-section .developer-copyright a:hover {
   color: #909090;
 }
+@media (min-width: 62rem) {
+  .footer .footer-copyright .copyright-section .developer-copyright, .footer .footer-copyright .developer-section .developer-copyright {
+    display: flex;
+    gap: 1rem;
+  }
+}
 .footer .footer-copyright .copyright-section .copyright, .footer .footer-copyright .developer-section .copyright {
   margin: 0;
+  display: flex;
+  gap: 0.5rem;
 }
-.footer .footer-copyright .copyright-section .copyright .copy-right-logo, .footer .footer-copyright .developer-section .copyright .copy-right-logo {
-  font-size: 14px;
+@media (min-width: 62rem) {
+  .footer .footer-copyright .copyright-section .copyright, .footer .footer-copyright .developer-section .copyright {
+    display: flex;
+    gap: 1rem;
+  }
 }/*# sourceMappingURL=footer.css.map */

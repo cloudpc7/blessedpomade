@@ -44,10 +44,11 @@ const Header = () => {
                             <Nav.Link  href="/" className="link" alt="home"> 
                                 <FontAwesomeIcon id="home" icon="fa-house" size="2x" /> 
                                 <Tooltip
-                                    placement="right"
+                                    placement="bottom"
                                     isOpen={home}
                                     target="home"
                                     toggle={toggleHome}
+                                    className="custom-tooltip"
                                 >
                                     Home
                                 </Tooltip>
@@ -55,10 +56,11 @@ const Header = () => {
                             <Nav.Link id="shop" href="/" className="link shop" alt="shop"> 
                                 shop
                                 <Tooltip
-                                    placement="right"
+                                    placement="bottom"
                                     isOpen={shop}
                                     target="shop"
                                     toggle={toggleShop}
+                                    className="custom-tooltip"
                                 >
                                     shop
                                 </Tooltip>
@@ -66,10 +68,11 @@ const Header = () => {
                             <Nav.Link id="cart" href="/" className="link" alt="shopping cart"> 
                                 <FontAwesomeIcon icon="fa-cart-shopping" size="2x" />
                                 <Tooltip
-                                    placement="right"
+                                    placement="bottom"
                                     isOpen={cart}
                                     target="cart"
                                     toggle={toggleCart}
+                                    className="custom-tooltip"
                                 >
                                     shopping cart
                                 </Tooltip> 
@@ -77,10 +80,11 @@ const Header = () => {
                             <Nav.Link id="phone" href="/" className="link" alt="phone"> 
                                 <FontAwesomeIcon icon="fa-phone" size="2x" /> 
                                 <Tooltip
-                                    placement="right"
+                                    placement="bottom"
                                     isOpen={phone}
                                     target="phone"
                                     toggle={togglePhone}
+                                    className="custom-tooltip"
                                 >
                                     phone
                                 </Tooltip>
@@ -88,10 +92,11 @@ const Header = () => {
                             <Nav.Link id="mail" href="/" className="link" alt="mail"> 
                                 <FontAwesomeIcon icon="fa-envelope" size="2x" /> 
                                 <Tooltip
-                                    placement="right"
+                                    placement="bottom"
                                     isOpen={mail}
                                     target="mail"
                                     toggle={toggleMail}
+                                    className="custom-tooltip"
                                 >
                                     email
                                 </Tooltip>
@@ -104,10 +109,11 @@ const Header = () => {
                             > 
                                 <FontAwesomeIcon icon={faInstagram} size="2x" /> 
                                 <Tooltip
-                                    placement="right"
+                                    placement="bottom"
                                     isOpen={instagram}
                                     target="instagram"
                                     toggle={toggleInstagram}
+                                    className="custom-tooltip"
                                 >
                                     instagram
                                 </Tooltip>

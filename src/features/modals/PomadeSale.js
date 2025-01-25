@@ -18,7 +18,11 @@ const PomadeSale = ({ showModal, onClose }) => {
     setCartCount((prev) => prev + 1);
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    // Placeholder for checkout functionality
+    console.log("Checkout submitted!");
+  };
+
   const handleGoBack = () => setView('product');
 
   // Function to increase cart count
@@ -53,13 +57,13 @@ const PomadeSale = ({ showModal, onClose }) => {
     config: { mass: 1, tension: 280, friction: 60 },
   });
 
-
   return transitions((styles, item) => item && (
     <Modal 
       show={showModal}
       onHide={onClose}
       size="sm" 
       className="sale-modal"
+      style={{ zIndex: 1070 }} // Ensure modal is above all other elements
     >
       <animated.div style={styles}>
         <Modal.Dialog className="modal-container">
@@ -71,8 +75,8 @@ const PomadeSale = ({ showModal, onClose }) => {
             className="sale-modal-body"
             style={{
               position: 'relative',
-              overflow: 'hidden',
-              height: '100%',
+              overflow: 'auto',
+              maxHeight: 'calc(100vh - 120px)',  // adjust as needed based on header/footer height
             }}
           >
           {
@@ -194,8 +198,7 @@ const PomadeSale = ({ showModal, onClose }) => {
                     </Form>
                   </div>
                 </div>
-              )
-            }
+              )}
               </animated.div>
             ))
           }

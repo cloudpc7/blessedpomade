@@ -1,8 +1,8 @@
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import Header from '../components/Header';
-import pomadeHero from '../app/assets/images/pomade-mobile.png';
+import pomadeHero from '../app/assets/images/pomade-test-mobile.png';
 import pomadeHeroMd from '../app/assets/images/pomade-mobile-medium.png';
-import pomadeLg from '../app/assets/images/pomade-large.png';
+import pomadeLg from '../app/assets/images/hero-image.png';
 import '../styles/home/home.scss';
 import PomadeSale from '../features/modals/PomadeSale';
 import Welcome from '../components/Welcome';
@@ -21,7 +21,7 @@ const colors = {
 const HomePage = () => {
     const [showModal, setShowModal] = useState(false);
     const [showCallToAction, setShowCallToAction] = useState(window.innerWidth >= 992);
-    const [showBlessed, setShowBlessed] = useState(false); // To toggle between titles
+    const [showBlessed, setShowBlessed] = useState(false); 
 
     const handleModal = () => {
         setShowModal(prevState => !prevState);
@@ -39,9 +39,9 @@ const HomePage = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setShowBlessed(prev => !prev);
-        }, 3000); // Switch every 3 seconds
+        }, 3000); 
 
-        return () => clearInterval(interval); // Clean up on component unmount
+        return () => clearInterval(interval); 
     }, []);
 
     const transitions = useTransition(showBlessed, {
@@ -57,7 +57,9 @@ const HomePage = () => {
                 <Col>
                     <Card>
                         <Card.Img 
-                            src={pomadeLg}
+                             src={pomadeHero}
+                            srcSet={`${pomadeHero} 375w, ${pomadeLg} 768w, ${pomadeLg} 1920w`}
+                            sizes="(max-width: 375px) 100vw, (max-width: 768px) 100vw, 100vw"
                         />
                         <Card.ImgOverlay>
                             <Header />

@@ -1,99 +1,162 @@
-@import url("https://use.typekit.net/dax3jrh.css");
-@import url("https://fonts.googleapis.com/css2?family=League+Gothic&display=swap");
 .contact-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background-color: #D97A43;
-  padding: 2rem 1rem;
-}
-.contact-container .contact-title {
-  font-weight: 600;
-  font-size: 1.5rem;
-  font-family: "trajan-pro-3", serif;
+  padding: 2rem;
   color: #ffffff;
-  margin-bottom: 1rem;
 }
-.contact-container .contact-form {
-  width: 100%;
-  background-color: #222222;
+.contact-container .contact {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, minmax(min-content, max-content));
+  gap: 1rem;
+}
+@media (min-width: 62rem) {
+  .contact-container .contact {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 2rem;
+  }
+}
+.contact-container .contact .title-col {
+  grid-column: 1;
+  grid-row: 1;
+}
+.contact-container .contact .title-col .contact-title {
+  color: #333333;
+  text-align: center;
+  border-bottom: 2px solid #ffffff;
+  margin: 0;
+}
+@media (min-width: 62rem) {
+  .contact-container .contact .title-col .contact-title {
+    font-size: 2rem;
+  }
+}
+.contact-container .contact .contact-statement {
+  grid-column: 1;
+  grid-row: 2;
+  display: grid;
+  gap: 1rem;
   padding: 1rem;
+}
+@media (min-width: 62rem) {
+  .contact-container .contact .contact-statement {
+    grid-column: 1;
+    grid-row: 2;
+  }
+}
+.contact-container .contact .contact-statement p {
+  letter-spacing: 0.2em;
+}
+.contact-container .contact .contact-statement .contact-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(min-content, max-content));
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.contact-container .contact .contact-statement .contact-list .list-group-item {
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+}
+.contact-container .contact .contact-statement .contact-list .list-group-item .instagram-link {
+  color: #333333;
+}
+.contact-container .contact .contact-statement .contact-list .list-group-item .email-link {
+  color: #333333;
+  text-decoration-color: #ffffff;
+  text-underline-offset: 6px;
+  letter-spacing: 0.1em;
+}
+.contact-container .contact .contact-statement .contact-list .list-group-item .email-link:hover {
+  color: #ffffff;
+  text-decoration-color: #333333;
+}
+.contact-container .contact .contact-form-col {
+  grid-column: 1;
+  grid-row: 3;
+}
+@media (min-width: 62rem) {
+  .contact-container .contact .contact-form-col {
+    grid-column: 2;
+    grid-row: 1/span 2;
+    align-self: center;
+  }
+}
+.contact-container .contact .contact-form-col .contact-form {
+  background-color: #333333;
+  padding: 1.5rem;
   border-radius: 4px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  align-self: center;
 }
-.contact-container .contact-form .form-item {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
+.contact-container .contact .contact-form-col .contact-form .form-item {
+  margin-bottom: 1.5rem;
 }
-.contact-container .contact-form .form-item .form-label {
-  margin-bottom: 0.25rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+.contact-container .contact .contact-form-col .contact-form .form-item .form-label {
   color: #D97A43;
-  font-family: "League Gothic", serif;
+  font-weight: bold;
+  letter-spacing: 0.1em;
 }
-.contact-container .contact-form .form-item .form-control {
-  border-radius: 4px;
-  padding: 0.5rem;
+.contact-container .contact .contact-form-col .contact-form .form-item .form-control {
+  background-color: #222222;
   border: 1px solid #333333;
-  font-family: "League Gothic", serif;
+  color: #ffffff;
 }
-.contact-container .contact-form .form-item .form-control:focus {
+.contact-container .contact .contact-form-col .contact-form .form-item .form-control:focus {
   border-color: #D97A43;
-  box-shadow: 0 0 0 0.2rem rgba(217, 122, 67, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(217, 122, 67, 0.5);
 }
-.contact-container .contact-form .form-item .form-control::-moz-placeholder {
-  color: #222222;
-  opacity: 0.6;
+.contact-container .contact .contact-form-col .contact-form .form-item .form-control::-moz-placeholder {
+  color: #ffffff;
   font-style: italic;
-  font-family: "League Gothic", serif;
 }
-.contact-container .contact-form .form-item .form-control::placeholder {
-  color: #222222;
-  opacity: 0.6;
+.contact-container .contact .contact-form-col .contact-form .form-item .form-control::placeholder {
+  color: #ffffff;
   font-style: italic;
-  font-family: "League Gothic", serif;
 }
-.contact-container .contact-form .form-item .invalid-feedback {
-  font-size: 0.875rem;
-  position: static;
-  margin-top: 0.25rem;
-  font-family: "League Gothic", serif;
-}
-.contact-container .contact-form .form-item .message-btn {
+.contact-container .contact .contact-form-col .contact-form .form-item .message-btn {
   background-color: #ffffff;
   color: #D97A43;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 0;
   padding: 0.5rem 1rem;
+  font-family: "trajan-pro-3", serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: inherit;
+  line-height: 1.6;
+  text-align: left;
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 0.5rem 1.5rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   font-size: 0.9em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  letter-spacing: 0.02em;
-  font-family: "trajan-pro-3", serif;
+  background-color: #D97A43;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
-.contact-container .contact-form .form-item .message-btn:hover {
+.contact-container .contact .contact-form-col .contact-form .form-item .message-btn:hover {
   background-color: #e6e6e6;
 }
-.contact-container .contact-form .form-item .message-btn:hover {
+.contact-container .contact .contact-form-col .contact-form .form-item .message-btn:hover {
   background-color: #090D0C;
   color: #ffffff;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.contact-container .contact-form .form-item .message-btn:active {
+.contact-container .contact .contact-form-col .contact-form .form-item .message-btn:active {
   background-color: #c26027;
   transform: translateY(0) scale(0.98);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-.contact-container .contact-form .form-item .message-btn .btn-text {
+.contact-container .contact .contact-form-col .contact-form .form-item .message-btn:hover {
+  background-color: #e2986d;
+}
+.contact-container .contact .contact-form-col .contact-form .form-item .message-btn .btn-text {
   margin-left: 0.5rem;
 }/*# sourceMappingURL=contact.css.map */

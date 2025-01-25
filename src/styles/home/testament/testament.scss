@@ -1,116 +1,60 @@
 @use '../../variables/utillities/utils.scss' as util;
 @use '../../variables/colors/colors.scss' as colors;
+@use '../../variables/fonts/fonts.scss' as font;
 
 .testament-container {
-    padding: 2rem;
+    padding: 0;
     text-align: center;
     .testament-title {
+        @include font.font-theme(title);
         color: colors.colorTheme(burntOrange);
-        margin-bottom: 1.5rem;
     }
 
-    .carousel-container {
-        position: relative;
-        max-width: 100%;
-        overflow: hidden;
+    .carousel {
         display: flex;
-        justify-content: center;
-        .carousel-content {
-            position: relative;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        padding: 1rem;
+        gap: 3rem;
+        width: 100%;
+        overflow:hidden;
+        cursor: grab;
+        @media (min-width: 48rem) {
+            flex-direction: row;
+        }
+        .use-spring-carousel-main-wrapper {
+            align-items: center;
+            justify-content: center;
+            .use-spring-carousel-item {
+                align-items: center;
+                justify-content: center;
+                padding: 1rem;
+                @media (min-width: 48rem) {
+                    max-width: 50%;
+                }
 
-            .testimonial-image {
-                width: 320px;
-                height: 480px; 
-                background-size: cover;
-                background-position: center;
-                border-radius: 10px;
-                position: relative;
+                @media (min-width: 62rem) {
+                    max-width: 35%;
+                }
 
-                .testimonial-overlay {
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                    background: linear-gradient(to top, rgba(colors.colorTheme(burntOrange), 0.8), rgba(colors.colorTheme(burntOrange), 0));
-                    padding: 1rem;
-                    border-radius: 0 0 10px 10px;
-                    text-align: left;
-                    color: colors.colorTheme(appWhite);
-
-                    .testament {
-                        margin: 0;
-                    }
-
-                    .testament-name {
-                        display: block;
-                        margin-top: 0.5rem;
-                        font-style: italic;
-                    }
-
-                    .carousel-nav {
-                        display: flex;
-                        justify-content: space-between;
-                        position: absolute;
-                        left: 0;
-                        bottom: 5rem;
-                        width: 100%;
+                @media (min-width: 70rem) {
+                    max-width: 35%;
+                }
+                
+                .testament-card {
+                    .card-img-overlay {
+                        display: grid;
+                        align-items: end;
                         padding: 1rem;
-
-                        button {
-                            background-color: transparent;
-                            border: 1px solid colors.colorTheme(appWhite);
-                            border-radius: 50%;
-                            color: colors.colorTheme(burntOrange);
-                            width: 2rem;
-                            height: 2rem;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            cursor: pointer;
-                            transition: all 0.3s ease;
-
-                            // Glass effect
-                            &::before {
-                                content: '';
-                                position: absolute;
-                                top: -2px;
-                                left: -2px;
-                                right: -2px;
-                                bottom: -2px;
-                                background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
-                                border-radius: 50%;
-                                z-index: -1;
+                        background: linear-gradient(to top, rgba(colors.colorTheme(burntOrange), 0.8), rgba(colors.colorTheme(burntOrange), 0));
+                        .testament-body {
+                            @include font.font-theme(default);
+                            .testament-text, .testament-name {
+                                color: colors.colorTheme(appWhite);
                             }
-
-                            &:hover {
-                                color: lighten(colors.colorTheme(burntOrange), 10%);
-                                border-color: lighten(colors.colorTheme(appWhite), 10%);
-                            }
-                        }
-
-                        .carousel-prev {
-                            left: 1rem;
-                        }
-
-                        .carousel-next {
-                            right: 1rem;
                         }
                     }
                 }
             }
-        }
-    }
-}
-
-@media (max-width: 767px) {
-    .testament-container {
-        .carousel-content .testimonial-image {
-            height: 200px;
-        }
-
-        .testament-title {
         }
     }
 }

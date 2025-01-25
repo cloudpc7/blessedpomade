@@ -2,58 +2,135 @@
 @use '../../variables/colors/colors.scss' as colors;
 
 .contact-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     background-color: colors.colorTheme(burntOrange);
-    padding: 2rem 1rem;
-    .contact-title {
-        color: colors.colorTheme(appWhite); 
-        margin-bottom: 1rem;
-    }
-    .contact-form {
-        width: 100%;
-        background-color: colors.colorTheme(appDarkGrey);
-        padding: 1rem;
-        border-radius: 4px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        .form-item {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 1rem;
-            .form-label {
-                margin-bottom: 0.25rem;
-                color:colors.colorTheme(burntOrange);
+    padding: 2rem;
+    color: colors.colorTheme(appWhite);
+
+    .contact {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, minmax(min-content, max-content));
+        gap: 1rem;
+
+        @media (min-width: 62rem) {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto; // Reset rows to auto when using columns
+            gap: 2rem;
+        }
+
+        .title-col {
+            grid-column: 1;
+            grid-row: 1;
+            .contact-title {
+                color: colors.colorTheme(appGrey);
+                text-align: center;
+                border-bottom: 2px solid colors.colorTheme(appWhite);
+                margin: 0;
+                @media (min-width: 62rem) {
+                    font-size: 2rem;
+                }
             }
-            .form-control {
-                border-radius: 4px;
-                padding: 0.5rem;
-                border: 1px solid colors.colorTheme(appGrey);
-                &:focus {
-                    border-color: colors.colorTheme(burntOrange);
-                    box-shadow: 0 0 0 0.2rem rgba(colors.colorTheme(burntOrange), 0.25);
-                }
-                &::placeholder {
-                    color: colors.colorTheme(appDarkGrey);
-                    opacity: 0.6; 
-                    font-style: italic; 
-                }
+        }
+
+        .contact-statement {
+            grid-column: 1;
+            grid-row: 2; // Move to its own row on smaller screens
+            @media (min-width: 62rem) {
+                grid-column: 1;
+                grid-row: 2; // At 62rem, it's still in the second row of the left column
+            }
+            display: grid;
+            gap: 1rem;
+            padding: 1rem;
+            p {
+                letter-spacing: 0.2em;
             }
 
-            .invalid-feedback {
-                color: colors.colorTheme(appRed);
-                position: static;
-                margin-top: 0.25rem;
-            }
-            .message-btn {
-                @include util.message-button();
-                display: flex;
+            .contact-list {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(min-content,max-content));
                 align-items: center;
                 justify-content: center;
-                gap: 0.5rem;
-                padding: 0.5rem 1rem;
-                .btn-text {
-                    margin-left: 0.5rem;
+                gap: 1rem;
+                .list-group-item {
+                    border: none;
+                    border-radius: 0;
+                    background-color: transparent;
+                    .instagram-link {
+                        color: colors.colorTheme(appGrey);
+                    }
+                    .email-link {
+                        color: colors.colorTheme(appGrey);
+                        text-decoration-color: colors.colorTheme(appWhite);
+                        text-underline-offset: 6px;
+                        letter-spacing: 0.1em;
+
+                        &:hover {
+                            color: colors.colorTheme(appWhite);
+                            text-decoration-color: colors.colorTheme(appGrey);
+                        }
+                    }
+                }
+            }
+        }
+
+        .contact-form-col {
+            grid-column: 1;
+            grid-row: 3;
+            @media (min-width: 62rem) {
+                grid-column: 2;
+                grid-row: 1 / span 2;
+                align-self: center;
+            }
+            .contact-form {
+                background-color: colors.colorTheme(appGrey);
+                padding: 1.5rem;
+                border-radius: 4px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+                align-self: center;
+                .form-item {
+                    margin-bottom: 1.5rem;
+
+                    .form-label {
+                        color: colors.colorTheme(burntOrange);
+                        font-weight: bold;
+                        letter-spacing: 0.1em;
+                    }
+
+                    .form-control {
+                        background-color: colors.colorTheme(appDarkGrey);
+                        border: 1px solid colors.colorTheme(appGrey);
+                        color: colors.colorTheme(appWhite);
+                        &:focus {
+                            border-color: colors.colorTheme(burntOrange);
+                            box-shadow: 0 0 0 0.2rem rgba(colors.colorTheme(burntOrange), 0.5);
+                        }
+                        &::placeholder {
+                            color: colors.colorTheme(appWhite);
+                            font-style: italic;
+                        }
+                    }
+
+                    .invalid-feedback {
+                        color: colors.colorTheme(appRed);
+                    }
+
+                    .message-btn {
+                        @include util.message-button();
+                        background-color: colors.colorTheme(burntOrange);
+                        color: colors.colorTheme(appWhite);
+                        border: none;
+                        border-radius: 4px;
+                        padding: 0.75rem 1.5rem;
+                        font-weight: bold;
+                        transition: background-color 0.3s ease;
+                        &:hover {
+                            background-color: lighten(colors.colorTheme(burntOrange), 10%);
+                        }
+                        .btn-text {
+                            margin-left: 0.5rem;
+                        }
+                    }
                 }
             }
         }

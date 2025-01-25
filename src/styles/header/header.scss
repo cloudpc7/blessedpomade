@@ -5,6 +5,7 @@
     grid-row: 1;
     grid-column: 1;
     align-self: start;
+    z-index: 1000;
     .container {
         @include util.no-padding; 
         .navbar-toggler {
@@ -70,7 +71,7 @@
 @media (min-width: 992px) {
     .navbar {
         grid-row: 1;
-        grid-column: 2;
+        grid-column: 4;
         .container {
             display: flex;
             justify-content: space-between;
