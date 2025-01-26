@@ -5,20 +5,22 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ]
-  },
-  "emulators": {
-    "firestore": {
-      "host": "localhost",
-      "port": 8080
-    }
   },
   "functions": [
     {
-      "host": "localhost",
-      "port": 5001,
-      "source": "./pomadebackend",
-      "codebase": "blessedpomade-backend",
+      "source": "functions",
+      "codebase": "default"
+    },
+    {
+      "source": "pomadebackend/functions",
+      "codebase": "payment-processing",
       "ignore": [
         "node_modules",
         ".git",
@@ -27,5 +29,16 @@
         "*.local"
       ]
     }
-  ]
+  ],
+  "emulators": {
+    "functions": {
+      "port": 5001
+    },
+    "firestore": {
+      "port": 8080
+    },
+    "ui": {
+      "enabled": true
+    }
+  }
 }

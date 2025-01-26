@@ -1,5 +1,5 @@
 const admin = require('firebase-admin');
-const serviceAccount = require("./serviceAccount.json");
+const serviceAccount = require("../src");
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
@@ -12,13 +12,11 @@ if (process.env.FIRESTORE_EMULATOR_HOST) {
     const firestorePort = process.env.FIRESTORE_EMULATOR_HOST.split(':')[1];
     admin.firestore().settings({
         host: `${firestoreHost}:${firestorePort}`,
-        ssl: false,  // Emulator doesn't use SSL
+        ssl: false, 
     });
 } else {
-    // Optional: If you want to force the emulator connection when not using an environment variable
-    // Directly configure it when running locally without environment variable
     admin.firestore().settings({
-        host: 'localhost:8080',  // Point to the Firestore emulator
+        host: 'localhost:8080',
         ssl: false,
     });
 }

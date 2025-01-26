@@ -97,6 +97,12 @@
   justify-self: end;
   align-self: start;
 }
+.offcanvas .offcanvas-body {
+  position: relative;
+}
+.offcanvas .offcanvas-body .cart-count {
+  position: absolute;
+}
 .offcanvas .offcanvas-body .navbar-nav .link {
   color: #ffffff;
   width: -moz-min-content;

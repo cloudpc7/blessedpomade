@@ -1,30 +1,36 @@
-// import React, { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import StripeContext from '../StripeContext';
-// import { useTransactionManager } from '../utils/transactionManager';
-// import { fetchStripeApi, selectStripeApiKey, selectClientSecret, postClientSecret } from '../components/stripeSlice';
+import React, { useEffect, useState, useContext } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import StripeContext from '../StripeContext';
+import { fetchStripeApiKey, setCartCount, selectStripeApiKey, selectCartCount } from '../components/stripeSlice'; // Ensure this path is correct
+import ProductContext from '../ProductContext';
 
-// const StripeProvider = ({ children }) => {
-//   const { transaction } = useTransactionManager();
-//   const dispatch = useDispatch();
-//   const stripeKey = useSelector(selectStripeApiKey);
-//   const stripeClientSecret = useSelector(selectClientSecret);
-//   useEffect(() => {
-//     dispatch(fetchStripeApi());
-//     dispatch(postClientSecret());
-//   }, [dispatch]);
+const StripeProvider = ({ children }) => {
+  const dispatch = useDispatch();
+  const stripeKey = useSelector(selectStripeApiKey);
+  const cartCountFromRedux = useSelector(selectCartCount);
+  const { cartCount } = useContext(ProductContext);
+  const [localCartCount, setLocalCartCount] = useState(0);
 
-//   const contextValue = {
-//     transaction,
-//     stripeKey,
-//     stripeClientSecret,
-//   }
- 
-//   return (
-//     <StripeContext.Provider value={contextValue}>
-//             {children}
-//     </StripeContext.Provider>
-//   );
-// };
+  useEffect(() => {
+    setLocalCartCount(cartCount);
+    dispatch(setCartCount(cartCount)); 
+  }, [cartCount, dispatch]);
 
-// export default StripeProvider;
+  useEffect(() => {
+    if (!stripeKey && localCartCount > 0) {
+      dispatch(fetchStripeApiKey());
+    }
+  }, [dispatch, stripeKey, localCartCount]);
+
+  const contextValue = {
+    stripeKey,
+  };
+
+  return (
+    <StripeContext.Provider value={contextValue}>
+      {children}
+    </StripeContext.Provider>
+  );
+};
+
+export default StripeProvider;

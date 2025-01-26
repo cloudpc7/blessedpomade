@@ -6,44 +6,27 @@ import logo from '../../app/assets/images/pomade-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/modals/modal.scss';
+import { useContext } from 'react';
+import ProductContext from '../../ProductContext';
 
 const PomadeSale = ({ showModal, onClose }) => {
-  const [cartCount, setCartCount] = useState(0);
-  const [subTotal, setSubTotal] = useState(0);
-  const [view, setView] = useState('product');
-  const [check, setCheck] = useState(false);
-  const productPrice = 13.99;
+  
+  const { 
+    view,
+    setView,
+    cartCount, 
+    addToCart, 
+    subTotal, 
+    handleDecrement, 
+    handleIncrement, 
+    localhandleSubmit,
+    handleGoBack,
+    check,
+    setCheck
+  } = useContext(ProductContext);
 
-  const addToCart = () => {
-    setCartCount((prev) => prev + 1);
-  };
-
-  const handleSubmit = () => {
-    // Placeholder for checkout functionality
-    console.log("Checkout submitted!");
-  };
-
-  const handleGoBack = () => setView('product');
-
-  // Function to increase cart count
-  const handleIncrement = () => {
-    setCartCount(prev => prev + 1);
-  };
-
-  // Function to decrease cart count
-  const handleDecrement = () => {
-    if (cartCount > 0) {
-      setCartCount(prev => prev - 1);
-    }
-  };
-
-  useEffect(() => {
-    setSubTotal(cartCount * productPrice);
-  }, [cartCount]);
-
-  // Use the transition based on whether the modal is shown
   const transitions = useTransition(showModal, {
-    from: { opacity: 0, transform: 'translateY(-50%)' }, // Slide from top
+    from: { opacity: 0, transform: 'translateY(-50%)' },
     enter: { opacity: 1, transform: 'translateY(0%)' }, 
     leave: { opacity: 0, transform: 'translateY(-50%)' },
     config: { mass: 1, tension: 280, friction: 60 },
@@ -63,7 +46,7 @@ const PomadeSale = ({ showModal, onClose }) => {
       onHide={onClose}
       size="sm" 
       className="sale-modal"
-      style={{ zIndex: 1070 }} // Ensure modal is above all other elements
+      style={{ zIndex: 1070 }}
     >
       <animated.div style={styles}>
         <Modal.Dialog className="modal-container">
@@ -76,7 +59,7 @@ const PomadeSale = ({ showModal, onClose }) => {
             style={{
               position: 'relative',
               overflow: 'auto',
-              maxHeight: 'calc(100vh - 120px)',  // adjust as needed based on header/footer height
+              maxHeight: 'calc(100vh - 120px)',
             }}
           >
           {
@@ -182,7 +165,7 @@ const PomadeSale = ({ showModal, onClose }) => {
                       <div className="cart-buttons">
                         <Button 
                           className="cart-btn"
-                          onClick={handleSubmit}
+                          onClick={localhandleSubmit}
                           type="submit"
                           disabled={!check}
                         >

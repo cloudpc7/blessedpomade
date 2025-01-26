@@ -53,6 +53,10 @@
     }
 
     .offcanvas-body {
+        position: relative;
+        .cart-count {
+            position: absolute;
+        }
         .navbar-nav {
             .link {
                 @include util.nav-item-style;

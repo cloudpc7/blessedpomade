@@ -1,42 +1,27 @@
 import { Container, Form, Card, Button, Row, Col } from 'react-bootstrap';
-import { useState, useEffect } from 'react';
-import { Formik } from 'formik';
 import pomade from '../app/assets/images/pomad_small.png';
 import '../styles/home/product/product.scss';
 import { useTransition, animated } from 'react-spring';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import ProductContext from '../ProductContext';
 
 const PomadeProduct = () => {
-    const [cartCount, setCartCount] = useState(0);
-    const [subTotal, setSubTotal] = useState(0);
-    const [view, setView] = useState('product');
-    const [check, setCheck] = useState(false);
-    const productPrice = 13.99;
-
-    const addToCart = () => {
-        setCartCount((prev) => prev + 1);
-    };
-
-    const handleSubmit = () => {};
-    const handleGoBack = () => setView('product');
-
-    // Function to increase cart count
-    const handleIncrement = () => {
-        setCartCount(prev => prev + 1);
-    };
-
-    // Function to decrease cart count
-    const handleDecrement = () => {
-        if (cartCount > 0) {
-            setCartCount(prev => prev - 1);
-        }
-    };
-
-    useEffect(() => {
-        setSubTotal(cartCount * productPrice);
-    }, [cartCount]);
+    const { 
+        view,
+        setView,
+        cartCount, 
+        addToCart, 
+        subTotal, 
+        handleDecrement, 
+        handleIncrement, 
+        localhandleSubmit,
+        handleGoBack,
+        check,
+        setCheck
+      } = useContext(ProductContext);
 
     const transitions = useTransition(view, {
         key: view,
@@ -167,7 +152,7 @@ const PomadeProduct = () => {
                                     <Form.Group className="cart-buttons">
                                         <Button  
                                             className="cart-btn"
-                                            onClick={handleSubmit}
+                                            onClick={localhandleSubmit}
                                             type="submit"
                                             disabled={!check}
                                             aria-label="Proceed to Checkout"

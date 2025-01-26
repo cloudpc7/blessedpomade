@@ -1,77 +1,52 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchStripeApi = createAsyncThunk('stripe/fetchstripe', async() => {
+export const fetchStripeApiKey = createAsyncThunk('stripe/fetchStripeApiKey', async () => {
     try {
-        const url= 'http://localhost:5001/blessedpomade/us-central1/api/gateway';
+        const url = 'http://localhost:5001/blessedpomade/us-central1/api/gateway'; // Adjust URL as needed
         const response = await fetch(url);
-        if(!response.ok) throw new Error("Failed to fetch stripe api");
+        if (!response.ok) throw new Error("Failed to fetch Stripe API key");
         const data = await response.json();
-        return data.publishKey;
+        return data.publishKey; // Assuming the backend returns the key in this format
     } catch (error) {
-        console.error("Error fetching Stripe API:", error);
+        console.error("Error fetching Stripe API key:", error);
         throw error;
     }
 });
 
-export const postClientSecret = createAsyncThunk('stripe/fetchClientSecret', async(amount = 1000) => {
-    try {
-       const url = "http://localhost:5001/blessedpomade/us-central1/api/createpaymentintent"
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json',
-            },
-            body: JSON.stringify({ amount })
-        });
-        if(!response.ok) throw new Error("Failed to fetch stripe api");
-        const data = await response.json();
-        return data.clientSecret;
-    } catch (error) {
-        console.error("Failed to fetch client secret:", error);
-    }
-});
-
 const initialState = {
-    stripe: null,
-    clientSecret: null,
+    stripeKey: null,
+    cartCount: 0, 
     isLoading: false,
-    errMsg: '',
+    error: null,
 }
 
-
 const stripeSlice = createSlice({
-    name: 'stripeApi',
+    name: 'stripe',
     initialState,
-    reducers: {},
+    reducers: {
+        setCartCount: (state, action) => {
+            state.cartCount = action.payload;
+        },
+    },
     extraReducers: (builder) => {
         builder
-        .addCase(fetchStripeApi.pending, (state) => {
+        .addCase(fetchStripeApiKey.pending, (state) => {
             state.isLoading = true;
+            state.error = null;
         })
-        .addCase(fetchStripeApi.fulfilled, (state, action) => {
+        .addCase(fetchStripeApiKey.fulfilled, (state, action) => {
             state.isLoading = false;
-            state.stripe = action.payload;
+            state.stripeKey = action.payload;
         })
-        .addCase(fetchStripeApi.rejected, (state, action) => {
+        .addCase(fetchStripeApiKey.rejected, (state, action) => {
             state.isLoading = false;
-            state.errMsg = action.error.message;
-        })
-        .addCase(postClientSecret.pending, (state) => {
-            state.isLoading = true;
-        })
-
-        .addCase(postClientSecret.fulfilled, (state, action) => {
-            state.isLoading = false;
-            state.clientSecret = action.payload;
-        })
-
-        .addCase(postClientSecret.rejected, (state, action) => {
-            state.isLoading = false;
-            state.errMsg = action.error.message;
+            state.error = action.error.message;
         });
     },
 });
 
-export const stripeApiReducer =  stripeSlice.reducer;
-export const selectClientSecret = (state) => state.stripeApi.clientSecret;
-export const selectStripeApiKey = (state) => state.stripeApi.stripe;
+export const { setCartCount } = stripeSlice.actions;
+export const stripeReducer = stripeSlice.reducer;
+// Ensure these are exported correctly
+export const selectStripeApiKey = (state) => state.stripe.stripeKey;
+export const selectCartCount = (state) => state.stripe.cartCount;

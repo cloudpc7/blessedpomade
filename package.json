@@ -13,15 +13,18 @@
     "@stripe/react-stripe-js": "^3.1.1",
     "@stripe/stripe-js": "^5.5.0",
     "@use-gesture/react": "^10.3.1",
+    "axios": "^1.7.9",
     "blessedpomade": "file:",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "cra-template": "1.2.0",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "firebase": "^11.1.0",
+    "firebase": "^11.2.0",
     "firebase-admin": "^13.0.2",
+    "firebase-functions": "^6.3.0",
     "formik": "^2.4.6",
+    "functions": "^1.0.9",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.7",
     "react-dom": "^18.2.0",
@@ -36,16 +39,11 @@
     "yup": "^1.6.1"
   },
   "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "deploy": "gh-pages -d build"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "test": "react-scripts test"
   },
   "browserslist": {
     "production": [
@@ -61,6 +59,10 @@
   },
   "devDependencies": {
     "@csstools/normalize.css": "^12.1.1",
+    "@eslint/js": "^9.19.0",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react": "^7.37.4",
+    "globals": "^15.14.0",
     "sass": "^1.83.1"
   }
 }

@@ -6,7 +6,7 @@ import ProductContext from '../../ProductContext';
 const CheckOutModal = () => {
     return (
         <Card>
-        <PomadeForm />
+            <PomadeForm />
         </Card>
     );
 };

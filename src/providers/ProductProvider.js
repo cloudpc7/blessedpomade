@@ -1,79 +1,60 @@
 import { useState, useEffect } from 'react';
 import ProductContext from '../ProductContext';
+import { useNavigate } from 'react-router-dom';
 // import { FormValidation }from '../utils/formValidation';
 const ProductProvider = ({ children }) => {
-    // const { handleSubmit } = FormValidation();
+    const [cartCount, setCartCount] = useState(0);
+    const [subTotal, setSubTotal] = useState(0);
+    const [view, setView] = useState('product');
+    const [check, setCheck] = useState(false);
+    const productPrice = 13.99;
+   
+    const addToCart = () => {
+        setCartCount((prev) => prev + 1);
+      };
 
-    // open pomade product modal in hero section 
-
-    // const [quantity, setQuantity] = useState(null);
-    // const [ count, setCount ] = useState(0);
-    // const [getCart, setGetCart] = useState(false);
-    // const [subTotal, setSubTotal] = useState(productTotal);
-    // const [isValid, setIsValid] = useState(true);
-
+      const localHandleSubmit = () => {
+        if (cartCount > 0) {
+            handleSubmit();
+        } else {
+            alert('Your cart is empty!');
+        }
+      }
     
-    // const handleClose = () => {
-    //     setCount(1);
-    //     setQuantity();
-    //     setShowModal(false); 
-    //     setShowModal(false); 
-    //     setGetCart(false);
-    // };
-
-    // const handleDecrement = () => {
-    //     setCount((prev) => Math.max(1, prev - 1));
-    // }
-    // const handleIncrement = () => {
-    //     setCount(prev => prev + 1);
-    // }
-
-    // const handleCount = (e) => {
-    //     setCount((prev) => Math.max(1,Number(e.target.value)));
-    // };
-
-    // const handleCheckOut = () => {
-    //     setGetCart((prev) => !prev);
-    //     setQuantity();
-    // }
-
-    // const addToCart = () => {
-    // };
-
-    // useEffect(() => {
-    //     setQuantity(null);
-    //     setSubTotal(productTotal * quantity);
-    // },[count, quantity]);
-    // let finalAmount = subTotal * 0.0725 + subTotal;
-
-    // useEffect(() => {
-    //     const handleBeforeUnload = () => {
-    //         localStorage.removeItem("count");
-    //         localStorage.removeItem("quantity");
-    //         localStorage.removeItem("subTotal");
-    //     };
-
-    //     window.addEventListener("beforeunload", handleBeforeUnload);
-    // });
+      const handleSubmit = () => {
+        console.log("checkout submitted");
+      };
+    
+      const handleGoBack = () => setView('product');
+    
+      // Function to increase cart count
+      const handleIncrement = () => {
+        setCartCount(prev => prev + 1);
+      };
+    
+      // Function to decrease cart count
+      const handleDecrement = () => {
+        if (cartCount > 0) {
+          setCartCount(prev => prev - 1);
+        }
+      };
+    
+      useEffect(() => {
+        setSubTotal(cartCount * productPrice);
+      }, [cartCount]);
 
     const contextValue = {
-        // quantity,
-        // finalAmount,
-        // count,
-        
-        // getCart,
-        // subTotal,
-        // productDetail,
-        // productTotal,
-        // isValid,
-        // setIsValid,
-        // addToCart,
-        // handleDecrement,
-        // handleIncrement,
-        // handleCheckOut,
-        // handleClose,
-        // handleSubmit,
-        // handleCount,
+        view,
+        setView,
+        cartCount, 
+        addToCart, 
+        subTotal, 
+        handleDecrement, 
+        handleIncrement, 
+        localHandleSubmit,
+        handleGoBack,
+        check,
+        setCheck
     }
 
     return (

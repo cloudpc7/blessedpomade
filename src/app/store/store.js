@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { pomadeTransactionsReducer } from '../../components/pomadeSlice';
 import { googleMapsReducer } from '../../components/googleSlice';
-import { stripeApiReducer } from '../../components/stripeSlice';
+import { stripeReducer } from '../../components/stripeSlice';
 export const store  = configureStore({
     reducer: {
         transactions: pomadeTransactionsReducer,
         maps: googleMapsReducer,
-        stripeApi: stripeApiReducer,
+        stripe: stripeReducer,
     }
 })

@@ -32,7 +32,6 @@ const Testament = () => {
     ]
 
     useEffect(() => {
-        console.log(windowWidth);
         const updateItemsPerSlide = () => {
             const width = window.innerWidth;
             if(width < 768) {
@@ -40,15 +39,13 @@ const Testament = () => {
             } else if (width < 992) {
                 setItemsPerSlide(2);
             } else {
-                setItemsPerSlide(1);
+                setItemsPerSlide(3);
             }
-            console.log(itemsPerSlide);
         };
         updateItemsPerSlide();
         window.addEventListener('resize', updateItemsPerSlide);
         return () => window.removeEventListener('resize', updateItemsPerSlide);
       }, [itemsPerSlide]);
-    console.log(itemsPerSlide);
     const { carouselFragment } = useSpringCarousel({
         itemsPerslide: itemsPerSlide,
         withLoop: true,

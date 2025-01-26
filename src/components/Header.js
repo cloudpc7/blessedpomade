@@ -7,9 +7,13 @@ import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 import pomadeLogo from '../app/assets/images/pomade-logo.png';
 import { Tooltip } from 'reactstrap';
 import '../styles/header/header.scss';
+import { useContext } from 'react';
+import ProductContext from '../ProductContext';
 
 library.add(fas);
 const Header = () => {
+
+    const {cartCount} = useContext(ProductContext);
     const [home, setHome] = useState(false);
     const [shop, setShop] = useState(false);
     const [cart, setCart] = useState(false);
@@ -67,6 +71,7 @@ const Header = () => {
                             </Nav.Link>
                             <Nav.Link id="cart" href="/" className="link" alt="shopping cart"> 
                                 <FontAwesomeIcon icon="fa-cart-shopping" size="2x" />
+                                <span className="cart-count">{cartCount}</span>
                                 <Tooltip
                                     placement="bottom"
                                     isOpen={cart}
