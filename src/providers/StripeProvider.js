@@ -7,17 +7,6 @@ const StripeProvider = ({ children }) => {
   const dispatch = useDispatch();
   const stripeKey = useSelector(selectStripeApiKey);
 
-  const handleChange = (event, mode) => {
-    if (event.complete) {
-      const address = event.value.address;
-      if (mode === 'shipping') {
-        dispatch(updateShippingAddress(address));
-      } else if (mode === 'billing') {
-        dispatch(updateBillingAddress(address));
-      }
-    }
-  };
-
   useEffect(() => {
     if (!stripeKey) {
       dispatch(fetchStripeApiKey());
