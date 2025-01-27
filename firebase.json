@@ -1,4 +1,21 @@
 {
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ]
+    }
+  ],
   "hosting": {
     "public": "build",
     "ignore": [
@@ -13,23 +30,6 @@
       }
     ]
   },
-  "functions": [
-    {
-      "source": "functions",
-      "codebase": "default"
-    },
-    {
-      "source": "pomadebackend/functions",
-      "codebase": "payment-processing",
-      "ignore": [
-        "node_modules",
-        ".git",
-        "firebase-debug.log",
-        "firebase-debug.*.log",
-        "*.local"
-      ]
-    }
-  ],
   "emulators": {
     "functions": {
       "port": 5001
@@ -37,8 +37,15 @@
     "firestore": {
       "port": 8080
     },
+    "database": {
+      "port": 9000
+    },
+    "hosting": {
+      "port": 5000
+    },
     "ui": {
       "enabled": true
-    }
+    },
+    "singleProjectMode": true
   }
 }

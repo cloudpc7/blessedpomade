@@ -17,7 +17,7 @@ const PomadeProduct = () => {
         subTotal, 
         handleDecrement, 
         handleIncrement, 
-        localhandleSubmit,
+        localHandleSubmit,
         handleGoBack,
         check,
         setCheck
@@ -136,7 +136,7 @@ const PomadeProduct = () => {
                                         <FontAwesomeIcon icon={faPlus} />
                                     </Button>
                                 </div>
-                                <Form className="cart-form">
+                                <Form className="cart-form" onSubmit={localHandleSubmit}>
                                     <Form.Check 
                                         label={ 
                                             <Link className="term-link" to="/terms">
@@ -152,7 +152,6 @@ const PomadeProduct = () => {
                                     <Form.Group className="cart-buttons">
                                         <Button  
                                             className="cart-btn"
-                                            onClick={localhandleSubmit}
                                             type="submit"
                                             disabled={!check}
                                             aria-label="Proceed to Checkout"

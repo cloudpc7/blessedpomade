@@ -1,29 +1,31 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import StripeContext from '../StripeContext';
-import { fetchStripeApiKey, setCartCount, selectStripeApiKey, selectCartCount } from '../components/stripeSlice'; // Ensure this path is correct
-import ProductContext from '../ProductContext';
+import { fetchStripeApiKey, selectStripeApiKey } from '../components/stripeSlice'; 
 
 const StripeProvider = ({ children }) => {
   const dispatch = useDispatch();
   const stripeKey = useSelector(selectStripeApiKey);
-  const cartCountFromRedux = useSelector(selectCartCount);
-  const { cartCount } = useContext(ProductContext);
-  const [localCartCount, setLocalCartCount] = useState(0);
+
+  const handleChange = (event, mode) => {
+    if (event.complete) {
+      const address = event.value.address;
+      if (mode === 'shipping') {
+        dispatch(updateShippingAddress(address));
+      } else if (mode === 'billing') {
+        dispatch(updateBillingAddress(address));
+      }
+    }
+  };
 
   useEffect(() => {
-    setLocalCartCount(cartCount);
-    dispatch(setCartCount(cartCount)); 
-  }, [cartCount, dispatch]);
-
-  useEffect(() => {
-    if (!stripeKey && localCartCount > 0) {
+    if (!stripeKey) {
       dispatch(fetchStripeApiKey());
     }
-  }, [dispatch, stripeKey, localCartCount]);
-
+  }, [dispatch, stripeKey]);
   const contextValue = {
     stripeKey,
+    handleChange,
   };
 
   return (
