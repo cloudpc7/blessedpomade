@@ -1,0 +1,53 @@
+@use '../variables/fonts/fonts.scss' as font;
+@use '../variables/colors/colors.scss' as colors;
+@use '../variables/utillities/utils.scss' as util;
+@media (min-width: 90rem) {
+    .hero-section {
+        height: 100vh;
+        overflow: hidden;
+        .card {
+            height: 100%;
+            .card-img {
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}
+
+.hero-section {
+    @include util.section-style;
+   
+    .col {
+        padding: 0;
+        .card {
+            @include util.card-style;
+            .card-img {
+                @include util.card-img-style;
+            }
+            .card-img-overlay {
+                @include util.card-img-overlay-style;
+                grid-template-rows: repeat(2, minmax(min-content, max-content)); 
+                grid-template-columns: repeat(2, minmax(min-content, max-content)); 
+                .call-action {
+                   @include util.call-action();
+                }
+
+                .card-title {
+                    @include util.card-title-style;
+                    grid-row: 2;
+                    grid-column: 1 / span 2;
+                }
+                .card-body {
+                    @include util.card-body-style;
+                    grid-row: 3;
+                    grid-column: 1 / span 2;
+                    .card-text {
+                        @include util.text-style(1rem, normal, colors.colorTheme(appWhite)); 
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+}

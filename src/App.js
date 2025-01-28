@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage';
 import { Routes, Route } from 'react-router-dom';
 import './styles/main/main.scss';
 import PaymentPage from './pages/PaymentPage';
+import StripeProvider from './providers/StripeProvider';
 function App() {
 
   return (
@@ -10,7 +11,11 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route 
           path='/payment'
-          element={<PaymentPage />}
+          element={
+            <StripeProvider>
+              <PaymentPage />
+            </StripeProvider>
+          }
         />
       </Routes>
   );

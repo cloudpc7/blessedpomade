@@ -1,12 +1,14 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Container, Form, Button, Alert } from 'react-bootstrap';
+import { useState, useEffect, useContext } from 'react';
+import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
 import { Elements, ElementsConsumer, PaymentElement } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectClientSecret, selectPaymentStatus, createPaymentIntent, saveAddressData } from '../components/stripeSlice';
+import { selectClientSecret, selectPaymentStatus, selectStripeApiKey, createPaymentIntent, saveAddressData } from '../components/stripeSlice';
 import StripeContext from '../StripeContext';
-import AddressForm from './AddressForm';
-
+import AddressForm from '../components/AddressForm';
+import LoadingSpinner from '../utils/LoadingSpinner';
+import Hero from '../components/Hero';
+import '../styles/payment/payment.scss';
 const PaymentPage = () => {
   const { stripeKey } = useContext(StripeContext);
   const [stripe, setStripe] = useState(null);
@@ -15,6 +17,8 @@ const PaymentPage = () => {
   const dispatch = useDispatch();
   const clientSecret = useSelector(selectClientSecret);
   const paymentStatus = useSelector(selectPaymentStatus);
+  const isLoading = useSelector(state => state.stripe.isLoading);
+  const [useBillingAddress, setUseBillingAddress] = useState(false); 
   const shippingAddress = useSelector(state => state.stripe.shippingAddress);
   const billingAddress = useSelector(state => state.stripe.billingAddress);
 
@@ -30,7 +34,9 @@ const PaymentPage = () => {
     }
   }, [clientSecret, paymentStatus, dispatch]);
 
-  // ... Other rendering conditions ...
+  if (!stripeKey || isLoading) {
+    return <LoadingSpinner />; // Show spinner while Stripe key is loading or any Stripe action is pending
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,16 +53,12 @@ const PaymentPage = () => {
     if (error) {
       console.error(error.message);
     } else {
-      // Save address data on successful payment
       try {
         const paymentIntentId = clientSecret.split('_secret')[0];
         await dispatch(saveAddressData({ shippingAddress, billingAddress, paymentIntentId })).unwrap();
         setSaveSuccess(true);
         setSaveError(null);
-        console.log('Payment processed and address data saved successfully');
-        // Navigate to success page or update UI
       } catch (saveError) {
-        console.error('Failed to save address data:', saveError);
         setSaveError(saveError.message);
       }
     }
@@ -64,26 +66,30 @@ const PaymentPage = () => {
 
   return (
     <Container>
-      <Elements stripe={stripe} options={{ clientSecret, appearance: { theme: 'stripe' } }}>
-        <ElementsConsumer>
-          {({ stripe, elements }) => (
-            <Form onSubmit={handleSubmit}>
-              <h2>Payment</h2>
-              <PaymentElement />
-              
-              <h3>Shipping Address</h3>
-              <AddressForm />
-              
-              {saveError && <Alert variant="danger">{saveError}</Alert>}
-              {saveSuccess && <Alert variant="success">Address saved successfully!</Alert>}
-              
-              <Button type="submit" disabled={!stripe}>
-                Pay
-              </Button>
-            </Form>
-          )}
-        </ElementsConsumer>
-      </Elements>
+      <Row>
+        <Col>
+          <Elements stripe={stripe} options={{ clientSecret, appearance: { theme: 'stripe' } }}>
+            <ElementsConsumer>
+              {({ stripe, elements }) => (
+                <Form onSubmit={handleSubmit}>
+                  <h2>Payment</h2>
+                  <PaymentElement />
+                  
+                  <h3>Shipping Address</h3>
+                  <AddressForm showBilling={!useBillingAddress}/>
+                  
+                  {saveError && <Alert variant="danger">{saveError}</Alert>}
+                  {saveSuccess && <Alert variant="success">Address saved successfully!</Alert>}
+                  
+                  <Button type="submit" disabled={!stripe || isLoading}>
+                    Pay
+                  </Button>
+                </Form>
+              )}
+            </ElementsConsumer>
+          </Elements>
+        </Col>
+      </Row>
     </Container>
   );
 };

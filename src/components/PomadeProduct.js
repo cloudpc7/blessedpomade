@@ -32,6 +32,7 @@ const PomadeProduct = () => {
     });
 
     return (
+        
         <Container className="product-container">
             {transitions((styles, item) => (
                 <animated.div

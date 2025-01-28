@@ -1,5 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { stripeReducer } from '../../components/stripeSlice';
+import { sessionSliceReducer } from '../../utils/sessionSlice';
+import { appSliceReducer } from '../../utils/appSlice';
 import {
   persistStore,
   persistReducer,
@@ -26,6 +28,8 @@ const persistedStripeReducer = persistReducer(persistConfig, stripeReducer);
 export const store = configureStore({
   reducer: {
     stripe: persistedStripeReducer, 
+    session: sessionSliceReducer,
+    app: appSliceReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
