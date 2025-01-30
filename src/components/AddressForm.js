@@ -17,7 +17,7 @@ const AddressForm = ({ showBilling }) => {
       };
 
     return (
-        <form>
+        <form className="address-container">
             <AddressElement 
                 onChange={(event) => handleChange(event, 'shipping')} 
                 options={{mode: 'shipping'}} 

@@ -17,7 +17,7 @@ const PomadeProduct = () => {
         subTotal, 
         handleDecrement, 
         handleIncrement, 
-        localHandleSubmit,
+        handleSubmit,
         handleGoBack,
         check,
         setCheck
@@ -31,8 +31,17 @@ const PomadeProduct = () => {
         config: { mass: 1, tension: 280, friction: 60 },
     });
 
+    const handleAddToCart = (event) => {
+        event.preventDefault();
+        const itemData = {
+            id: 'pomade', // Assuming 'pomade' is a unique identifier for this product
+            price: 13.99, // Price of the product
+            quantity: 1  // Quantity to add
+        };
+        addToCart(event, itemData);
+    };
+
     return (
-        
         <Container className="product-container">
             {transitions((styles, item) => (
                 <animated.div
@@ -54,7 +63,7 @@ const PomadeProduct = () => {
                                             <FontAwesomeIcon className="cart-icon" icon={faShoppingCart} size="2x" />
                                             <span className="cart-count">{cartCount}</span>
                                             <Button 
-                                                type="submit" 
+                                                type="button" 
                                                 className="cart-btn"
                                                 onClick={() => setView('cart')}
                                                 aria-label="Go to Cart"
@@ -76,7 +85,7 @@ const PomadeProduct = () => {
                                         <Card.Text className="product-price">$13.99</Card.Text>
                                         <Button  
                                             className="product-btn"
-                                            onClick={addToCart}
+                                            onClick={handleAddToCart}
                                             aria-label="Add Blessed Pomade to Cart"
                                         >
                                             Add to Cart
@@ -121,7 +130,7 @@ const PomadeProduct = () => {
                                 <div className="cart-item quantity-control">
                                     <Button 
                                         variant="outline-secondary" 
-                                        onClick={handleDecrement} 
+                                        onClick={() => handleDecrement('pomade')} 
                                         className="quantity-btn"
                                         aria-label="Decrease Quantity"
                                     >
@@ -130,14 +139,14 @@ const PomadeProduct = () => {
                                     <span className="cart-count">{cartCount}</span>
                                     <Button 
                                         variant="outline-secondary" 
-                                        onClick={handleIncrement} 
+                                        onClick={() => handleIncrement('pomade')} 
                                         className="quantity-btn"
                                         aria-label="Increase Quantity"
                                     >
                                         <FontAwesomeIcon icon={faPlus} />
                                     </Button>
                                 </div>
-                                <Form className="cart-form" onSubmit={localHandleSubmit}>
+                                <Form className="cart-form" onSubmit={handleSubmit}>
                                     <Form.Check 
                                         label={ 
                                             <Link className="term-link" to="/terms">
@@ -149,6 +158,7 @@ const PomadeProduct = () => {
                                         checked={check}
                                         onChange={() => setCheck(!check)}
                                         className="cart-check"
+                                        aria-label="Accept terms and conditions"
                                     />
                                     <Form.Group className="cart-buttons">
                                         <Button  

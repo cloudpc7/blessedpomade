@@ -5,7 +5,6 @@
     border: 2px solid colors.colorTheme(burntOrange);
     @include util.section-style;
     @include util.responsive-spacing(padding);
-
     .product-container {
         @include util.product-container-style;
         .animate-div {

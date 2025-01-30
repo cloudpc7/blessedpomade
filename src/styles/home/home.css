@@ -35,6 +35,11 @@
 .home-container .home .col {
   padding: 0;
 }
+@media (min-width: 62rem) {
+  .home-container .home {
+    padding: 1rem;
+  }
+}
 .home-container .hero-section, .home-container .footer-section {
   width: 100%;
   padding: 0;

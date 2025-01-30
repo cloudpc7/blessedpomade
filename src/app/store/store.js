@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { stripeReducer } from '../../components/stripeSlice';
 import { sessionSliceReducer } from '../../utils/sessionSlice';
 import { appSliceReducer } from '../../utils/appSlice';
+import { cartReducer } from '../../utils/cartSlice';
 import {
   persistStore,
   persistReducer,
@@ -30,6 +31,7 @@ export const store = configureStore({
     stripe: persistedStripeReducer, 
     session: sessionSliceReducer,
     app: appSliceReducer,
+    cart: cartReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

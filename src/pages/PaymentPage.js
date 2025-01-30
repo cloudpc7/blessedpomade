@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, Alert, ListGroup } from 'react-bootstrap';
 import { Elements, ElementsConsumer, PaymentElement } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,7 +8,9 @@ import StripeContext from '../StripeContext';
 import AddressForm from '../components/AddressForm';
 import LoadingSpinner from '../utils/LoadingSpinner';
 import Hero from '../components/Hero';
+import Footer from '../components/Footer';
 import '../styles/payment/payment.scss';
+
 const PaymentPage = () => {
   const { stripeKey } = useContext(StripeContext);
   const [stripe, setStripe] = useState(null);
@@ -21,6 +23,9 @@ const PaymentPage = () => {
   const [useBillingAddress, setUseBillingAddress] = useState(false); 
   const shippingAddress = useSelector(state => state.stripe.shippingAddress);
   const billingAddress = useSelector(state => state.stripe.billingAddress);
+  const sessionToken = useSelector(state => state.session.sessionToken);
+  const cartItems = useSelector(state => state.cart.items);
+  const subTotal = useSelector(state => state.cart.total); // Assuming total is calculated in cart slice
 
   useEffect(() => {
     if (stripeKey) {
@@ -30,12 +35,18 @@ const PaymentPage = () => {
 
   useEffect(() => {
     if (!clientSecret && paymentStatus === 'idle') {
-      dispatch(createPaymentIntent(Math.round(13.99 * 100)));
+      if (sessionToken) {
+        // Use session token from Redux state to create payment intent
+        dispatch(createPaymentIntent(Math.round(subTotal * 100))); // Use dynamic total from cart
+      } else {
+        console.error('No session token available for payment intent');
+        // Handle by redirecting or showing an error message
+      }
     }
-  }, [clientSecret, paymentStatus, dispatch]);
+  }, [clientSecret, paymentStatus, dispatch, sessionToken, subTotal]);
 
   if (!stripeKey || isLoading) {
-    return <LoadingSpinner />; // Show spinner while Stripe key is loading or any Stripe action is pending
+    return <LoadingSpinner />; 
   }
 
   const handleSubmit = async (e) => {
@@ -54,10 +65,15 @@ const PaymentPage = () => {
       console.error(error.message);
     } else {
       try {
-        const paymentIntentId = clientSecret.split('_secret')[0];
-        await dispatch(saveAddressData({ shippingAddress, billingAddress, paymentIntentId })).unwrap();
-        setSaveSuccess(true);
-        setSaveError(null);
+        if (sessionToken) {
+          const paymentIntentId = clientSecret.split('_secret')[0];
+          await dispatch(saveAddressData({ shippingAddress, billingAddress, paymentIntentId })).unwrap();
+          setSaveSuccess(true);
+          setSaveError(null);
+        } else {
+          console.error('Session token missing for saving address data');
+          setSaveError('Session token missing');
+        }
       } catch (saveError) {
         setSaveError(saveError.message);
       }
@@ -65,29 +81,51 @@ const PaymentPage = () => {
   };
 
   return (
-    <Container>
-      <Row>
-        <Col>
+    <Container className="payment-container">
+      <Row className="payment-row">
+        <Col className="hero-section">
+          <Hero />
+        </Col>
+        <Col className="payment-col">
           <Elements stripe={stripe} options={{ clientSecret, appearance: { theme: 'stripe' } }}>
             <ElementsConsumer>
               {({ stripe, elements }) => (
-                <Form onSubmit={handleSubmit}>
-                  <h2>Payment</h2>
-                  <PaymentElement />
-                  
-                  <h3>Shipping Address</h3>
-                  <AddressForm showBilling={!useBillingAddress}/>
+                <Form className="payment-form" onSubmit={handleSubmit}>
+                  <h2 className="payment-title">Payment</h2>
+                  {/* Display Cart Information */}
+                  <h3 className="payment-title">Your Order</h3>
+                  <ListGroup variant="flush">
+                    {cartItems.map(item => (
+                      <ListGroup.Item key={item.id}>
+                        <Row>
+                          <Col>{item.name || item.id}</Col> {/* Provide a name if available, otherwise use id */}
+                          <Col>Quantity: {item.quantity}</Col>
+                          <Col>Price: ${item.price.toFixed(2)}</Col>
+                        </Row>
+                      </ListGroup.Item>
+                    ))}
+                  </ListGroup>
+                  <h4 className="payment-title">Subtotal: ${subTotal.toFixed(2)}</h4>
+
+                  <Col className="payment-element-col">
+                    <PaymentElement />
+                  </Col>  
+                  <h3 className="payment-title">Shipping Address</h3>
+                  <AddressForm showBilling={!useBillingAddress} />
                   
                   {saveError && <Alert variant="danger">{saveError}</Alert>}
                   {saveSuccess && <Alert variant="success">Address saved successfully!</Alert>}
                   
-                  <Button type="submit" disabled={!stripe || isLoading}>
+                  <Button className="payment-btn" type="submit" disabled={!stripe || isLoading}>
                     Pay
                   </Button>
                 </Form>
               )}
             </ElementsConsumer>
           </Elements>
+        </Col>
+        <Col className="footer-col">
+          <Footer />
         </Col>
       </Row>
     </Container>

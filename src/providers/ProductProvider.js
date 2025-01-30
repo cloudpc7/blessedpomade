@@ -1,68 +1,102 @@
 import { useState, useEffect } from 'react';
 import ProductContext from '../ProductContext';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCartQuantity, cartQuantity, createPaymentIntent } from '../components/stripeSlice';
+import { 
+    addToCart as addToCartAction, 
+    removeFromCart as removeFromCartAction, 
+    updateQuantity as updateQuantityAction, 
+    updateQuantityAsync,
+    addToCartAsync,
+    removeFromCartAsync,
+    fetchCart
+} from '../utils/cartSlice'; 
 import { useNavigate } from 'react-router-dom';
+import { createPaymentIntent, fetchStripeApiKey } from '../components/stripeSlice';
 
 const ProductProvider = ({ children }) => {
-    const [cartCount, setCartCount] = useState(0);
-    const [subTotal, setSubTotal] = useState(0);
-    const [view, setView] = useState('product');
-    const [check, setCheck] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const selectQuantity = useSelector(selectCartQuantity);
+
+    // Use Redux state instead of local state
+    const cartCount = useSelector(state => state.cart.count);
+    const cartItems = useSelector(state => state.cart.items);
+    const [view, setView] = useState('product');
+    const [check, setCheck] = useState(false);
+    const [isProcessingPayment, setIsProcessingPayment] = useState(false); // New state to track payment processing
     const productPrice = 13.99;
+    const sessionToken = useSelector(state => state.session.sessionToken);
+    // Calculate subtotal based on cart items
+    const subTotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+    console.log(sessionToken);
 
     useEffect(() => {
-      dispatch(cartQuantity(cartCount));
-    }, [dispatch, cartCount]);
+        if(sessionToken) {
+            dispatch(fetchCart()).catch(error => {
+                console.error('Error fetching cart:', error);
+            })
+        }
+        // Ensure fetchCart is not called twice if sessionToken exists
+        else {
+            dispatch(fetchCart());
+        }
+    }, [dispatch, sessionToken]);
 
-    useEffect(() => {
-      const storedCartCount = localStorage.getItem('cartCount');
-      if (storedCartCount) {
-        setCartCount(JSON.parse(storedCartCount));
-      }
-    }, []);
-
-    useEffect(() => {
-      localStorage.setItem('cartCount', JSON.stringify(cartCount));
-    }, [cartCount]);
-
-    const addToCart = () => {
-        setCartCount((prev) => prev + 1);
+    const addToCart = (event, itemData) => {
+        event.preventDefault();
+        const payload = {
+            item: itemData,
+            sessionToken: sessionToken
+        };
+        dispatch(addToCartAction(itemData)); // Dispatch the item data to Redux
+        dispatch(addToCartAsync(payload));  // Sync with backend
     };
 
-    const localHandleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        handleSubmit();
-    }
-
-    const handleSubmit = async () => {
+        if (isProcessingPayment) return; // Prevent multiple submissions
+        setIsProcessingPayment(true); // Set processing flag
+        
         try {
+            // Fetch Stripe key first
+            await dispatch(fetchStripeApiKey()).unwrap();
             const amountInCents = Math.round(subTotal * 100);
             await dispatch(createPaymentIntent(amountInCents)).unwrap();
             navigate('/payment');
         } catch (error) {
-            console.error('Failed to create payment intent:', error);
+            console.error('Payment process error:', error);
+        } finally {
+            setIsProcessingPayment(false); // Reset processing flag
+        }
+    };
+
+    const handleIncrement = (itemId) => {
+        const item = cartItems.find(i => i.id === itemId);
+        if (item) {
+            const newQuantity = item.quantity + 1;
+            dispatch(updateQuantityAction({ id: itemId, quantity: newQuantity }));
+            dispatch(updateQuantityAsync({ itemId: itemId, quantity: newQuantity }));  // Pass object with itemId and quantity
+        } else {
+            console.error('Item not found in cart:', itemId);
+        }
+    };
+    
+    const handleDecrement = (itemId) => {
+        const item = cartItems.find(i => i.id === itemId);
+        if (item) {
+            if (item.quantity > 1) {
+                const newQuantity = item.quantity - 1;
+                dispatch(updateQuantityAction({ id: itemId, quantity: newQuantity }));
+                dispatch(updateQuantityAsync({ itemId: itemId, quantity: newQuantity }));  // Pass object with itemId and quantity
+            } else if (item.quantity === 1) {
+                dispatch(removeFromCartAction(itemId));
+                dispatch(removeFromCartAsync(itemId));  // This already takes only itemId
+            }
+        } else {
+            console.error('Item not found in cart:', itemId);
         }
     };
 
     const handleGoBack = () => setView('product');
-
-    const handleIncrement = () => {
-        setCartCount(prev => prev + 1);
-    };
-
-    const handleDecrement = () => {
-        if (cartCount > 0) {
-            setCartCount(prev => prev - 1);
-        }
-    };
-
-    useEffect(() => {
-        setSubTotal(cartCount * productPrice);
-    }, [cartCount]);
 
     const contextValue = {
         view,
@@ -72,17 +106,18 @@ const ProductProvider = ({ children }) => {
         subTotal, 
         handleDecrement, 
         handleIncrement, 
-        localHandleSubmit,
+        handleSubmit,
         handleGoBack,
         check,
-        setCheck
-    }
+        setCheck,
+        isProcessingPayment // Optionally expose this if needed in child components
+    };
 
     return (
         <ProductContext.Provider value={contextValue}>
             {children}
         </ProductContext.Provider>
     );
-}
+};
 
 export default ProductProvider;

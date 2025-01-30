@@ -2,41 +2,54 @@
 @use '../../variables/utillities/utils.scss' as util;
 @use '../../variables/fonts/fonts.scss'as font;
 .welcome-container {
+    display: grid;
+    padding: 0;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
     .welcome-content {
         display: grid;
         grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, minmax(min-content, max-content));
         gap: 2rem;
+        text-align: center;
         padding: 1rem;
-        @media (min-width: 992px) {
+
+        @media (min-width: 48rem) {
+            padding: 1.5rem;
+        }
+
+        @media (min-width: 62rem) {
             grid-template-columns: 1fr 1fr;
             align-items: start;
+            padding: 2rem;
         }
 
         .welcome-title {
             text-align: center;
             margin: 0;
-            max-width: 80%;
+            max-width: 65%;
             margin: 0 auto;
             color: colors.colorTheme(burntOrange);
-            @media (min-width: 576px) {
-                max-width: 65%;
+            @media (min-width: 36rem) {
+                max-width: 55%;
             }
-            @media (min-width: 768px) {
-                max-width: 100%;
-            }
-            @media (min-width: 992px) {
+            @media (min-width: 62rem) {
                 grid-column: 1 / -1;
-                align-self: start;
                 justify-self: center;
-                margin: 0;
+                max-width: 100%;
             }
         }
 
         .welcome-statement {
-            grid-column: 1 / span 2;
-            @media (min-width: 992px) {
+            display: grid;
+            gap: 1rem;
+            justify-content: center;
+            text-align: start;
+            @media (min-width: 62rem) {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                grid-column: 1 / span 2;
                 gap: 1rem;
             }
 
@@ -45,7 +58,6 @@
             }
 
             .statement-left {
-                margin-bottom: 1rem;
                 letter-spacing: 0.1em;
                 @media (min-width: 992px) {
                     margin-bottom: 0;

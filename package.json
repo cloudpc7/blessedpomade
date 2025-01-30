@@ -40,13 +40,11 @@
     "validator": "^13.12.0",
     "yup": "^1.6.1"
   },
-  "proxy": "http://localhost:5001/blessedpomade/us-central1/api/",
   "scripts": {
-    "serve": "firebase emulators:start --only functions",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test"
+    "deploy:app": "firebase deploy --only hosting",
+    "deploy:functions": "cd functions && npm run deploy",
+    "deploy": "npm run build && firebase deploy"
   },
   "browserslist": {
     "production": [

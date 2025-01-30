@@ -6,7 +6,8 @@ body {
     box-sizing: border-box;
     @include font.font-theme(default);
     font-size: font.get-font-size('p', 'xs');
-
+    overflow-x:hidden;
+    overflow-y:auto;
     h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
         @include font.font-theme(title);
         @include font.responsive-font-size('h1');

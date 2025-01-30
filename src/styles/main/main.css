@@ -70,6 +70,8 @@ body {
   box-sizing: border-box;
   font-family: "League Gothic", serif;
   font-size: 1rem;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 body h1, body .h1, body h2, body .h2, body h3, body .h3, body h4, body .h4, body h5, body .h5, body h6, body .h6 {
   font-family: "trajan-pro-3", serif;

@@ -1,25 +1,111 @@
 @use '../variables/fonts/fonts.scss' as font;
 @use '../variables/colors/colors.scss' as colors;
 @use '../variables/utillities/utils.scss' as util;
-@media (min-width: 90rem) {
-    .hero-section {
-        height: 100vh;
-        overflow: hidden;
-        .card {
-            height: 100%;
-            .card-img {
+
+.payment-container {
+    padding: 0;
+    .payment-row {
+        flex-direction: column;
+        gap: 1rem;
+
+        .payment-col {
+            width: 100%;
+            .payment-form {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                background-color: colors.colorTheme(appWhite);
+                align-items: center;
+                justify-content: center;
+                padding: 1rem;
+                gap: 1rem;
+                .payment-title {
+                    @include util.text-style(1.5rem, bold, colors.colorTheme(appBlack));
+                    text-align: center;
+                }
+
+                .payment-element-col {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    background-color: colors.colorTheme(appWhite);
+                    border-radius: 10px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    align-items: center;
+                    justify-content: center;
+                    padding: 1rem;
+                    gap: 1rem;
+                }
+
+                .StripeElement {
+                    width: 100%; 
+                    display: flex; 
+                    flex-direction: column;
+                    background-color: colors.colorTheme(inputBackground);
+                    border: 1px solid colors.colorTheme(appDarkGrey);
+                    border-radius: 4px;
+                    padding: 1rem;
+                    gap: 1rem;
+                    &:focus {
+                        outline: none;
+                        border-color: colors.colorTheme(inputBorderFocus);
+                    }
+                }
+
+                .payment-btn {
+                   @include util.payment-button();
+                }
+            }
+
+            .address-container {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                background-color: colors.colorTheme(appWhite);
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                align-items: center;
+                justify-content: center;
+                padding: 1rem;
+                gap: 1rem;
+        
+                .StripeElement {
+                    width: 100%; 
+                    display: flex; 
+                    flex-direction: column;
+                    background-color: colors.colorTheme(inputBackground);
+                    padding: 1rem;
+                    gap: 1rem;
+                    &:focus {
+                        outline: none;
+                        border-color: colors.colorTheme(inputBorderFocus);
+                    }
+                }
+            }
+        }
+
+        .footer-col {
+            
+        }
+    }
+
+    @media (min-width: 90rem) {
+        .hero-section {
+            height: 100vh;
+            overflow: hidden;
+            .card {
                 height: 100%;
-                object-fit: cover;
+                .card-img {
+                    height: 100%;
+                    object-fit: cover;
+                }
             }
         }
     }
-}
-
-.hero-section {
-    @include util.section-style;
-   
-    .col {
-        padding: 0;
+    
+    .hero-section {
+        @include util.section-style;
+        
         .card {
             @include util.card-style;
             .card-img {
@@ -27,10 +113,19 @@
             }
             .card-img-overlay {
                 @include util.card-img-overlay-style;
+                display: grid;
                 grid-template-rows: repeat(2, minmax(min-content, max-content)); 
-                grid-template-columns: repeat(2, minmax(min-content, max-content)); 
+                grid-template-columns: repeat(2, minmax(min-content, max-content));
+                overflow: hidden;
+
                 .call-action {
-                   @include util.call-action();
+                    @include util.call-action();
+                    grid-column: 3;
+                    grid-row: 1;
+                    align-self: center;
+                    justify-self: end;
+                    z-index: 1050;
+                    margin: 0;
                 }
 
                 .card-title {
@@ -45,6 +140,50 @@
                     .card-text {
                         @include util.text-style(1rem, normal, colors.colorTheme(appWhite)); 
                         padding: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 62rem) {
+    .hero-section {
+        .card {
+            .card-img-overlay {
+                .call-action {
+                    @include util.call-action();
+                }
+                .call-action-container {
+                    grid-row: 1 / 3;
+                    grid-column: 1 / 3;
+                    display: grid;
+                    place-items: center; 
+                    align-content: center; 
+                    justify-content: center;
+                    
+                    .call-action-title {
+                        color: colors.colorTheme(appWhite);
+                        margin: 0;
+                        max-width: 25%;
+                        position: absolute;
+                        top: 25%;
+                        left: 25%;
+                        transform: translate(-50%, -50%);
+                        transform: translate(calc(-50% + 10vw), calc(-50% - 5vh));
+                        font-size: 2.25rem;
+
+                        @media (min-width: 90rem) {
+                            font-size: 3rem;
+                        }
+
+                        cursor: pointer;
+                        .blessed-title {
+                            color: colors.colorTheme(appWhite);
+                        }
+                        .blessed {
+                            color: colors.colorTheme(burntOrange);
+                        }
                     }
                 }
             }

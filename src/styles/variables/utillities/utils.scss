@@ -62,7 +62,7 @@ $global-gutter-widths: (
     padding: 0.3125rem 0.875rem;
     letter-spacing: 0.08em;
     max-width: 10rem;
-    max-height: 3.5rem;
+    max-height: 3rem;
     width: 100%;
     height: 100%;
     margin-top: 1rem;
@@ -115,6 +115,32 @@ $global-gutter-widths: (
     border: none;
     padding: 0.5rem 1.25rem;
     margin-bottom: 1rem;
+    &:hover {
+        background-color: colors.colorTheme(burntOrange);
+        color: colors.colorTheme(appWhite);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    &:active {
+        background-color: darken(colors.colorTheme(burntOrange), 10%);
+        transform: translateY(0) scale(0.98);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+}
+
+@mixin payment-button {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-width: 14rem;
+    width: 100%;
+    align-self: center;
+    justify-self: center;
+    background-color: colors.colorTheme(appBlack);
+    color: colors.colorTheme(appWhite);
+    border: none;
+    padding: 0.5rem 1.25rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    letter-spacing: 0.1em;
     &:hover {
         background-color: colors.colorTheme(burntOrange);
         color: colors.colorTheme(appWhite);

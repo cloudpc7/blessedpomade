@@ -9,10 +9,10 @@ import { Tooltip } from 'reactstrap';
 import '../styles/header/header.scss';
 import { useContext } from 'react';
 import ProductContext from '../ProductContext';
-
+import { Navigate, useNavigate } from 'react-router-dom';
 library.add(fas);
 const Header = () => {
-
+    const navigate = useNavigate();
     const {cartCount} = useContext(ProductContext);
     const [home, setHome] = useState(false);
     const [shop, setShop] = useState(false);
@@ -45,7 +45,7 @@ const Header = () => {
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <Nav className="navbar-nav"> 
-                            <Nav.Link  href="/" className="link" alt="home"> 
+                            <Nav.Link  onClick={() => Navigate('/')} className="link" alt="home"> 
                                 <FontAwesomeIcon id="home" icon="fa-house" size="2x" /> 
                                 <Tooltip
                                     placement="bottom"
@@ -57,7 +57,7 @@ const Header = () => {
                                     Home
                                 </Tooltip>
                             </Nav.Link>
-                            <Nav.Link id="shop" href="/" className="link shop" alt="shop"> 
+                            <Nav.Link id="shop" onClick={() => navigate('/shop')} className="link shop" alt="shop"> 
                                 shop
                                 <Tooltip
                                     placement="bottom"
@@ -69,7 +69,7 @@ const Header = () => {
                                     shop
                                 </Tooltip>
                             </Nav.Link>
-                            <Nav.Link id="cart" href="/" className="link" alt="shopping cart"> 
+                            <Nav.Link id="cart" onClick={() => navigate('/cart')} className="link" alt="shopping cart"> 
                                 <FontAwesomeIcon icon="fa-cart-shopping" size="2x" />
                                 <span className="cart-count">{cartCount}</span>
                                 <Tooltip
@@ -82,7 +82,7 @@ const Header = () => {
                                     shopping cart
                                 </Tooltip> 
                             </Nav.Link>
-                            <Nav.Link id="phone" href="/" className="link" alt="phone"> 
+                            <Nav.Link id="phone" onClick={() => navigate('/phone')} className="link" alt="phone"> 
                                 <FontAwesomeIcon icon="fa-phone" size="2x" /> 
                                 <Tooltip
                                     placement="bottom"
@@ -94,7 +94,7 @@ const Header = () => {
                                     phone
                                 </Tooltip>
                             </Nav.Link>
-                            <Nav.Link id="mail" href="/" className="link" alt="mail"> 
+                            <Nav.Link id="mail" onClick={() => navigate('/mail')} className="link" alt="mail"> 
                                 <FontAwesomeIcon icon="fa-envelope" size="2x" /> 
                                 <Tooltip
                                     placement="bottom"
@@ -108,7 +108,7 @@ const Header = () => {
                             </Nav.Link>
                             <Nav.Link  
                                 id="instagram" 
-                                href="https://instagram.com" 
+                                onClick={() => navigate('https://instagram.com')}
                                 className="link" 
                                 alt="instagram"
                             > 

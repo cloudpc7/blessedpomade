@@ -29,6 +29,10 @@
         .col {
             padding: 0;
         }
+
+        @media (min-width: 62rem) {
+            padding: 1rem;
+        }
     }
 
     .hero-section, .footer-section {
