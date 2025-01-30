@@ -14,7 +14,7 @@ const SessionProvider = ({ children }) => {
     const fetchSession = async () => {
       dispatch(setLoading(true));
       try {
-        const response = await axios.get('/session', {
+        const response = await axios.get('https://us-central1-blessedpomade.cloudfunctions.net/api/sessions', {
           headers: sessionToken ? { 'Session-Token': sessionToken } : {}
         });
 

@@ -58,7 +58,7 @@ export const sessionSliceReducer = sessionSlice.reducer;
 // Action to fetch session status from the server
 export const fetchSessionStatus = createAsyncThunk('session/fetchSessionStatus', async (_, { getState, dispatch }) => {
     try {
-        const response = await fetch('https://us-central1-blessedpomade.cloudfunctions.net/api/session', {
+        const response = await fetch('https://us-central1-blessedpomade.cloudfunctions.net/api/sessions', {
             headers: {
                 'Session-Token': getState().session.sessionToken
             },

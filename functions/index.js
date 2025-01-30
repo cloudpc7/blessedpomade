@@ -64,7 +64,7 @@ app.use(async (req, res, next) => {
 });
 
 // Check session status
-app.get('/session', async (req, res) => {
+app.get('/sessions', async (req, res) => {
   try {
     const session = await db.collection('sessions').doc(req.sessionToken).get();
     if (session.exists) {

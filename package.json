@@ -41,6 +41,7 @@
     "yup": "^1.6.1"
   },
   "scripts": {
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "deploy:app": "firebase deploy --only hosting",
     "deploy:functions": "cd functions && npm run deploy",
