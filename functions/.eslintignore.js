@@ -1,3 +1,0 @@
-//#endregion
-index.js
-/functions

@@ -10,7 +10,6 @@ import { useContext } from 'react';
 import ProductContext from '../../ProductContext';
 
 const PomadeSale = ({ showModal, onClose }) => {
-  
   const { 
     view,
     setView,
@@ -19,7 +18,7 @@ const PomadeSale = ({ showModal, onClose }) => {
     subTotal, 
     handleDecrement, 
     handleIncrement, 
-    localhandleSubmit,
+    handleSubmit, // Changed from localhandleSubmit to handleSubmit
     handleGoBack,
     check,
     setCheck
@@ -39,6 +38,16 @@ const PomadeSale = ({ showModal, onClose }) => {
     leave: { opacity: 0, transform: 'translateX(100%)' },
     config: { mass: 1, tension: 280, friction: 60 },
   });
+
+  const handleAddToCart = (event) => {
+    event.preventDefault();
+    const itemData = {
+      id: 'pomade', // Assuming this is the ID for your pomade product
+      price: 13.99, 
+      quantity: 1  
+    };
+    addToCart(event, itemData);
+  };
 
   return transitions((styles, item) => item && (
     <Modal 
@@ -85,7 +94,7 @@ const PomadeSale = ({ showModal, onClose }) => {
                         <Button 
                           type="button" 
                           className="cart-btn"
-                          onClick={() => setView('cart')}
+                          onClick={goToCart} // Use goToCart to switch views
                         >
                           Go to Cart
                         </Button> 
@@ -104,7 +113,7 @@ const PomadeSale = ({ showModal, onClose }) => {
                       <p className="product-price">$13.99</p>
                       <Button 
                         className="product-btn"
-                        onClick={addToCart}
+                        onClick={handleAddToCart} // Use the new handleAddToCart function
                       >
                         Add to Cart
                       </Button>
@@ -137,7 +146,7 @@ const PomadeSale = ({ showModal, onClose }) => {
                     <div className="cart-item quantity-control">
                       <Button 
                         variant="outline-secondary" 
-                        onClick={handleDecrement} 
+                        onClick={() => handleDecrement('pomade')} // Pass the item ID
                         className="quantity-btn"
                       >
                         <FontAwesomeIcon icon={faMinus} />
@@ -145,13 +154,13 @@ const PomadeSale = ({ showModal, onClose }) => {
                       <span className="cart-count">{cartCount}</span>
                       <Button 
                         variant="outline-secondary" 
-                        onClick={handleIncrement} 
+                        onClick={() => handleIncrement('pomade')} // Pass the item ID
                         className="quantity-btn"
                       >
                         <FontAwesomeIcon icon={faPlus} />
                       </Button>
                     </div>
-                    <Form className="cart-form">
+                    <Form className="cart-form" onSubmit={handleSubmit}>
                       <Form.Check 
                         label={
                           <a href="/terms" className="term-link">Accept terms and conditions</a>
@@ -165,8 +174,7 @@ const PomadeSale = ({ showModal, onClose }) => {
                       <div className="cart-buttons">
                         <Button 
                           className="cart-btn"
-                          onClick={localhandleSubmit}
-                          type="submit"
+                          type="submit" 
                           disabled={!check}
                         >
                           Checkout

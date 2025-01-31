@@ -1,5 +1,5 @@
 import { Container, Navbar, Nav, Offcanvas, Image } from 'react-bootstrap';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -13,7 +13,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 library.add(fas);
 const Header = () => {
     const navigate = useNavigate();
-    const {cartCount} = useContext(ProductContext);
+    const { goToCart, cartCount} = useContext(ProductContext);
     const [home, setHome] = useState(false);
     const [shop, setShop] = useState(false);
     const [cart, setCart] = useState(false);
@@ -53,11 +53,12 @@ const Header = () => {
                                     target="home"
                                     toggle={toggleHome}
                                     className="custom-tooltip"
+                                    transition={{ timeout: 300}}
                                 >
                                     Home
                                 </Tooltip>
                             </Nav.Link>
-                            <Nav.Link id="shop" onClick={() => navigate('/shop')} className="link shop" alt="shop"> 
+                            <Nav.Link id="shop" href="#cart-section"  className="link shop" alt="shop"> 
                                 shop
                                 <Tooltip
                                     placement="bottom"
@@ -65,11 +66,12 @@ const Header = () => {
                                     target="shop"
                                     toggle={toggleShop}
                                     className="custom-tooltip"
+                                    transition={{ timeout: 300}}
                                 >
                                     shop
                                 </Tooltip>
                             </Nav.Link>
-                            <Nav.Link id="cart" onClick={() => navigate('/cart')} className="link" alt="shopping cart"> 
+                            <Nav.Link id="cart" href="#cart-section" onClick={goToCart} className="link" alt="shopping cart"> 
                                 <FontAwesomeIcon icon="fa-cart-shopping" size="2x" />
                                 <span className="cart-count">{cartCount}</span>
                                 <Tooltip
@@ -78,11 +80,12 @@ const Header = () => {
                                     target="cart"
                                     toggle={toggleCart}
                                     className="custom-tooltip"
+                                    transition={{ timeout: 300}}
                                 >
                                     shopping cart
                                 </Tooltip> 
                             </Nav.Link>
-                            <Nav.Link id="phone" onClick={() => navigate('/phone')} className="link" alt="phone"> 
+                            <Nav.Link id="phone" href="tel:+9515028296" className="link" alt="phone"> 
                                 <FontAwesomeIcon icon="fa-phone" size="2x" /> 
                                 <Tooltip
                                     placement="bottom"
@@ -90,11 +93,12 @@ const Header = () => {
                                     target="phone"
                                     toggle={togglePhone}
                                     className="custom-tooltip"
+                                    transition={{ timeout: 300}}
                                 >
                                     phone
                                 </Tooltip>
                             </Nav.Link>
-                            <Nav.Link id="mail" onClick={() => navigate('/mail')} className="link" alt="mail"> 
+                            <Nav.Link id="mail" href="mailto:alex.85marroquin@gmail.com" className="link" alt="mail"> 
                                 <FontAwesomeIcon icon="fa-envelope" size="2x" /> 
                                 <Tooltip
                                     placement="bottom"
@@ -102,6 +106,7 @@ const Header = () => {
                                     target="mail"
                                     toggle={toggleMail}
                                     className="custom-tooltip"
+                                    transition={{ timeout: 300}}
                                 >
                                     email
                                 </Tooltip>
@@ -119,6 +124,7 @@ const Header = () => {
                                     target="instagram"
                                     toggle={toggleInstagram}
                                     className="custom-tooltip"
+                                    transition={{ timeout: 300}}
                                 >
                                     instagram
                                 </Tooltip>

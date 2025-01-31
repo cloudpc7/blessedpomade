@@ -37,15 +37,23 @@
     "reactstrap": "^9.2.3",
     "redux-persist": "^6.0.0",
     "stripe": "^17.5.0",
+    "uuid": "^11.0.5",
     "validator": "^13.12.0",
     "yup": "^1.6.1"
   },
+  "proxy": "http://127.0.0.1:5001/blessedpomade/us-central1/api",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "test": "react-scripts test",
     "deploy:app": "firebase deploy --only hosting",
     "deploy:functions": "cd functions && npm run deploy",
-    "deploy": "npm run build && firebase deploy"
+    "deploy": "npm run build && firebase deploy",
+    "emulators:start": "firebase emulators:start",
+    "emulators:export": "firebase emulators:export ./emulator-data",
+    "emulators:import": "firebase emulators:import ./emulator-data",
+    "emulator:deploy": "npm run build && firebase deploy --only hosting,functions --project your-test-project-id",
+    "predeploy": "npm run build"
   },
   "browserslist": {
     "production": [

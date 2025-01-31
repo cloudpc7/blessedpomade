@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { stripeReducer } from '../../components/stripeSlice';
-import { sessionSliceReducer } from '../../utils/sessionSlice';
-import { appSliceReducer } from '../../utils/appSlice';
 import { cartReducer } from '../../utils/cartSlice';
+import sessionStorage from 'redux-persist/es/storage/session';
+import { userSliceReducer } from '../../utils/userSlice';
 import {
   persistStore,
   persistReducer,
@@ -18,20 +18,19 @@ import storage from 'redux-persist/lib/storage';
 const persistConfig = {
   key: 'root',
   version: 1,
-  storage,
-  // You can specify which reducers to persist
-  whitelist: ['stripe'] // Only persist the 'stripe' slice
+  storage:sessionStorage,
+  whitelist: ['stripe', 'cart', 'user']
 };
 
 // Wrapping the reducer with persistReducer
 const persistedStripeReducer = persistReducer(persistConfig, stripeReducer);
-
+const persistedCartReducer = persistReducer(persistConfig, cartReducer);
+const persistedUserReducer = persistReducer(persistConfig, userSliceReducer);
 export const store = configureStore({
   reducer: {
     stripe: persistedStripeReducer, 
-    session: sessionSliceReducer,
-    app: appSliceReducer,
-    cart: cartReducer,
+    cart: persistedCartReducer,
+    user: persistedUserReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

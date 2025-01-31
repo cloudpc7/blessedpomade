@@ -23,9 +23,8 @@ const PaymentPage = () => {
   const [useBillingAddress, setUseBillingAddress] = useState(false); 
   const shippingAddress = useSelector(state => state.stripe.shippingAddress);
   const billingAddress = useSelector(state => state.stripe.billingAddress);
-  const sessionToken = useSelector(state => state.session.sessionToken);
   const cartItems = useSelector(state => state.cart.items);
-  const subTotal = useSelector(state => state.cart.total); // Assuming total is calculated in cart slice
+  const subTotal = useSelector(state => state.cart.total);
 
   useEffect(() => {
     if (stripeKey) {
@@ -35,15 +34,9 @@ const PaymentPage = () => {
 
   useEffect(() => {
     if (!clientSecret && paymentStatus === 'idle') {
-      if (sessionToken) {
-        // Use session token from Redux state to create payment intent
-        dispatch(createPaymentIntent(Math.round(subTotal * 100))); // Use dynamic total from cart
-      } else {
-        console.error('No session token available for payment intent');
-        // Handle by redirecting or showing an error message
-      }
+      dispatch(createPaymentIntent(Math.round(subTotal * 100))); // Use dynamic total from cart
     }
-  }, [clientSecret, paymentStatus, dispatch, sessionToken, subTotal]);
+  }, [clientSecret, paymentStatus, dispatch, subTotal]);
 
   if (!stripeKey || isLoading) {
     return <LoadingSpinner />; 
@@ -65,15 +58,10 @@ const PaymentPage = () => {
       console.error(error.message);
     } else {
       try {
-        if (sessionToken) {
-          const paymentIntentId = clientSecret.split('_secret')[0];
-          await dispatch(saveAddressData({ shippingAddress, billingAddress, paymentIntentId })).unwrap();
-          setSaveSuccess(true);
-          setSaveError(null);
-        } else {
-          console.error('Session token missing for saving address data');
-          setSaveError('Session token missing');
-        }
+        const paymentIntentId = clientSecret.split('_secret')[0];
+        await dispatch(saveAddressData({ shippingAddress, billingAddress, paymentIntentId })).unwrap();
+        setSaveSuccess(true);
+        setSaveError(null);
       } catch (saveError) {
         setSaveError(saveError.message);
       }
@@ -92,13 +80,12 @@ const PaymentPage = () => {
               {({ stripe, elements }) => (
                 <Form className="payment-form" onSubmit={handleSubmit}>
                   <h2 className="payment-title">Payment</h2>
-                  {/* Display Cart Information */}
                   <h3 className="payment-title">Your Order</h3>
                   <ListGroup variant="flush">
                     {cartItems.map(item => (
                       <ListGroup.Item key={item.id}>
                         <Row>
-                          <Col>{item.name || item.id}</Col> {/* Provide a name if available, otherwise use id */}
+                          <Col>{item.name || item.id}</Col>
                           <Col>Quantity: {item.quantity}</Col>
                           <Col>Price: ${item.price.toFixed(2)}</Col>
                         </Row>
@@ -111,8 +98,7 @@ const PaymentPage = () => {
                     <PaymentElement />
                   </Col>  
                   <h3 className="payment-title">Shipping Address</h3>
-                  <AddressForm showBilling={!useBillingAddress} />
-                  
+                    <AddressForm showBilling={!useBillingAddress} />
                   {saveError && <Alert variant="danger">{saveError}</Alert>}
                   {saveSuccess && <Alert variant="success">Address saved successfully!</Alert>}
                   

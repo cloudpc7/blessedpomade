@@ -11,7 +11,6 @@ import '../styles/home/contact/contact.scss';
 const Contact = () => {
     const handleSubmit = async (values) => {
         // Assuming you're sending data to a server
-        console.log(values);
         try {
             // Here you could implement logic to send form data to an API
             // await fetch('/api/send-email', {

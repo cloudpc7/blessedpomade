@@ -1,19 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchStripeApiKey = createAsyncThunk('stripe/fetchStripeApiKey', async (_, { getState, rejectWithValue }) => {
-  const { session } = getState();
-  const sessionToken = session.sessionToken;
-  console.log(sessionToken);
-  if (!sessionToken) {
-    return rejectWithValue('Session token required for fetching Stripe key');
-  }
-
+export const fetchStripeApiKey = createAsyncThunk('stripe/fetchStripeApiKey', async (_, { rejectWithValue }) => {
   try {
     const response = await fetch('https://us-central1-blessedpomade.cloudfunctions.net/api/stripe-key', {
       method: 'GET',
-      headers: {
-        'Session-Token': sessionToken
-      },
     });
     
     if (!response.ok) {
@@ -29,20 +19,12 @@ export const fetchStripeApiKey = createAsyncThunk('stripe/fetchStripeApiKey', as
   }
 });
 
-export const createPaymentIntent = createAsyncThunk('https://us-central1-blessedpomade.cloudfunctions.net/api/create-payment-intent', async (amount, { getState, rejectWithValue }) => {
-  const { session } = getState();
-  const sessionToken = session.sessionToken;
-  console.log(sessionToken);
-  if (!sessionToken) {
-    return rejectWithValue('Session token required for creating payment intent');
-  }
-
+export const createPaymentIntent = createAsyncThunk('stripe/createPaymentIntent', async (amount, { rejectWithValue }) => {
   try {
     const response = await fetch('https://us-central1-blessedpomade.cloudfunctions.net/api/create-payment-intent', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Session-Token': sessionToken
       },
       body: JSON.stringify({ amount }),
     });
@@ -63,20 +45,12 @@ export const createPaymentIntent = createAsyncThunk('https://us-central1-blessed
 
 export const saveAddressData = createAsyncThunk(
   'stripe/saveAddressData',
-  async ({ shippingAddress, billingAddress, paymentIntentId }, { getState, rejectWithValue }) => {
-    const { session } = getState();
-    const sessionToken = session.sessionToken;
-
-    if (!sessionToken) {
-      return rejectWithValue('Session token required for saving address data');
-    }
-
+  async ({ shippingAddress, billingAddress, paymentIntentId }, { rejectWithValue }) => {
     try {
       const response = await fetch('https://us-central1-blessedpomade.cloudfunctions.net/api/save-address', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Session-Token': sessionToken
         },
         body: JSON.stringify({ shippingAddress, billingAddress, paymentIntentId }),
       });
@@ -131,7 +105,7 @@ const stripeSlice = createSlice({
       })
       .addCase(fetchStripeApiKey.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload; // Changed from action.error.message to action.payload
+        state.error = action.payload;
       })
       .addCase(createPaymentIntent.pending, (state) => {
         state.isLoading = true;

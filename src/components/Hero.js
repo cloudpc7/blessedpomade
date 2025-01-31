@@ -5,7 +5,7 @@ import Header from './Header';
 import pomadeLg from '../app/assets/images/hero-image.png';
 import { useSpring, animated, useTransition } from '@react-spring/web';
 import '../styles/payment/payment.scss';
-
+import PomadeSale from '../features/modals/PomadeSale';
 const Hero = () => {
     const [showCallToAction, setShowCallToAction] = useState(window.innerWidth >= 992);
     const [showModal, setShowModal] = useState(false);

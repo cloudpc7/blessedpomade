@@ -7,7 +7,7 @@ import { faShoppingCart, faPlus, faMinus } from '@fortawesome/free-solid-svg-ico
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import ProductContext from '../ProductContext';
-
+import { useEffect, useRef } from 'react';
 const PomadeProduct = () => {
     const { 
         view,
@@ -20,9 +20,22 @@ const PomadeProduct = () => {
         handleSubmit,
         handleGoBack,
         check,
-        setCheck
+        setCheck,
+        pomadeProductId,
+        goToCart,
+        // cartId, 
+        quantity,
+        // userId,
       } = useContext(ProductContext);
-
+    const cartRef = useRef(null);
+    useEffect(() => {
+        if (view === 'cart' && cartRef.current) {
+            // Use requestAnimationFrame for better performance, ensuring scroll happens after render
+            requestAnimationFrame(() => {
+                cartRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+            });
+        }
+    }, [view]);
     const transitions = useTransition(view, {
         key: view,
         from: { opacity: 0, transform: 'translateX(-100%)' },
@@ -34,15 +47,16 @@ const PomadeProduct = () => {
     const handleAddToCart = (event) => {
         event.preventDefault();
         const itemData = {
-            id: 'pomade', // Assuming 'pomade' is a unique identifier for this product
-            price: 13.99, // Price of the product
-            quantity: 1  // Quantity to add
+            id: pomadeProductId, 
+            product: 'Blessed Pomade',
+            price: 13.99, 
+            quantity: quantity  
         };
         addToCart(event, itemData);
     };
 
     return (
-        <Container className="product-container">
+        <Container id="cart-section" className="product-container">
             {transitions((styles, item) => (
                 <animated.div
                     className="animate-div"
@@ -87,6 +101,7 @@ const PomadeProduct = () => {
                                             className="product-btn"
                                             onClick={handleAddToCart}
                                             aria-label="Add Blessed Pomade to Cart"
+                                            type="button"
                                         >
                                             Add to Cart
                                         </Button>
