@@ -18,10 +18,13 @@ const PomadeSale = ({ showModal, onClose }) => {
     subTotal, 
     handleDecrement, 
     handleIncrement, 
-    handleSubmit, // Changed from localhandleSubmit to handleSubmit
+    handleCheckout,
     handleGoBack,
     check,
-    setCheck
+    setCheck,
+    pomadeProductId,
+    goToCart,
+    quantity,
   } = useContext(ProductContext);
 
   const transitions = useTransition(showModal, {
@@ -42,12 +45,18 @@ const PomadeSale = ({ showModal, onClose }) => {
   const handleAddToCart = (event) => {
     event.preventDefault();
     const itemData = {
-      id: 'pomade', // Assuming this is the ID for your pomade product
-      price: 13.99, 
-      quantity: 1  
+        id: pomadeProductId, 
+        product: 'Blessed Pomade',
+        price: 13.99, 
+        quantity: quantity  
     };
     addToCart(event, itemData);
-  };
+};
+
+const handleSubmit = (e) => {
+    e.preventDefault();
+    handleCheckout();
+}
 
   return transitions((styles, item) => item && (
     <Modal 
@@ -94,7 +103,7 @@ const PomadeSale = ({ showModal, onClose }) => {
                         <Button 
                           type="button" 
                           className="cart-btn"
-                          onClick={goToCart} // Use goToCart to switch views
+                          onClick={goToCart} 
                         >
                           Go to Cart
                         </Button> 
@@ -113,7 +122,7 @@ const PomadeSale = ({ showModal, onClose }) => {
                       <p className="product-price">$13.99</p>
                       <Button 
                         className="product-btn"
-                        onClick={handleAddToCart} // Use the new handleAddToCart function
+                        onClick={handleAddToCart} 
                       >
                         Add to Cart
                       </Button>

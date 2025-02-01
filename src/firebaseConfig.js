@@ -32,7 +32,6 @@ export const handleAnonymousSignIn = (dispatch) => {
   signInAnonymously(auth)
     .then((userCredential) => {
       const user = userCredential.user;
-      console.log("Anonymous user signed in:", user.uid);
       dispatch(setUser({
         uid: user.uid,
         isAnonymous: true,
@@ -47,13 +46,11 @@ export const handleAnonymousSignIn = (dispatch) => {
 };
 
 export const writeUserIdToDatabase = async (userId) => {
-  console.log('Attempting to write user ID:', userId);
   try {
     await setDoc(doc(db, "carts", userId), {
       userId: userId,
       createdAt: new Date()
     });
-    console.log(`User ID ${userId} written to database`);
   } catch (error) {
     console.error("Error writing user ID to database:", error);
   }

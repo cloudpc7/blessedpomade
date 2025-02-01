@@ -11,7 +11,7 @@
     "@react-google-maps/api": "^2.20.5",
     "@reduxjs/toolkit": "^2.5.0",
     "@stripe/react-stripe-js": "^3.1.1",
-    "@stripe/stripe-js": "^5.5.0",
+    "@stripe/stripe-js": "^5.6.0",
     "@use-gesture/react": "^10.3.1",
     "axios": "^1.7.9",
     "blessedpomade": "file:",
@@ -26,6 +26,8 @@
     "firebase-functions": "^6.3.0",
     "formik": "^2.4.6",
     "functions": "^1.0.9",
+    "helmet": "^8.0.0",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.7",
     "react-dom": "^18.2.0",
@@ -36,24 +38,16 @@
     "react-spring-carousel": "^2.0.19",
     "reactstrap": "^9.2.3",
     "redux-persist": "^6.0.0",
-    "stripe": "^17.5.0",
+    "stripe": "^17.4.0-beta.2",
     "uuid": "^11.0.5",
     "validator": "^13.12.0",
     "yup": "^1.6.1"
   },
-  "proxy": "http://127.0.0.1:5001/blessedpomade/us-central1/api",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "deploy:app": "firebase deploy --only hosting",
-    "deploy:functions": "cd functions && npm run deploy",
-    "deploy": "npm run build && firebase deploy",
-    "emulators:start": "firebase emulators:start",
-    "emulators:export": "firebase emulators:export ./emulator-data",
-    "emulators:import": "firebase emulators:import ./emulator-data",
-    "emulator:deploy": "npm run build && firebase deploy --only hosting,functions --project your-test-project-id",
-    "predeploy": "npm run build"
+    "deploy:app": "firebase deploy --only hosting"
   },
   "browserslist": {
     "production": [

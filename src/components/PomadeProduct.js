@@ -17,15 +17,13 @@ const PomadeProduct = () => {
         subTotal, 
         handleDecrement, 
         handleIncrement, 
-        handleSubmit,
+        handleCheckout,
         handleGoBack,
         check,
         setCheck,
         pomadeProductId,
         goToCart,
-        // cartId, 
         quantity,
-        // userId,
       } = useContext(ProductContext);
     const cartRef = useRef(null);
     useEffect(() => {
@@ -54,6 +52,11 @@ const PomadeProduct = () => {
         };
         addToCart(event, itemData);
     };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        handleCheckout();
+    }
 
     return (
         <Container id="cart-section" className="product-container">
@@ -179,7 +182,6 @@ const PomadeProduct = () => {
                                         <Button  
                                             className="cart-btn"
                                             type="submit"
-                                            disabled={!check}
                                             aria-label="Proceed to Checkout"
                                         >
                                             Checkout

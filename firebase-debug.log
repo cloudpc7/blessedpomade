@@ -1,0 +1,589 @@
+[debug] [2025-02-01T08:31:41.650Z] ----------------------------------------------------------------------
+[debug] [2025-02-01T08:31:41.653Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Cloud\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2025-02-01T08:31:41.653Z] CLI Version:   13.29.2
+[debug] [2025-02-01T08:31:41.654Z] Platform:      win32
+[debug] [2025-02-01T08:31:41.654Z] Node Version:  v22.9.0
+[debug] [2025-02-01T08:31:41.654Z] Time:          Sat Feb 01 2025 00:31:41 GMT-0800 (Pacific Standard Time)
+[debug] [2025-02-01T08:31:41.654Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-02-01T08:31:41.992Z] Object "/emulators/firestore" in "firebase.json" has unknown property: {"additionalProperty":"auto_download"}
+[debug] [2025-02-01T08:31:42.000Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-02-01T08:31:42.001Z] > authorizing via signed-in user (cloud@clouddropdesigns.com)
+[debug] [2025-02-01T08:31:42.196Z] java version "11.0.25" 2024-10-15 LTS
+[debug] [2025-02-01T08:31:42.197Z] 
+Java(TM) SE Runtime Environment 18.9 (build 11.0.25+9-LTS-256)
+Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.25+9-LTS-256, mixed mode)
+
+[debug] [2025-02-01T08:31:42.217Z] Parsed Java major version: 11
+[info] i  emulators: Starting emulators: auth, functions, firestore, database, hosting, extensions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, functions, firestore, database, hosting, extensions"}}
+[debug] [2025-02-01T08:31:42.220Z] Checked if tokens are valid: false, expires at: 1738314106242
+[debug] [2025-02-01T08:31:42.220Z] Checked if tokens are valid: false, expires at: 1738314106242
+[debug] [2025-02-01T08:31:42.221Z] > refreshing access token with scopes: []
+[debug] [2025-02-01T08:31:42.224Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-02-01T08:31:42.224Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-02-01T08:31:42.365Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2025-02-01T08:31:42.365Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[error] !!  extensions: Unable to look up project number for blessedpomade.
+ If this is a real project, ensure that you are logged in and have access to it.
+ If this is a fake project, please use a project ID starting with 'demo-' to skip production calls.
+ Continuing with a fake project number - secrets and other features that require production access may behave unexpectedly. {"metadata":{"emulator":{"name":"extensions"},"message":"Unable to look up project number for blessedpomade.\n If this is a real project, ensure that you are logged in and have access to it.\n If this is a fake project, please use a project ID starting with 'demo-' to skip production calls.\n Continuing with a fake project number - secrets and other features that require production access may behave unexpectedly."}}
+[debug] [2025-02-01T08:31:42.397Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-01T08:31:42.397Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-01T08:31:42.397Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-01T08:31:42.397Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-01T08:31:42.397Z] [database] Database Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-01T08:31:42.397Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-01T08:31:42.398Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"database":[{"address":"127.0.0.1","family":"IPv4","port":9000}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2025-02-01T08:31:42.411Z] [hub] writing locator at C:\Users\Cloud\AppData\Local\Temp\hub-blessedpomade.json
+[debug] [2025-02-01T08:31:42.424Z] [Extensions] Started Extensions emulator, this is a noop.
+[debug] [2025-02-01T08:31:42.430Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-01T08:31:42.430Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-01T08:31:42.430Z] [tasks] Cloud Tasks Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-01T08:31:42.430Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"database":[{"address":"127.0.0.1","family":"IPv4","port":9000}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"tasks":[{"address":"127.0.0.1","family":"IPv4","port":9499}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: apphosting, pubsub, storage, dataconnect {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mapphosting, pubsub, storage, dataconnect\u001b[22m"}}
+[debug] [2025-02-01T08:31:42.444Z] defaultcredentials: writing to file C:\Users\Cloud\AppData\Roaming\firebase\cloud_clouddropdesigns_com_application_default_credentials.json
+[debug] [2025-02-01T08:31:42.447Z] Setting GAC to C:\Users\Cloud\AppData\Roaming\firebase\cloud_clouddropdesigns_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\Cloud\\AppData\\Roaming\\firebase\\cloud_clouddropdesigns_com_application_default_credentials.json"}}
+[debug] [2025-02-01T08:31:42.448Z] Checked if tokens are valid: false, expires at: 1738314106242
+[debug] [2025-02-01T08:31:42.448Z] Checked if tokens are valid: false, expires at: 1738314106242
+[debug] [2025-02-01T08:31:42.448Z] > refreshing access token with scopes: []
+[debug] [2025-02-01T08:31:42.449Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-02-01T08:31:42.449Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-02-01T08:31:42.534Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2025-02-01T08:31:42.535Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2025-02-01T08:31:42.542Z] Failed to get Admin SDK config for blessedpomade, falling back to cache Failed to get Admin SDK for Firebase project blessedpomade. Please make sure the project exists and your account has permission to access it. {"name":"FirebaseError","children":[],"exit":2,"message":"Failed to get Admin SDK for Firebase project blessedpomade. Please make sure the project exists and your account has permission to access it.","original":{"name":"FirebaseError","children":[],"exit":1,"message":"Authentication Error: Your credentials are no longer valid. Please run \u001b[1mfirebase login --reauth\u001b[22m\n\nFor CI servers and headless environments, generate a new token with \u001b[1mfirebase login:ci\u001b[22m","status":500},"status":500}
+[debug] [2025-02-01T08:31:42.574Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-02-01T08:31:42.574Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[debug] [2025-02-01T08:31:42.574Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\Cloud\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.19.8.jar","--host","127.0.0.1","--port",8080,"--websocket_port",9150,"--project_id","blessedpomade","--rules","C:\\users\\cloud\\desktop\\projectportfolio\\blessedpomade\\blessedpomade\\firestore.rules","--single_project_mode",true,"--functions_emulator","127.0.0.1:5001"],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false,"shell":false,"port":8080} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\Cloud\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.19.8.jar\",\"--host\",\"127.0.0.1\",\"--port\",8080,\"--websocket_port\",9150,\"--project_id\",\"blessedpomade\",\"--rules\",\"C:\\\\users\\\\cloud\\\\desktop\\\\projectportfolio\\\\blessedpomade\\\\blessedpomade\\\\firestore.rules\",\"--single_project_mode\",true,\"--functions_emulator\",\"127.0.0.1:5001\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":8080}"}}
+[info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
+[info] +  firestore: Firestore Emulator UI websocket is running on 9150. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9150."}}
+[debug] [2025-02-01T08:31:47.076Z] Checked if tokens are valid: false, expires at: 1738314106242
+[debug] [2025-02-01T08:31:47.076Z] Checked if tokens are valid: false, expires at: 1738314106242
+[debug] [2025-02-01T08:31:47.076Z] > refreshing access token with scopes: []
+[debug] [2025-02-01T08:31:47.077Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-02-01T08:31:47.077Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-02-01T08:31:47.162Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2025-02-01T08:31:47.162Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2025-02-01T08:31:47.163Z] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2025-02-01T08:31:47.163Z] Failed to retrieve default database instance: {"name":"FirebaseError","children":[],"exit":2,"message":"Failed to get Firebase project blessedpomade. Please make sure the project exists and your account has permission to access it.","original":{"name":"FirebaseError","children":[],"exit":1,"message":"Authentication Error: Your credentials are no longer valid. Please run \u001b[1mfirebase login --reauth\u001b[22m\n\nFor CI servers and headless environments, generate a new token with \u001b[1mfirebase login:ci\u001b[22m","status":500},"status":500} {"metadata":{"emulator":{"name":"database"},"message":"Failed to retrieve default database instance: {\"name\":\"FirebaseError\",\"children\":[],\"exit\":2,\"message\":\"Failed to get Firebase project blessedpomade. Please make sure the project exists and your account has permission to access it.\",\"original\":{\"name\":\"FirebaseError\",\"children\":[],\"exit\":1,\"message\":\"Authentication Error: Your credentials are no longer valid. Please run \\u001b[1mfirebase login --reauth\\u001b[22m\\n\\nFor CI servers and headless environments, generate a new token with \\u001b[1mfirebase login:ci\\u001b[22m\",\"status\":500},\"status\":500}"}}
+[debug] [2025-02-01T08:31:47.164Z] database rules config:  []
+[warn] !  database: Did not find a Realtime Database rules file specified in a firebase.json config file. The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration. {"metadata":{"emulator":{"name":"database"},"message":"Did not find a Realtime Database rules file specified in a firebase.json config file. The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration."}}
+[debug] [2025-02-01T08:31:47.167Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2025-02-01T08:31:47.167Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-02-01T08:31:47.167Z] Ignoring unsupported arg: rules {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: rules"}}
+[debug] [2025-02-01T08:31:47.167Z] Starting Database Emulator with command {"binary":"java","args":["-Duser.language=en","-jar","C:\\Users\\Cloud\\.cache\\firebase\\emulators\\firebase-database-emulator-v4.11.2.jar","--host","127.0.0.1","--port",9000,"--single_project_mode","Warning","--functions_emulator_host","127.0.0.1","--functions_emulator_port",5001],"optionalArgs":["port","host","functions_emulator_port","functions_emulator_host","single_project_mode"],"joinArgs":false,"shell":false,"port":9000} {"metadata":{"emulator":{"name":"database"},"message":"Starting Database Emulator with command {\"binary\":\"java\",\"args\":[\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\Cloud\\\\.cache\\\\firebase\\\\emulators\\\\firebase-database-emulator-v4.11.2.jar\",\"--host\",\"127.0.0.1\",\"--port\",9000,\"--single_project_mode\",\"Warning\",\"--functions_emulator_host\",\"127.0.0.1\",\"--functions_emulator_port\",5001],\"optionalArgs\":[\"port\",\"host\",\"functions_emulator_port\",\"functions_emulator_host\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":9000}"}}
+[info] i  database: Database Emulator logging to database-debug.log {"metadata":{"emulator":{"name":"database"},"message":"Database Emulator logging to \u001b[1mdatabase-debug.log\u001b[22m"}}
+[debug] [2025-02-01T08:32:04.657Z] Checked if tokens are valid: false, expires at: 1738314106242
+[debug] [2025-02-01T08:32:04.657Z] Checked if tokens are valid: false, expires at: 1738314106242
+[debug] [2025-02-01T08:32:04.658Z] > refreshing access token with scopes: []
+[debug] [2025-02-01T08:32:04.658Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-02-01T08:32:04.658Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-02-01T08:32:04.855Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2025-02-01T08:32:04.855Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2025-02-01T08:32:04.858Z] Failed to list hosting sites
+[debug] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2025-02-01T08:32:04.858Z] Checked if tokens are valid: false, expires at: 1738314106242
+[debug] [2025-02-01T08:32:04.859Z] Checked if tokens are valid: false, expires at: 1738314106242
+[debug] [2025-02-01T08:32:04.859Z] > refreshing access token with scopes: []
+[debug] [2025-02-01T08:32:04.861Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-02-01T08:32:04.861Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-02-01T08:32:04.935Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2025-02-01T08:32:04.936Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2025-02-01T08:32:04.937Z] fetchWebSetup error: FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[warn] !  hosting: Using web app configuration from cache. 
+[debug] [2025-02-01T08:32:04.940Z] Checked if tokens are valid: false, expires at: 1738314106242
+[debug] [2025-02-01T08:32:04.940Z] Checked if tokens are valid: false, expires at: 1738314106242
+[debug] [2025-02-01T08:32:04.940Z] > refreshing access token with scopes: []
+[debug] [2025-02-01T08:32:04.940Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-02-01T08:32:04.940Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-02-01T08:32:05.018Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2025-02-01T08:32:05.018Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2025-02-01T08:32:05.021Z] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[info] i  hosting[blessedpomade]: Serving hosting files from: build {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mbuild\u001b[22m"}}
+[info] +  hosting[blessedpomade]: Local server: http://127.0.0.1:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://127.0.0.1:5000\u001b[22m\u001b[24m"}}
+[debug] [2025-02-01T08:32:05.081Z] [Extensions] Connecting Extensions emulator, this is a noop.
+[info] i  functions: Watching "C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\users\\cloud\\desktop\\projectportfolio\\blessedpomade\\blessedpomade\\functions\" for Cloud Functions..."}}
+[debug] [2025-02-01T08:32:05.105Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[debug] [2025-02-01T08:32:06.979Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.21.2",
+    "firebase-admin": "^13.0.2",
+    "firebase-functions": "^6.0.1",
+    "functions": "file:",
+    "stripe": "^17.4.0-beta.2",
+    "uuid": "^11.0.5"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2025-02-01T08:32:06.980Z] Building nodejs source
+[debug] [2025-02-01T08:32:06.981Z] Failed to find version of module node: reached end of search path C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\node_modules
+[info] +  functions: Using node@22 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2025-02-01T08:32:06.989Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-01T08:32:07.002Z] Found firebase-functions binary at 'C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8554
+
+[error] (node:7800) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+[debug] [2025-02-01T08:32:09.638Z] Got response from /__/functions.yaml {"endpoints":{"api":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2025-02-01T08:32:13.715Z] defaultcredentials: writing to file C:\Users\Cloud\AppData\Roaming\firebase\cloud_clouddropdesigns_com_application_default_credentials.json
+[debug] [2025-02-01T08:32:13.716Z] Setting GAC to C:\Users\Cloud\AppData\Roaming\firebase\cloud_clouddropdesigns_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\Cloud\\AppData\\Roaming\\firebase\\cloud_clouddropdesigns_com_application_default_credentials.json"}}
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[info] +  functions[us-central1-api]: http function initialized (http://127.0.0.1:5001/blessedpomade/us-central1/api). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/blessedpomade/us-central1/api)."}}
+[debug] [2025-02-01T08:32:13.733Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────────┬────────────────┬──────────────────────────────────┐
+│ Emulator       │ Host:Port      │ View in Emulator UI              │
+├────────────────┼────────────────┼──────────────────────────────────┤
+│ Authentication │ 127.0.0.1:9099 │ http://127.0.0.1:4000/auth       │
+├────────────────┼────────────────┼──────────────────────────────────┤
+│ Functions      │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions  │
+├────────────────┼────────────────┼──────────────────────────────────┤
+│ Firestore      │ 127.0.0.1:8080 │ http://127.0.0.1:4000/firestore  │
+├────────────────┼────────────────┼──────────────────────────────────┤
+│ Database       │ 127.0.0.1:9000 │ http://127.0.0.1:4000/database   │
+├────────────────┼────────────────┼──────────────────────────────────┤
+│ Hosting        │ 127.0.0.1:5000 │ n/a                              │
+├────────────────┼────────────────┼──────────────────────────────────┤
+│ Extensions     │ 127.0.0.1:5001 │ http://127.0.0.1:4000/extensions │
+└────────────────┴────────────────┴──────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500, 9150
+┌─────────────────────────┬───────────────┬─────────────────────┐
+│ Extension Instance Name │ Extension Ref │ View in Emulator UI │
+└─────────────────────────┴───────────────┴─────────────────────┘
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2025-02-01T08:32:44.123Z] >>> [apiv2][query] POST http://127.0.0.1:5001/functions/projects/blessedpomade/trigger_multicast [none]
+[debug] [2025-02-01T08:32:44.124Z] >>> [apiv2][body] POST http://127.0.0.1:5001/functions/projects/blessedpomade/trigger_multicast {"eventId":"129c76f0-43fb-4a7d-a457-7e211a35c08b","eventType":"providers/firebase.auth/eventTypes/user.create","resource":{"name":"projects/blessedpomade","service":"firebaseauth.googleapis.com"},"params":{},"timestamp":"2025-02-01T08:32:44.122Z","data":{"uid":"XzJBb39cu0su3W6oYFxEAY3KsAeT","metadata":{"creationTime":"2025-02-01T08:32:44.120Z","lastSignInTime":"2025-02-01T08:32:44.120Z"},"customClaims":{}}}
+[debug] [2025-02-01T08:32:44.159Z] <<< [apiv2][status] POST http://127.0.0.1:5001/functions/projects/blessedpomade/trigger_multicast 200
+[debug] [2025-02-01T08:32:44.159Z] <<< [apiv2][body] POST http://127.0.0.1:5001/functions/projects/blessedpomade/trigger_multicast {"status":"multicast_acknowledged"}
+[debug] [2025-02-01T08:33:51.977Z] [work-queue] {"queuedWork":["/blessedpomade/us-central1/api/favicon.ico-2025-02-01T08:33:51.976Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-02-01T08:33:51.977Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/blessedpomade/us-central1/api/favicon.ico-2025-02-01T08:33:51.976Z"],"workRunningCount":1}
+[debug] [2025-02-01T08:33:51.978Z] Accepted request GET /blessedpomade/us-central1/api/favicon.ico --> us-central1-api
+[debug] [2025-02-01T08:33:51.984Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-02-01T08:33:51.985Z] [functions] Got req.url=/blessedpomade/us-central1/api/favicon.ico, mapping to path=/favicon.ico {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/blessedpomade/us-central1/api/favicon.ico, mapping to path=/favicon.ico"}}
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2025-02-01T08:33:52.005Z] [worker-pool] addWorker(us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-api)"}}
+[debug] [2025-02-01T08:33:52.006Z] [worker-pool] Adding worker with key us-central1-api, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-api, total=1"}}
+[debug] [2025-02-01T08:33:52.095Z] >>> [apiv2][query] POST http://127.0.0.1:5001/functions/projects/blessedpomade/trigger_multicast [none]
+[debug] [2025-02-01T08:33:52.096Z] >>> [apiv2][body] POST http://127.0.0.1:5001/functions/projects/blessedpomade/trigger_multicast {"eventId":"78373cd5-0200-4983-8cb1-fb0b71e4adea","eventType":"providers/firebase.auth/eventTypes/user.create","resource":{"name":"projects/blessedpomade","service":"firebaseauth.googleapis.com"},"params":{},"timestamp":"2025-02-01T08:33:52.095Z","data":{"uid":"CtRF89BJXD5FQkSiuKsYZ5VBjOSq","metadata":{"creationTime":"2025-02-01T08:33:52.095Z","lastSignInTime":"2025-02-01T08:33:52.095Z"},"customClaims":{}}}
+[debug] [2025-02-01T08:33:52.112Z] <<< [apiv2][status] POST http://127.0.0.1:5001/functions/projects/blessedpomade/trigger_multicast 200
+[debug] [2025-02-01T08:33:52.112Z] <<< [apiv2][body] POST http://127.0.0.1:5001/functions/projects/blessedpomade/trigger_multicast {"status":"multicast_acknowledged"}
+[info] >  (node:5584) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead. {"user":"(node:5584) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m (node:5584) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead."}}
+[info] >  (Use `node --trace-deprecation ...` to show where the warning was created) {"user":"(Use `node --trace-deprecation ...` to show where the warning was created)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m (Use `node --trace-deprecation ...` to show where the warning was created)"}}
+[debug] [2025-02-01T08:33:54.881Z] [runtime-status] [5584] Resolved module firebase-admin {"declared":true,"installed":true,"version":"13.0.2","resolution":"C:\\users\\cloud\\desktop\\projectportfolio\\blessedpomade\\blessedpomade\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5584] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"13.0.2\",\"resolution\":\"C:\\\\users\\\\cloud\\\\desktop\\\\projectportfolio\\\\blessedpomade\\\\blessedpomade\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2025-02-01T08:33:54.884Z] [runtime-status] [5584] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.0","resolution":"C:\\users\\cloud\\desktop\\projectportfolio\\blessedpomade\\blessedpomade\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5584] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.3.0\",\"resolution\":\"C:\\\\users\\\\cloud\\\\desktop\\\\projectportfolio\\\\blessedpomade\\\\blessedpomade\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}"}}
+[debug] [2025-02-01T08:33:54.885Z] [runtime-status] [5584] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5584] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2025-02-01T08:33:54.887Z] [runtime-status] [5584] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.0","resolution":"C:\\users\\cloud\\desktop\\projectportfolio\\blessedpomade\\blessedpomade\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5584] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.3.0\",\"resolution\":\"C:\\\\users\\\\cloud\\\\desktop\\\\projectportfolio\\\\blessedpomade\\\\blessedpomade\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}"}}
+[debug] [2025-02-01T08:33:55.890Z] [runtime-status] [5584] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5584] Checked functions.config() {\"config\":{}}"}}
+[debug] [2025-02-01T08:33:55.891Z] [runtime-status] [5584] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"6.3.0","resolution":"C:\\users\\cloud\\desktop\\projectportfolio\\blessedpomade\\blessedpomade\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5584] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"6.3.0\",\"resolution\":\"C:\\\\users\\\\cloud\\\\desktop\\\\projectportfolio\\\\blessedpomade\\\\blessedpomade\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}}"}}
+[debug] [2025-02-01T08:33:55.892Z] [runtime-status] [5584] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.0","resolution":"C:\\users\\cloud\\desktop\\projectportfolio\\blessedpomade\\blessedpomade\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5584] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.3.0\",\"resolution\":\"C:\\\\users\\\\cloud\\\\desktop\\\\projectportfolio\\\\blessedpomade\\\\blessedpomade\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}"}}
+[debug] [2025-02-01T08:33:55.899Z] [runtime-status] [5584] Resolved module firebase-admin {"declared":true,"installed":true,"version":"13.0.2","resolution":"C:\\users\\cloud\\desktop\\projectportfolio\\blessedpomade\\blessedpomade\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5584] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"13.0.2\",\"resolution\":\"C:\\\\users\\\\cloud\\\\desktop\\\\projectportfolio\\\\blessedpomade\\\\blessedpomade\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2025-02-01T08:33:55.902Z] [runtime-status] [5584] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.0","resolution":"C:\\users\\cloud\\desktop\\projectportfolio\\blessedpomade\\blessedpomade\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5584] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.3.0\",\"resolution\":\"C:\\\\users\\\\cloud\\\\desktop\\\\projectportfolio\\\\blessedpomade\\\\blessedpomade\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}"}}
+[debug] [2025-02-01T08:33:55.903Z] [runtime-status] [5584] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"13.0.2","resolution":"C:\\users\\cloud\\desktop\\projectportfolio\\blessedpomade\\blessedpomade\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5584] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"13.0.2\",\"resolution\":\"C:\\\\users\\\\cloud\\\\desktop\\\\projectportfolio\\\\blessedpomade\\\\blessedpomade\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2025-02-01T08:33:56.353Z] [runtime-status] [5584] initializeApp(DEFAULT) {"credential":{"serviceAccountPathOrObject":{"type":"service_account","project_id":"blessedpomade","private_key_id":"87500f679210fe8f43fc3bc98b8f2f3008f36d98","private_key":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDBqAXi+Ohy+PjQ\nDpX0/52VoRInkeg0LA5+36h7ri43ZRNUS6ZgctKzoG/IMgUzBNv+acf+CJ4KU2Hh\n8ce9B5F/KgIgUBKiepbAiQwPcBjRk3mgd7A2xSkHGnEK2F3C1khfQT3Inhq/8Ire\nDgwXoz/WRYQb+Knrmfzyw5VQQ95aM/ddXSxQqQUggKwnI4jrNkHMepGEcVvY5XUb\naBBKPyqkOsGDv0GencfoUKm6YdTBhYZhmGDb3U85UcSsIW6fXH5uuIuxYQ5tSfuq\nBquh719xfvyusfveYscg03o9bzewaDbSmicsFlndQD+lw3LKmwJZEiaIez0ehzds\nq5jew1lVAgMBAAECggEAC2e9pwMxT3olzz0YrFP0oDgbBV0Uv6Pbm7HI7rXQr38C\nryuAajxA+AbKJpB5mWpfGYH53xZ7VlDYWjH+6T1dno9nDiehHVQadk7r+KnJsGge\n2OpLpMIiWzJ9t12MUhoEK6YAQUU8fpLoXtEVebvp2dEAyZPwz/ki+lo1/ELvAMFl\n++BxVBM1PZwMygkoxSRrSmhZ6TbTjRntVNr4O7e5wDryfYHXVxr38gYmWLcKwUek\nnULd5j7/iG71LJKUlr1IzdyZAJyXqX+KhkYBb+CpDUZ8ZdwR/k2FimgRDc2OASZU\nOECydLDfNs1lRzgeUOYj27OQkpYV6/Jp8cMXNfxEwQKBgQDqzVO+M+HltcoLriRj\ng3Zn/PbirUFwbRDtwMRds6VJu1kkXurnowK7rNcXbMpTzbTnZ5d3MOVPM9V4Fh82\naK8XwSExYQReqRPAbnj4EL/peqyevkttbsU7cCs4QpAlQ8nx5Y3HAgPxWwutXZcM\n7YbAwjl3bqZrAjt+Wzk89FJWFQKBgQDTI7+pmvFzXSnoR+tPonfXoiNoKpem2GxR\ntgyaJsdpwkAHu2ZPmz9Q8jIICjZjd0dmhffhwEQbUaT7lXpOzzOKpmbDAu/xvN6Q\naCwKKbHLj7/VhIY0E2wCyEdTWW2E0oFcJqyWdY/RzjDJF6WFyBcKmWvxEXa8yOLA\n3cbcDTsGQQKBgQCq5KSFs9c/TE9wrt83OpBsYRYDp1wQiqEemgWRuVWc02mu6hKI\nYwFzPPoTx49+7SI0phX8ny7WtYAx9c/j1s9RN7SD7vuyNdb1YLJUwkQbl7iZlSDq\n1gthFmOuf+vP44XQtGW7KUFbYgues5Zjx2EjXHlc7sDa83X/oj+HmL9wfQKBgCmx\nHG6UPutF0TmhwfBmp3138b/m8S0r/S+hYBmsYKIcjmI4efpsMHN+b6ywv46ihgHT\noF/+hDRUydw35v/a4FWXiCEn2lOEtPoU5+VV2FrW1s2Frq5ny2M9QwBNX1fj7VFR\n/bB0JGMMcQu0VKX3Hb2lD/B5P1YF4Oiuok7fefFBAoGBAJrSnxYtveOD3SpQxruQ\nsyp5SSAJ5824RbOn/b1wFbucQ8l5G05sP99UbldWd1trzPQ/bpy8Q3gBR3pZh9zc\nb7Gddjs+E2wPzATMspniy4fOLcGouUmShQycQ98QleUGTqIlFGaEJC3tMHZJkGYn\nIRwiA5aOQ+NvP4ADYQT5ydYl\n-----END PRIVATE KEY-----\n","client_email":"firebase-adminsdk-r3lp4@blessedpomade.iam.gserviceaccount.com","client_id":"108716688905838115286","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_x509_cert_url":"https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-r3lp4%40blessedpomade.iam.gserviceaccount.com","universe_domain":"googleapis.com"},"implicit":false,"projectId":"blessedpomade","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDBqAXi+Ohy+PjQ\nDpX0/52VoRInkeg0LA5+36h7ri43ZRNUS6ZgctKzoG/IMgUzBNv+acf+CJ4KU2Hh\n8ce9B5F/KgIgUBKiepbAiQwPcBjRk3mgd7A2xSkHGnEK2F3C1khfQT3Inhq/8Ire\nDgwXoz/WRYQb+Knrmfzyw5VQQ95aM/ddXSxQqQUggKwnI4jrNkHMepGEcVvY5XUb\naBBKPyqkOsGDv0GencfoUKm6YdTBhYZhmGDb3U85UcSsIW6fXH5uuIuxYQ5tSfuq\nBquh719xfvyusfveYscg03o9bzewaDbSmicsFlndQD+lw3LKmwJZEiaIez0ehzds\nq5jew1lVAgMBAAECggEAC2e9pwMxT3olzz0YrFP0oDgbBV0Uv6Pbm7HI7rXQr38C\nryuAajxA+AbKJpB5mWpfGYH53xZ7VlDYWjH+6T1dno9nDiehHVQadk7r+KnJsGge\n2OpLpMIiWzJ9t12MUhoEK6YAQUU8fpLoXtEVebvp2dEAyZPwz/ki+lo1/ELvAMFl\n++BxVBM1PZwMygkoxSRrSmhZ6TbTjRntVNr4O7e5wDryfYHXVxr38gYmWLcKwUek\nnULd5j7/iG71LJKUlr1IzdyZAJyXqX+KhkYBb+CpDUZ8ZdwR/k2FimgRDc2OASZU\nOECydLDfNs1lRzgeUOYj27OQkpYV6/Jp8cMXNfxEwQKBgQDqzVO+M+HltcoLriRj\ng3Zn/PbirUFwbRDtwMRds6VJu1kkXurnowK7rNcXbMpTzbTnZ5d3MOVPM9V4Fh82\naK8XwSExYQReqRPAbnj4EL/peqyevkttbsU7cCs4QpAlQ8nx5Y3HAgPxWwutXZcM\n7YbAwjl3bqZrAjt+Wzk89FJWFQKBgQDTI7+pmvFzXSnoR+tPonfXoiNoKpem2GxR\ntgyaJsdpwkAHu2ZPmz9Q8jIICjZjd0dmhffhwEQbUaT7lXpOzzOKpmbDAu/xvN6Q\naCwKKbHLj7/VhIY0E2wCyEdTWW2E0oFcJqyWdY/RzjDJF6WFyBcKmWvxEXa8yOLA\n3cbcDTsGQQKBgQCq5KSFs9c/TE9wrt83OpBsYRYDp1wQiqEemgWRuVWc02mu6hKI\nYwFzPPoTx49+7SI0phX8ny7WtYAx9c/j1s9RN7SD7vuyNdb1YLJUwkQbl7iZlSDq\n1gthFmOuf+vP44XQtGW7KUFbYgues5Zjx2EjXHlc7sDa83X/oj+HmL9wfQKBgCmx\nHG6UPutF0TmhwfBmp3138b/m8S0r/S+hYBmsYKIcjmI4efpsMHN+b6ywv46ihgHT\noF/+hDRUydw35v/a4FWXiCEn2lOEtPoU5+VV2FrW1s2Frq5ny2M9QwBNX1fj7VFR\n/bB0JGMMcQu0VKX3Hb2lD/B5P1YF4Oiuok7fefFBAoGBAJrSnxYtveOD3SpQxruQ\nsyp5SSAJ5824RbOn/b1wFbucQ8l5G05sP99UbldWd1trzPQ/bpy8Q3gBR3pZh9zc\nb7Gddjs+E2wPzATMspniy4fOLcGouUmShQycQ98QleUGTqIlFGaEJC3tMHZJkGYn\nIRwiA5aOQ+NvP4ADYQT5ydYl\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-r3lp4@blessedpomade.iam.gserviceaccount.com"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5584] initializeApp(DEFAULT) {\"credential\":{\"serviceAccountPathOrObject\":{\"type\":\"service_account\",\"project_id\":\"blessedpomade\",\"private_key_id\":\"87500f679210fe8f43fc3bc98b8f2f3008f36d98\",\"private_key\":\"-----BEGIN PRIVATE KEY-----\\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDBqAXi+Ohy+PjQ\\nDpX0/52VoRInkeg0LA5+36h7ri43ZRNUS6ZgctKzoG/IMgUzBNv+acf+CJ4KU2Hh\\n8ce9B5F/KgIgUBKiepbAiQwPcBjRk3mgd7A2xSkHGnEK2F3C1khfQT3Inhq/8Ire\\nDgwXoz/WRYQb+Knrmfzyw5VQQ95aM/ddXSxQqQUggKwnI4jrNkHMepGEcVvY5XUb\\naBBKPyqkOsGDv0GencfoUKm6YdTBhYZhmGDb3U85UcSsIW6fXH5uuIuxYQ5tSfuq\\nBquh719xfvyusfveYscg03o9bzewaDbSmicsFlndQD+lw3LKmwJZEiaIez0ehzds\\nq5jew1lVAgMBAAECggEAC2e9pwMxT3olzz0YrFP0oDgbBV0Uv6Pbm7HI7rXQr38C\\nryuAajxA+AbKJpB5mWpfGYH53xZ7VlDYWjH+6T1dno9nDiehHVQadk7r+KnJsGge\\n2OpLpMIiWzJ9t12MUhoEK6YAQUU8fpLoXtEVebvp2dEAyZPwz/ki+lo1/ELvAMFl\\n++BxVBM1PZwMygkoxSRrSmhZ6TbTjRntVNr4O7e5wDryfYHXVxr38gYmWLcKwUek\\nnULd5j7/iG71LJKUlr1IzdyZAJyXqX+KhkYBb+CpDUZ8ZdwR/k2FimgRDc2OASZU\\nOECydLDfNs1lRzgeUOYj27OQkpYV6/Jp8cMXNfxEwQKBgQDqzVO+M+HltcoLriRj\\ng3Zn/PbirUFwbRDtwMRds6VJu1kkXurnowK7rNcXbMpTzbTnZ5d3MOVPM9V4Fh82\\naK8XwSExYQReqRPAbnj4EL/peqyevkttbsU7cCs4QpAlQ8nx5Y3HAgPxWwutXZcM\\n7YbAwjl3bqZrAjt+Wzk89FJWFQKBgQDTI7+pmvFzXSnoR+tPonfXoiNoKpem2GxR\\ntgyaJsdpwkAHu2ZPmz9Q8jIICjZjd0dmhffhwEQbUaT7lXpOzzOKpmbDAu/xvN6Q\\naCwKKbHLj7/VhIY0E2wCyEdTWW2E0oFcJqyWdY/RzjDJF6WFyBcKmWvxEXa8yOLA\\n3cbcDTsGQQKBgQCq5KSFs9c/TE9wrt83OpBsYRYDp1wQiqEemgWRuVWc02mu6hKI\\nYwFzPPoTx49+7SI0phX8ny7WtYAx9c/j1s9RN7SD7vuyNdb1YLJUwkQbl7iZlSDq\\n1gthFmOuf+vP44XQtGW7KUFbYgues5Zjx2EjXHlc7sDa83X/oj+HmL9wfQKBgCmx\\nHG6UPutF0TmhwfBmp3138b/m8S0r/S+hYBmsYKIcjmI4efpsMHN+b6ywv46ihgHT\\noF/+hDRUydw35v/a4FWXiCEn2lOEtPoU5+VV2FrW1s2Frq5ny2M9QwBNX1fj7VFR\\n/bB0JGMMcQu0VKX3Hb2lD/B5P1YF4Oiuok7fefFBAoGBAJrSnxYtveOD3SpQxruQ\\nsyp5SSAJ5824RbOn/b1wFbucQ8l5G05sP99UbldWd1trzPQ/bpy8Q3gBR3pZh9zc\\nb7Gddjs+E2wPzATMspniy4fOLcGouUmShQycQ98QleUGTqIlFGaEJC3tMHZJkGYn\\nIRwiA5aOQ+NvP4ADYQT5ydYl\\n-----END PRIVATE KEY-----\\n\",\"client_email\":\"firebase-adminsdk-r3lp4@blessedpomade.iam.gserviceaccount.com\",\"client_id\":\"108716688905838115286\",\"auth_uri\":\"https://accounts.google.com/o/oauth2/auth\",\"token_uri\":\"https://oauth2.googleapis.com/token\",\"auth_provider_x509_cert_url\":\"https://www.googleapis.com/oauth2/v1/certs\",\"client_x509_cert_url\":\"https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-r3lp4%40blessedpomade.iam.gserviceaccount.com\",\"universe_domain\":\"googleapis.com\"},\"implicit\":false,\"projectId\":\"blessedpomade\",\"privateKey\":\"-----BEGIN PRIVATE KEY-----\\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDBqAXi+Ohy+PjQ\\nDpX0/52VoRInkeg0LA5+36h7ri43ZRNUS6ZgctKzoG/IMgUzBNv+acf+CJ4KU2Hh\\n8ce9B5F/KgIgUBKiepbAiQwPcBjRk3mgd7A2xSkHGnEK2F3C1khfQT3Inhq/8Ire\\nDgwXoz/WRYQb+Knrmfzyw5VQQ95aM/ddXSxQqQUggKwnI4jrNkHMepGEcVvY5XUb\\naBBKPyqkOsGDv0GencfoUKm6YdTBhYZhmGDb3U85UcSsIW6fXH5uuIuxYQ5tSfuq\\nBquh719xfvyusfveYscg03o9bzewaDbSmicsFlndQD+lw3LKmwJZEiaIez0ehzds\\nq5jew1lVAgMBAAECggEAC2e9pwMxT3olzz0YrFP0oDgbBV0Uv6Pbm7HI7rXQr38C\\nryuAajxA+AbKJpB5mWpfGYH53xZ7VlDYWjH+6T1dno9nDiehHVQadk7r+KnJsGge\\n2OpLpMIiWzJ9t12MUhoEK6YAQUU8fpLoXtEVebvp2dEAyZPwz/ki+lo1/ELvAMFl\\n++BxVBM1PZwMygkoxSRrSmhZ6TbTjRntVNr4O7e5wDryfYHXVxr38gYmWLcKwUek\\nnULd5j7/iG71LJKUlr1IzdyZAJyXqX+KhkYBb+CpDUZ8ZdwR/k2FimgRDc2OASZU\\nOECydLDfNs1lRzgeUOYj27OQkpYV6/Jp8cMXNfxEwQKBgQDqzVO+M+HltcoLriRj\\ng3Zn/PbirUFwbRDtwMRds6VJu1kkXurnowK7rNcXbMpTzbTnZ5d3MOVPM9V4Fh82\\naK8XwSExYQReqRPAbnj4EL/peqyevkttbsU7cCs4QpAlQ8nx5Y3HAgPxWwutXZcM\\n7YbAwjl3bqZrAjt+Wzk89FJWFQKBgQDTI7+pmvFzXSnoR+tPonfXoiNoKpem2GxR\\ntgyaJsdpwkAHu2ZPmz9Q8jIICjZjd0dmhffhwEQbUaT7lXpOzzOKpmbDAu/xvN6Q\\naCwKKbHLj7/VhIY0E2wCyEdTWW2E0oFcJqyWdY/RzjDJF6WFyBcKmWvxEXa8yOLA\\n3cbcDTsGQQKBgQCq5KSFs9c/TE9wrt83OpBsYRYDp1wQiqEemgWRuVWc02mu6hKI\\nYwFzPPoTx49+7SI0phX8ny7WtYAx9c/j1s9RN7SD7vuyNdb1YLJUwkQbl7iZlSDq\\n1gthFmOuf+vP44XQtGW7KUFbYgues5Zjx2EjXHlc7sDa83X/oj+HmL9wfQKBgCmx\\nHG6UPutF0TmhwfBmp3138b/m8S0r/S+hYBmsYKIcjmI4efpsMHN+b6ywv46ihgHT\\noF/+hDRUydw35v/a4FWXiCEn2lOEtPoU5+VV2FrW1s2Frq5ny2M9QwBNX1fj7VFR\\n/bB0JGMMcQu0VKX3Hb2lD/B5P1YF4Oiuok7fefFBAoGBAJrSnxYtveOD3SpQxruQ\\nsyp5SSAJ5824RbOn/b1wFbucQ8l5G05sP99UbldWd1trzPQ/bpy8Q3gBR3pZh9zc\\nb7Gddjs+E2wPzATMspniy4fOLcGouUmShQycQ98QleUGTqIlFGaEJC3tMHZJkGYn\\nIRwiA5aOQ+NvP4ADYQT5ydYl\\n-----END PRIVATE KEY-----\\n\",\"clientEmail\":\"firebase-adminsdk-r3lp4@blessedpomade.iam.gserviceaccount.com\"}}"}}
+[debug] [2025-02-01T08:33:56.366Z] [runtime-status] [5584] Functions runtime initialized. {"cwd":"C:\\users\\cloud\\desktop\\projectportfolio\\blessedpomade\\blessedpomade\\functions","node_version":"22.9.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5584] Functions runtime initialized. {\"cwd\":\"C:\\\\users\\\\cloud\\\\desktop\\\\projectportfolio\\\\blessedpomade\\\\blessedpomade\\\\functions\",\"node_version\":\"22.9.0\"}"}}
+[debug] [2025-02-01T08:33:56.368Z] [runtime-status] [5584] Listening to port: \\?\pipe\fire_emu_1c69464e0d89b167 {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5584] Listening to port: \\\\?\\pipe\\fire_emu_1c69464e0d89b167"}}
+[debug] [2025-02-01T08:33:56.415Z] [worker-us-central1-api-00146905-8f41-4153-a67d-8f8e2189a746]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-00146905-8f41-4153-a67d-8f8e2189a746]: IDLE"}}
+[debug] [2025-02-01T08:33:56.415Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2025-02-01T08:33:56.416Z] [worker-us-central1-api-00146905-8f41-4153-a67d-8f8e2189a746]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-00146905-8f41-4153-a67d-8f8e2189a746]: BUSY"}}
+[debug] [2025-02-01T08:33:56.419Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 3.4678ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 3.4678ms"}}
+[debug] [2025-02-01T08:33:56.420Z] [worker-us-central1-api-00146905-8f41-4153-a67d-8f8e2189a746]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-00146905-8f41-4153-a67d-8f8e2189a746]: IDLE"}}
+[debug] [2025-02-01T08:33:56.420Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-02-01T08:33:56.420Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-02-01T08:33:56.420Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-02-01T08:34:26.121Z] File C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\users\\cloud\\desktop\\projectportfolio\\blessedpomade\\blessedpomade\\functions\\index.js changed, reloading triggers"}}
+[debug] [2025-02-01T08:34:27.128Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[debug] [2025-02-01T08:34:28.547Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.21.2",
+    "firebase-admin": "^13.0.2",
+    "firebase-functions": "^6.0.1",
+    "functions": "file:",
+    "stripe": "^17.4.0-beta.2",
+    "uuid": "^11.0.5"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2025-02-01T08:34:28.547Z] Building nodejs source
+[debug] [2025-02-01T08:34:28.548Z] Failed to find version of module node: reached end of search path C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\node_modules
+[info] +  functions: Using node@22 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2025-02-01T08:34:28.550Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-01T08:34:28.556Z] Found firebase-functions binary at 'C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8023
+
+[error] (node:15960) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+[debug] [2025-02-01T08:34:29.786Z] Got response from /__/functions.yaml {"endpoints":{"api":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2025-02-01T08:34:33.832Z] defaultcredentials: writing to file C:\Users\Cloud\AppData\Roaming\firebase\cloud_clouddropdesigns_com_application_default_credentials.json
+[debug] [2025-02-01T08:34:33.833Z] Setting GAC to C:\Users\Cloud\AppData\Roaming\firebase\cloud_clouddropdesigns_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\Cloud\\AppData\\Roaming\\firebase\\cloud_clouddropdesigns_com_application_default_credentials.json"}}
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2025-02-01T08:34:33.834Z] [worker-pool] Shutting down IDLE worker (us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-api)"}}
+[debug] [2025-02-01T08:34:33.835Z] [worker-us-central1-api-00146905-8f41-4153-a67d-8f8e2189a746]: FINISHING {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-00146905-8f41-4153-a67d-8f8e2189a746]: FINISHING"}}
+[debug] [2025-02-01T08:34:33.847Z] [worker-us-central1-api-00146905-8f41-4153-a67d-8f8e2189a746]: exited {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-00146905-8f41-4153-a67d-8f8e2189a746]: exited"}}
+[debug] [2025-02-01T08:34:33.847Z] [worker-us-central1-api-00146905-8f41-4153-a67d-8f8e2189a746]: FINISHED {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-00146905-8f41-4153-a67d-8f8e2189a746]: FINISHED"}}
+[debug] [2025-02-01T08:34:57.962Z] File C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\users\\cloud\\desktop\\projectportfolio\\blessedpomade\\blessedpomade\\functions\\index.js changed, reloading triggers"}}
+[debug] [2025-02-01T08:34:58.971Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[debug] [2025-02-01T08:35:00.484Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.21.2",
+    "firebase-admin": "^13.0.2",
+    "firebase-functions": "^6.0.1",
+    "functions": "file:",
+    "stripe": "^17.4.0-beta.2",
+    "uuid": "^11.0.5"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2025-02-01T08:35:00.484Z] Building nodejs source
+[debug] [2025-02-01T08:35:00.484Z] Failed to find version of module node: reached end of search path C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\node_modules
+[info] +  functions: Using node@22 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2025-02-01T08:35:00.486Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-01T08:35:00.494Z] Found firebase-functions binary at 'C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8195
+
+[error] (node:12464) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+[debug] [2025-02-01T08:35:02.286Z] Got response from /__/functions.yaml {"endpoints":{"api":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2025-02-01T08:35:06.333Z] defaultcredentials: writing to file C:\Users\Cloud\AppData\Roaming\firebase\cloud_clouddropdesigns_com_application_default_credentials.json
+[debug] [2025-02-01T08:35:06.334Z] Setting GAC to C:\Users\Cloud\AppData\Roaming\firebase\cloud_clouddropdesigns_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\Cloud\\AppData\\Roaming\\firebase\\cloud_clouddropdesigns_com_application_default_credentials.json"}}
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2025-02-01T08:48:32.198Z] File C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\users\\cloud\\desktop\\projectportfolio\\blessedpomade\\blessedpomade\\functions\\index.js changed, reloading triggers"}}
+[debug] [2025-02-01T08:48:33.211Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[debug] [2025-02-01T08:48:34.452Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.21.2",
+    "firebase-admin": "^13.0.2",
+    "firebase-functions": "^6.0.1",
+    "functions": "file:",
+    "stripe": "^17.4.0-beta.2",
+    "uuid": "^11.0.5"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2025-02-01T08:48:34.452Z] Building nodejs source
+[debug] [2025-02-01T08:48:34.452Z] Failed to find version of module node: reached end of search path C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\node_modules
+[info] +  functions: Using node@22 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2025-02-01T08:48:34.455Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-01T08:48:34.462Z] Found firebase-functions binary at 'C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8123
+
+[debug] [2025-02-01T08:48:35.250Z] File C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\users\\cloud\\desktop\\projectportfolio\\blessedpomade\\blessedpomade\\functions\\index.js changed, reloading triggers"}}
+[error] (node:3768) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+[debug] [2025-02-01T08:48:35.823Z] Got response from /__/functions.yaml {"endpoints":{"api":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2025-02-01T08:48:36.262Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[debug] [2025-02-01T08:48:37.501Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.21.2",
+    "firebase-admin": "^13.0.2",
+    "firebase-functions": "^6.0.1",
+    "functions": "file:",
+    "stripe": "^17.4.0-beta.2",
+    "uuid": "^11.0.5"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2025-02-01T08:48:37.501Z] Building nodejs source
+[debug] [2025-02-01T08:48:37.501Z] Failed to find version of module node: reached end of search path C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\node_modules
+[info] +  functions: Using node@22 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2025-02-01T08:48:37.504Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-01T08:48:37.512Z] Found firebase-functions binary at 'C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8397
+
+[error] (node:5528) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+[debug] [2025-02-01T08:48:38.907Z] Got response from /__/functions.yaml {"endpoints":{"api":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2025-02-01T08:48:39.867Z] defaultcredentials: writing to file C:\Users\Cloud\AppData\Roaming\firebase\cloud_clouddropdesigns_com_application_default_credentials.json
+[debug] [2025-02-01T08:48:39.868Z] Setting GAC to C:\Users\Cloud\AppData\Roaming\firebase\cloud_clouddropdesigns_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\Cloud\\AppData\\Roaming\\firebase\\cloud_clouddropdesigns_com_application_default_credentials.json"}}
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2025-02-01T08:48:42.946Z] defaultcredentials: writing to file C:\Users\Cloud\AppData\Roaming\firebase\cloud_clouddropdesigns_com_application_default_credentials.json
+[debug] [2025-02-01T08:48:42.947Z] Setting GAC to C:\Users\Cloud\AppData\Roaming\firebase\cloud_clouddropdesigns_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\Cloud\\AppData\\Roaming\\firebase\\cloud_clouddropdesigns_com_application_default_credentials.json"}}
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2025-02-01T08:48:49.260Z] File C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\package-lock.json changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\users\\cloud\\desktop\\projectportfolio\\blessedpomade\\blessedpomade\\functions\\package-lock.json changed, reloading triggers"}}
+[debug] [2025-02-01T08:48:50.270Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[debug] [2025-02-01T08:48:51.801Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.21.2",
+    "firebase-admin": "^13.0.2",
+    "firebase-functions": "^6.0.1",
+    "functions": "file:",
+    "stripe": "^17.4.0-beta.2",
+    "uuid": "^11.0.5"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2025-02-01T08:48:51.801Z] Building nodejs source
+[debug] [2025-02-01T08:48:51.801Z] Failed to find version of module node: reached end of search path C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\node_modules
+[info] +  functions: Using node@22 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2025-02-01T08:48:51.803Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-01T08:48:51.809Z] Found firebase-functions binary at 'C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8736
+
+[error] (node:4708) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+[debug] [2025-02-01T08:48:53.274Z] Got response from /__/functions.yaml {"endpoints":{"api":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2025-02-01T08:48:57.308Z] defaultcredentials: writing to file C:\Users\Cloud\AppData\Roaming\firebase\cloud_clouddropdesigns_com_application_default_credentials.json
+[debug] [2025-02-01T08:48:57.309Z] Setting GAC to C:\Users\Cloud\AppData\Roaming\firebase\cloud_clouddropdesigns_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\Cloud\\AppData\\Roaming\\firebase\\cloud_clouddropdesigns_com_application_default_credentials.json"}}
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2025-02-01T08:51:28.247Z] File C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\package.json changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\users\\cloud\\desktop\\projectportfolio\\blessedpomade\\blessedpomade\\functions\\package.json changed, reloading triggers"}}
+[debug] [2025-02-01T08:51:29.276Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[debug] [2025-02-01T08:51:31.960Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "start": "node index.js",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.21.2",
+    "firebase-admin": "^13.0.2",
+    "firebase-functions": "^6.0.1",
+    "functions": "file:",
+    "stripe": "^17.4.0-beta.2",
+    "uuid": "^11.0.5"
+  },
+  "private": true
+}
+[debug] [2025-02-01T08:51:31.960Z] Building nodejs source
+[debug] [2025-02-01T08:51:31.960Z] Failed to find version of module node: reached end of search path C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\node_modules
+[info] +  functions: Using node@22 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2025-02-01T08:51:31.963Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-01T08:51:31.970Z] Found firebase-functions binary at 'C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\node_modules\.bin\firebase-functions'
+[debug] [2025-02-01T08:51:32.491Z] File C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\package.json changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\users\\cloud\\desktop\\projectportfolio\\blessedpomade\\blessedpomade\\functions\\package.json changed, reloading triggers"}}
+[info] Serving at port 8499
+
+[debug] [2025-02-01T08:51:32.840Z] File C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\package-lock.json changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\users\\cloud\\desktop\\projectportfolio\\blessedpomade\\blessedpomade\\functions\\package-lock.json changed, reloading triggers"}}
+[debug] [2025-02-01T08:51:33.849Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[debug] [2025-02-01T08:51:35.625Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "start": "node index.js",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.21.2",
+    "firebase-admin": "^13.0.2",
+    "firebase-functions": "^6.0.1",
+    "functions": "file:",
+    "stripe": "^17.4.0-beta.2",
+    "uuid": "^11.0.5"
+  },
+  "private": true
+}
+[debug] [2025-02-01T08:51:35.625Z] Building nodejs source
+[debug] [2025-02-01T08:51:35.625Z] Failed to find version of module node: reached end of search path C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\node_modules
+[info] +  functions: Using node@22 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2025-02-01T08:51:35.628Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-01T08:51:35.637Z] Found firebase-functions binary at 'C:\users\cloud\desktop\projectportfolio\blessedpomade\blessedpomade\functions\node_modules\.bin\firebase-functions'
+[error] (node:13524) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+[debug] [2025-02-01T08:51:35.644Z] Got response from /__/functions.yaml {"endpoints":{"api":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] Serving at port 8178
+
+[error] (node:14624) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+[debug] [2025-02-01T08:51:37.321Z] Got response from /__/functions.yaml {"endpoints":{"api":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2025-02-01T08:51:39.673Z] defaultcredentials: writing to file C:\Users\Cloud\AppData\Roaming\firebase\cloud_clouddropdesigns_com_application_default_credentials.json
+[debug] [2025-02-01T08:51:39.674Z] Setting GAC to C:\Users\Cloud\AppData\Roaming\firebase\cloud_clouddropdesigns_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\Cloud\\AppData\\Roaming\\firebase\\cloud_clouddropdesigns_com_application_default_credentials.json"}}
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2025-02-01T08:51:41.365Z] defaultcredentials: writing to file C:\Users\Cloud\AppData\Roaming\firebase\cloud_clouddropdesigns_com_application_default_credentials.json
+[debug] [2025-02-01T08:51:41.366Z] Setting GAC to C:\Users\Cloud\AppData\Roaming\firebase\cloud_clouddropdesigns_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\Cloud\\AppData\\Roaming\\firebase\\cloud_clouddropdesigns_com_application_default_credentials.json"}}
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
