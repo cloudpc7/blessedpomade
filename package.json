@@ -47,7 +47,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "deploy:app": "firebase deploy --only hosting"
+    "deploy:app": "firebase deploy"
   },
   "browserslist": {
     "production": [

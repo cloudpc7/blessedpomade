@@ -1,6 +1,6 @@
 import { AddressElement } from '@stripe/react-stripe-js';
 import { useDispatch } from 'react-redux';
-import { updateShippingAddress, updateBillingAddress } from './stripeSlice';
+import { updateShippingAddress, updateBillingAddress } from '../../additionalFiles/stripeSlice';
 
 const AddressForm = ({ showBilling }) => {
     const dispatch = useDispatch();

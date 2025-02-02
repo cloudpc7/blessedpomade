@@ -1,33 +1,26 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 import { getFunctions } from 'firebase/functions';
-import { getAuth, signInAnonymously, connectAuthEmulator } from 'firebase/auth';
+import { getAuth, signInAnonymously } from 'firebase/auth';
 import { setUser, setAuthError } from './utils/userActions';
 import { doc, setDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
+  apiKey: "AIzaSyCi644hmK1BxXoC01WJVYZGf1fM9JVxpz8",
+  authDomain: "blessedpomade.firebaseapp.com",
+  projectId: "blessedpomade",
+  storageBucket: "blessedpomade.firebasestorage.app",
+  messagingSenderId: "296440553631",
+  appId: "1:296440553631:web:2f5ad7328cca9dc69fc2aa",
+  measurementId: "G-NMRP28M9HS"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const analytics = getAnalytics(app);
 const db = getFirestore(app);
 const functions = getFunctions(app);
 
-if (process.env.NODE_ENV === 'development') {
-  connectFirestoreEmulator(db, 'localhost', 8080); // Firestore port
-  connectAuthEmulator(auth, "http://localhost:9099"); // Auth port if needed
-}
-// Export a function to handle anonymous sign-in that can be called from a component
 export const handleAnonymousSignIn = (dispatch) => {
   signInAnonymously(auth)
     .then((userCredential) => {

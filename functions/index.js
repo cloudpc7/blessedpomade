@@ -1,17 +1,15 @@
-const dotenv = require('dotenv');
-dotenv.config();
-const admin = require('firebase-admin');
-const helmet = require('helmet');
-const serviceAccount = require('./blessedpomadeAdmin.json');
-const functions = require('firebase-functions');
-const { Timestamp } = require('firebase-admin/firestore');
-const express = require('express');
-const cors = require('cors');
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+import admin from 'firebase-admin';
+import express from 'express';
+import cors from 'cors';
+import stripe from 'stripe';
+import * as functions from 'firebase-functions';
+import { Timestamp } from 'firebase-admin/firestore';
+
+const stripeInstance = new stripe('sk_test_51QfVA1IMAr2rME9Pnoa5HD35bVGIDEtt3pCOcqyzE8ircVbe3YZHncAzp3LehCuKGLiBlaCUoVg7W3R5rGn9Apw700xGsuLiCm');
 // Initialize Firebase Admin SDK
 try {
     admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount),
+        credential: admin.credential.applicationDefault(),
     });
 } catch (error) {
     console.error('Error initializing Firebase Admin SDK:', error);
@@ -19,12 +17,20 @@ try {
 
 const db = admin.firestore();
 const app = express();
-app.use(cors({ 
-    origin: process.env.FRONTEND_URL,
-    optionsSuccessStatus:200
- }));
+
+// CORS Configuration to allow all origins
+app.use(cors({
+  origin: '*', // Allow all origins - BE CAREFUL as this opens security vulnerabilities
+  methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE', 'HEAD'],
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
+  exposedHeaders: ['Content-Range', 'X-Content-Range'],
+  optionsSuccessStatus: 200
+}));
+
+// Parse JSON bodies
 app.use(express.json());
-app.use(helmet());
+// Add helmet for security headers
+
 // Endpoint for anonymous sign-in
 app.post('/anonymous-sign-in', async (req, res) => {
     try {
@@ -121,7 +127,6 @@ app.delete('/remove-from-cart/:userId/:productId', async (req, res) => {
       if (itemIndex !== -1) {
         items.splice(itemIndex, 1); // Remove the item from the array
       } else {
-        // If item not found, return an error since this operation should be for removing an existing item
         return res.status(404).json({ error: 'Item not found in cart' });
       }
   
@@ -132,7 +137,7 @@ app.delete('/remove-from-cart/:userId/:productId', async (req, res) => {
       console.error("Error removing item from cart:", error);
       res.status(500).json({ error: "Failed to remove item from cart" });
     }
-  });
+});
 
 // Endpoint to update cart item
 app.put('/update-cart-item/:userId/:productId', async (req, res) => {
@@ -151,11 +156,9 @@ app.put('/update-cart-item/:userId/:productId', async (req, res) => {
       const item = items.find(item => item.productId === productId);
   
       if (!item) {
-        // This should not happen since it's a PUT, but for completeness:
         return res.status(404).json({ error: 'Item not found in cart' });
       }
   
-      // Increment the quantity
       item.quantity += quantity;
   
       await cartRef.set({ items }, { merge: true });
@@ -165,49 +168,22 @@ app.put('/update-cart-item/:userId/:productId', async (req, res) => {
       console.error("Error updating cart item:", error);
       res.status(500).json({ error: "Failed to update cart item" });
     }
-  });
+});
 
 // Endpoint to create Stripe checkout session
 app.post('/create-checkout-session', async (req, res) => {
     try {
         const { cartItems } = req.body;
-        const cart = cartItems.map((item) => ({
-            productId: item.productId,
-            productName: item.productName,
-            price: item.price,
-            quantity: item.quantity
-        }));
+        
+        // Log the cart items
+        console.log('Received cart items:', cartItems);
 
-        const lineItems = cartItems.map((item) => ({
-            price_data: {
-                currency: 'usd',
-                product_data: {
-                    name: item.productName,
-                },
-                unit_amount: Math.round(item.price * 100),
-            },
-            quantity: item.quantity,
-        }));
-
-        const session = await stripe.checkout.sessions.create({
-            billing_address_collection: 'required',
-            shipping_address_collection: {
-                allowed_countries: ['US'],
-            },
-            automatic_tax: {
-                enabled: true,
-            },
-            line_items: lineItems,
-            mode: 'payment',
-            success_url: `${process.env.SUCCESS_URL}?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: process.env.CANCEL_URL,
-        });
-
-        res.json({ sessionId: session.id });
+        // Send back the cart items as a response for confirmation
+        res.status(200).json({ cartItems: cartItems });
     } catch (error) {
-        console.error("Error creating checkout session:", error);
-        res.status(500).json({ error: "Failed to create checkout session" });
+        console.error("Error processing checkout request:", error);
+        res.status(500).json({ error: "Failed to process checkout request" });
     }
 });
 
-module.exports.api = functions.https.onRequest(app);
+export const api = functions.https.onRequest(app);

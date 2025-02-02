@@ -23,7 +23,6 @@ const PomadeProduct = () => {
         setCheck,
         pomadeProductId,
         goToCart,
-        quantity,
       } = useContext(ProductContext);
     const cartRef = useRef(null);
     useEffect(() => {
@@ -48,7 +47,7 @@ const PomadeProduct = () => {
             id: pomadeProductId, 
             product: 'Blessed Pomade',
             price: 13.99, 
-            quantity: quantity  
+            quantity:  1,
         };
         addToCart(event, itemData);
     };

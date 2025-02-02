@@ -8,8 +8,6 @@ const cartSlice = createSlice({
     total: 0,
     loading: false,
     error: null,
-    checkoutSession:null,
-    stripePublishableKey:null,
   },
   reducers: {
     updateCart: (state, action) => {
@@ -50,12 +48,6 @@ const cartSlice = createSlice({
     setError: (state, action) => {
       state.error = action.payload;
     },
-    setCheckoutSession: (state,action) => {
-      state.checkoutSession = action.payload;
-    },
-    setStripePublishableKey: (state, action) => {
-      state.stripePublishableKey = action.payload;
-    }
   },
 });
 
@@ -65,32 +57,8 @@ export const {
   setLoading, 
   setError, 
   updateCart, 
-  setCheckoutSession,
-  setStripePublishableKey,
 } = cartSlice.actions;
 export const cartSliceReducer = cartSlice.reducer;
-
-export const fetchStripePublishableKey = createAsyncThunk(
-  'cart/fetchStripePublishableKey',
-  async (_, { dispatch }) => {
-    try {
-      const response = await fetch('/stripe-publishable-key'); // Assuming you renamed the endpoint accordingly
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('API response not OK:', errorText);
-        throw new Error(errorText || 'Failed to fetch Stripe publishable key');
-      }
-
-      const { publishableKey } = await response.json();
-      dispatch(setStripePublishableKey(publishableKey));
-      return publishableKey;
-    } catch (error) {
-      console.error('Error fetching Stripe publishable key:', error);
-      dispatch(setError(error.message)); 
-      throw error;
-    }
-  }
-);
 
 export const addToCartAsync = createAsyncThunk(
   'cart/addToCartAsync',
@@ -98,7 +66,7 @@ export const addToCartAsync = createAsyncThunk(
     dispatch(setLoading(true));
     const { id, product, price, quantity } = payload;
     const userId = getState().user.user ? getState().user.user.uid : null;
-
+    console.log(userId);
     if (!userId) {
       console.error('User ID not available. Please log in or create an account.');
       dispatch(setError('User ID not available. Please log in or create an account.'));
@@ -106,7 +74,7 @@ export const addToCartAsync = createAsyncThunk(
     }
 
     try {
-      const response = await fetch('/cart-items', {
+      const response = await fetch('https://us-central1-blessedpomade.cloudfunctions.net/api/cart-items', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -147,7 +115,7 @@ export const removeFromCartAsync = createAsyncThunk(
     const userId = getState().user.user ? getState().user.user.uid : null;
 
     try {
-      const response = await fetch(`/update-cart-item/${userId}/${id}`, {
+      const response = await fetch(`https://us-central1-blessedpomade.cloudfunctions.net/api/update-cart-item/${userId}/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -188,7 +156,7 @@ export const incrementCartItemAsync = createAsyncThunk(
     }
 
     try {
-      const response = await fetch(`/update-cart-item/${userId}/${id}`, {
+      const response = await fetch(`https://us-central1-blessedpomade.cloudfunctions.net/api/update-cart-item/${userId}/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -203,7 +171,7 @@ export const incrementCartItemAsync = createAsyncThunk(
       }
 
       const result = await response.json();
-      dispatch(updateCart(result.cart)); // Update the cart with the new data from the server
+      dispatch(updateCart(result.cart)); 
       return result.cart;
     } catch (error) {
       console.error('Error in incrementCartItemAsync:', error);
@@ -215,42 +183,3 @@ export const incrementCartItemAsync = createAsyncThunk(
   }
 );
 
-export const createCheckoutSessionAsync = createAsyncThunk(
-  'cart/createCheckoutSessionAsync',
-  async (_, { dispatch, getState }) => {
-    dispatch(setLoading(true));
-    const userId = getState().user.user ? getState().user.user.uid : null;
-    const cartItems = getState().cart.items; 
-    console.log(userId, cartItems);
-    if (!userId) {
-      console.error('User ID not available. Please log in or create an account.');
-      dispatch(setError('User ID not available. Please log in or create an account.'));
-      throw new Error('No user ID available');
-    }
-
-    try {
-      const response = await fetch('/create-checkout-session', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ cartItems }),
-      });
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('API response not OK:', errorText);
-        throw new Error(errorText || 'Failed to create checkout session');
-      }
-      const { sessionId } = await response.json(); // Assuming the response contains sessionId
-      dispatch(setCheckoutSession(sessionId)); // Set the checkout session ID in the state
-      return sessionId;
-    } catch (error) {
-      console.error('Error in createCheckoutSessionAsync:', error);
-      dispatch(setError(error.message)); 
-      throw error;
-    } finally {
-      dispatch(setLoading(false));
-    }
-  }
-);

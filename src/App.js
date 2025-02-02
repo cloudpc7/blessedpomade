@@ -1,9 +1,6 @@
-import { Container } from 'react-bootstrap';
 import HomePage from './pages/HomePage';
 import { Routes, Route } from 'react-router-dom';
 import './styles/main/main.scss';
-import PaymentPage from './pages/PaymentPage';
-import StripeProvider from './providers/StripeProvider';
 import {  useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { handleAnonymousSignIn } from './firebaseConfig';
@@ -20,14 +17,6 @@ function App() {
   return (
       <Routes>
         <Route path='/' element={<HomePage />} />
-        <Route 
-          path='/payment'
-          element={
-            <StripeProvider>
-              <PaymentPage />
-            </StripeProvider>
-          }
-        />
         <Route path='/success' element={<Success />}/>
         <Route path='/cancel' element={<Cancelled />}/>
       </Routes>

@@ -1,4 +1,4 @@
-import { Container } from 'react';
+import { Container } from 'react-bootstrap';
 
 const Cancelled = () => {
     return (

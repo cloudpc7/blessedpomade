@@ -2,23 +2,23 @@
   "name": "functions",
   "description": "Cloud Functions for Firebase",
   "scripts": {
-    "start": "node index.js",
-    "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
+    "deploy:prod": "firebase deploy --only functions",
+    "predeploy:prod": "npm test",
+    "logs:prod": "firebase functions:log --only functions"
   },
   "engines": {
     "node": "22"
   },
   "main": "index.js",
+  "type": "module",
   "dependencies": {
     "cors": "^2.8.5",
-    "crypto": "^1.0.1",
     "express": "^4.21.2",
-    "firebase-admin": "^13.0.2",
+    "firebase-admin": "^12.7.0",
     "firebase-functions": "^6.0.1",
     "functions": "file:",
-    "stripe": "^17.4.0-beta.2",
-    "uuid": "^11.0.5"
+    "helmet": "^8.0.0",
+    "stripe": "^17.6.0"
   },
   "private": true
 }
