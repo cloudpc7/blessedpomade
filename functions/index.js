@@ -5,7 +5,6 @@ import stripe from 'stripe';
 import * as functions from 'firebase-functions';
 import { Timestamp } from 'firebase-admin/firestore';
 
-const stripeInstance = new stripe('sk_test_51QfVA1IMAr2rME9Pnoa5HD35bVGIDEtt3pCOcqyzE8ircVbe3YZHncAzp3LehCuKGLiBlaCUoVg7W3R5rGn9Apw700xGsuLiCm');
 // Initialize Firebase Admin SDK
 try {
     admin.initializeApp({
