@@ -1,12 +1,12 @@
 # Blessed Pomade 
-Blessed Pomade is owned and operated By Alex. In San Jacinto, CA
+Blessed Pomade is owned and operated By Alex Marroquin. In San Jacinto, CA
 
 ## Description of Business
 Blessed Pomade is an online store that provides hair products. Its initial product is the blessed pomade 
 hair pomade. 
 
 ### Site Url 
-[blessedpomade.com](https://blessedpomade.com)
+[blessedpomade](https://blessedpomade.web.app)
 
 #### Site Creation and Development
 blessedpomade website is created by Paul Cloud owner and operator of clouddropdesigns.com
