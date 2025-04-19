@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "blessedpomade",
+  "private_key_id": "87500f679210fe8f43fc3bc98b8f2f3008f36d98",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDBqAXi+Ohy+PjQ\nDpX0/52VoRInkeg0LA5+36h7ri43ZRNUS6ZgctKzoG/IMgUzBNv+acf+CJ4KU2Hh\n8ce9B5F/KgIgUBKiepbAiQwPcBjRk3mgd7A2xSkHGnEK2F3C1khfQT3Inhq/8Ire\nDgwXoz/WRYQb+Knrmfzyw5VQQ95aM/ddXSxQqQUggKwnI4jrNkHMepGEcVvY5XUb\naBBKPyqkOsGDv0GencfoUKm6YdTBhYZhmGDb3U85UcSsIW6fXH5uuIuxYQ5tSfuq\nBquh719xfvyusfveYscg03o9bzewaDbSmicsFlndQD+lw3LKmwJZEiaIez0ehzds\nq5jew1lVAgMBAAECggEAC2e9pwMxT3olzz0YrFP0oDgbBV0Uv6Pbm7HI7rXQr38C\nryuAajxA+AbKJpB5mWpfGYH53xZ7VlDYWjH+6T1dno9nDiehHVQadk7r+KnJsGge\n2OpLpMIiWzJ9t12MUhoEK6YAQUU8fpLoXtEVebvp2dEAyZPwz/ki+lo1/ELvAMFl\n++BxVBM1PZwMygkoxSRrSmhZ6TbTjRntVNr4O7e5wDryfYHXVxr38gYmWLcKwUek\nnULd5j7/iG71LJKUlr1IzdyZAJyXqX+KhkYBb+CpDUZ8ZdwR/k2FimgRDc2OASZU\nOECydLDfNs1lRzgeUOYj27OQkpYV6/Jp8cMXNfxEwQKBgQDqzVO+M+HltcoLriRj\ng3Zn/PbirUFwbRDtwMRds6VJu1kkXurnowK7rNcXbMpTzbTnZ5d3MOVPM9V4Fh82\naK8XwSExYQReqRPAbnj4EL/peqyevkttbsU7cCs4QpAlQ8nx5Y3HAgPxWwutXZcM\n7YbAwjl3bqZrAjt+Wzk89FJWFQKBgQDTI7+pmvFzXSnoR+tPonfXoiNoKpem2GxR\ntgyaJsdpwkAHu2ZPmz9Q8jIICjZjd0dmhffhwEQbUaT7lXpOzzOKpmbDAu/xvN6Q\naCwKKbHLj7/VhIY0E2wCyEdTWW2E0oFcJqyWdY/RzjDJF6WFyBcKmWvxEXa8yOLA\n3cbcDTsGQQKBgQCq5KSFs9c/TE9wrt83OpBsYRYDp1wQiqEemgWRuVWc02mu6hKI\nYwFzPPoTx49+7SI0phX8ny7WtYAx9c/j1s9RN7SD7vuyNdb1YLJUwkQbl7iZlSDq\n1gthFmOuf+vP44XQtGW7KUFbYgues5Zjx2EjXHlc7sDa83X/oj+HmL9wfQKBgCmx\nHG6UPutF0TmhwfBmp3138b/m8S0r/S+hYBmsYKIcjmI4efpsMHN+b6ywv46ihgHT\noF/+hDRUydw35v/a4FWXiCEn2lOEtPoU5+VV2FrW1s2Frq5ny2M9QwBNX1fj7VFR\n/bB0JGMMcQu0VKX3Hb2lD/B5P1YF4Oiuok7fefFBAoGBAJrSnxYtveOD3SpQxruQ\nsyp5SSAJ5824RbOn/b1wFbucQ8l5G05sP99UbldWd1trzPQ/bpy8Q3gBR3pZh9zc\nb7Gddjs+E2wPzATMspniy4fOLcGouUmShQycQ98QleUGTqIlFGaEJC3tMHZJkGYn\nIRwiA5aOQ+NvP4ADYQT5ydYl\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-r3lp4@blessedpomade.iam.gserviceaccount.com",
+  "client_id": "108716688905838115286",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-r3lp4%40blessedpomade.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
