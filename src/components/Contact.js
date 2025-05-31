@@ -6,23 +6,26 @@ import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
+import { sendEmail } from '../utils/emailSlice';
+import { useDispatch } from 'react-redux';
 import '../styles/home/contact/contact.scss';
 
 const Contact = () => {
     const handleSubmit = async (values) => {
-        // Assuming you're sending data to a server
-        try {
-            // Here you could implement logic to send form data to an API
-            // await fetch('/api/send-email', {
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify(values)
-            // });
-            // Alert for successful submission
-            alert('Message sent successfully!');
+        const dispatch = useDispatch();
+        try { 
+            await dispatch(sendEmail({
+                to:"cloudp9@outlook.com",
+                subject: "Blessed Pomade Product",
+                message: `
+                    <p><strong>Name:</strong> ${values.name}</p>
+                    <p><strong>Email:</strong> ${values.email}</p>
+                    <p><strong>Message:</strong> ${values.message}</p>
+                `
+            }));
+            alert('Message sent successfully');
         } catch (error) {
-            // Handle errors here
-            console.error('An error occurred:', error);
+            console.error('An error occured:', error);
             alert('Error sending message. Please try again later.');
         }
     };
@@ -41,7 +44,7 @@ const Contact = () => {
     });
 
     return (
-        <Container className="contact-container">
+        <Container id="contact" className="contact-container">
             <Row className="contact">
                 <Col className="title-col">
                 <h2 className="h2 contact-title">Contact Us</h2>

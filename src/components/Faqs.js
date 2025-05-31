@@ -11,7 +11,7 @@ const Faqs = () => {
     ];
 
     return (
-        <Container fluid className="faqs-container">
+        <Container id="faqs" fluid className="faqs-container">
             <Row className="faqs-row">
                 <Col xs={12} className="faq-grid">
                         <h2 className="h2 faqs-title">FAQs About Blessed Pomade</h2>

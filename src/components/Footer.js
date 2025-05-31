@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const Welcome = () => {
     return (
-        <footer className="footer">
+        <footer id="footer" className="footer">
             <div className="business-image">
                 <Image className="blessed-logo" src={pomadeLogo} alt="praying hand on top of a blue background"/>
                 <h3 className="h3 blessed-title">Blessed Pomade</h3>
@@ -40,7 +40,7 @@ const Welcome = () => {
                     <h5 className="h5 footer-title">Info</h5>
                     <ul className="footer-list">
                         <li>Privacy Policy</li>
-                        <li>Site Map</li>
+                        <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer">Sitemap</a>
                         <li>Terms & Conditions</li>
                         <li>Accessibility</li>
                         <li>California Privacy Policy</li>

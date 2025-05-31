@@ -6,14 +6,23 @@ import { setUser, setAuthError } from './utils/userActions';
 import { doc, setDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCi644hmK1BxXoC01WJVYZGf1fM9JVxpz8",
-  authDomain: "blessedpomade.firebaseapp.com",
-  projectId: "blessedpomade",
-  storageBucket: "blessedpomade.firebasestorage.app",
-  messagingSenderId: "296440553631",
-  appId: "1:296440553631:web:2f5ad7328cca9dc69fc2aa",
-  measurementId: "G-NMRP28M9HS"
+
+  apiKey: "AIzaSyDlKz8HnSnMIXtpbG0J5e2TbfIfup3UUIE",
+
+  authDomain: "blessedpomade-450103.firebaseapp.com",
+
+  projectId: "blessedpomade-450103",
+
+  storageBucket: "blessedpomade-450103.firebasestorage.app",
+
+  messagingSenderId: "193388602680",
+
+  appId: "1:193388602680:web:7343bad6d26b30bcfc0dcd",
+
+  measurementId: "G-PB25CFWSF3"
+
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

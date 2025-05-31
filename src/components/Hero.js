@@ -43,7 +43,7 @@ const Hero = () => {
 
     return (
         <>
-            <Card className="hero-card">
+            <Card id="hero" className="hero-card">
                 <Card.Img 
                     src={pomadeHero}
                     srcSet={`${pomadeHero} 375w, ${pomadeLg} 768w, ${pomadeLg} 1920w`}

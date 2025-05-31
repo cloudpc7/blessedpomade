@@ -59,7 +59,8 @@ const handleSubmit = (e) => {
 }
 
   return transitions((styles, item) => item && (
-    <Modal 
+    <Modal
+      id="blessed-pomade-product"
       show={showModal}
       onHide={onClose}
       size="sm" 

@@ -2,127 +2,115 @@ import { Container, Navbar, Nav, Offcanvas, Image } from 'react-bootstrap';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 import pomadeLogo from '../app/assets/images/pomade-logo.png';
 import { Tooltip } from 'reactstrap';
 import '../styles/header/header.scss';
 import { useContext } from 'react';
 import ProductContext from '../ProductContext';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 library.add(fas);
+
 const Header = () => {
     const navigate = useNavigate();
-    const { goToCart, cartCount} = useContext(ProductContext);
-    const [home, setHome] = useState(false);
-    const [shop, setShop] = useState(false);
-    const [cart, setCart] = useState(false);
-    const [phone, setPhone] = useState(false);
-    const [mail, setMail] = useState(false);
-    const [instagram, setInstagram] = useState(false);
-
-    const toggleHome = () => setHome((prev) => !prev);
-    const toggleShop = () => setShop((prev) => !prev);
-    const toggleCart = () => setCart((prev) => !prev);
-    const togglePhone = () => setPhone((prev) => !prev);
-    const toggleMail = () => setMail((prev) => !prev);
-    const toggleInstagram = () => setInstagram((prev) => !prev);
+    const { goToCart, cartCount } = useContext(ProductContext);
+    const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false);
 
     return (
-        <Navbar expand="lg">
+        <Navbar id="navigation" expand="lg">
             <Container>
-                <Navbar.Toggle
-                    aria-controls="offcanvasNavbar-expand-lg"
+                <Navbar.Toggle 
+                    aria-controls="offcanvasNavbar-expand-lg" 
+                    onClick={() => setIsOffcanvasOpen(true)}
                 />
                 <Navbar.Offcanvas
                     id="offcanvasNavbar-expand-md"
                     aria-labelledby="offcanvasnavbar-expand-lg"
                     placement="start"
+                    show={isOffcanvasOpen}
+                    onHide={() => setIsOffcanvasOpen(false)}
                 >
                     <Offcanvas.Header closeButton>
                         <Image className='pomade' src={pomadeLogo} alt='praying hands with blue background' />
-                            <h2 className="nav-title">Blessed Pomade</h2>
+                        <h2 className="nav-title">Blessed Pomade</h2>
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <Nav className="navbar-nav"> 
-                            <Nav.Link  onClick={() => Navigate('/')} className="link" alt="home"> 
-                                <FontAwesomeIcon id="home" icon="fa-house" size="2x" /> 
+                            <Nav.Link href="#home-section" onClick={() => setIsOffcanvasOpen((prev) => !prev)} className="link" id="home" alt="home"> 
+                                <FontAwesomeIcon icon="fa-house" size="2x" /> 
                                 <Tooltip
                                     placement="bottom"
-                                    isOpen={home}
+                                    isOpen={false}
                                     target="home"
-                                    toggle={toggleHome}
+                                    toggle={() => {}}
                                     className="custom-tooltip"
                                     transition={{ timeout: 300}}
                                 >
                                     Home
                                 </Tooltip>
                             </Nav.Link>
-                            <Nav.Link id="shop" href="#cart-section"  className="link shop" alt="shop"> 
+                            <Nav.Link href="#cart-section" onClick={() => setIsOffcanvasOpen((prev) => !prev)} className="link shop" id="shop" alt="shop"> 
                                 shop
                                 <Tooltip
                                     placement="bottom"
-                                    isOpen={shop}
+                                    isOpen={false}
                                     target="shop"
-                                    toggle={toggleShop}
+                                    toggle={() => {}}
                                     className="custom-tooltip"
                                     transition={{ timeout: 300}}
                                 >
                                     shop
                                 </Tooltip>
                             </Nav.Link>
-                            <Nav.Link id="cart" href="#cart-section" onClick={goToCart} className="link" alt="shopping cart"> 
+                            <Nav.Link href="#cart-section" onClick={() => setIsOffcanvasOpen((prev) => !prev)} className="link" id="cart" alt="shopping cart"> 
                                 <FontAwesomeIcon icon="fa-cart-shopping" size="2x" />
                                 <span className="cart-count">{cartCount}</span>
                                 <Tooltip
                                     placement="bottom"
-                                    isOpen={cart}
+                                    isOpen={false}
                                     target="cart"
-                                    toggle={toggleCart}
+                                    toggle={() => {}}
                                     className="custom-tooltip"
                                     transition={{ timeout: 300}}
                                 >
                                     shopping cart
                                 </Tooltip> 
                             </Nav.Link>
-                            <Nav.Link id="phone" href="tel:+9515028296" className="link" alt="phone"> 
+                            <Nav.Link onClick={() => window.location.href = 'tel:+9515028296'} className="link" id="phone" alt="phone"> 
                                 <FontAwesomeIcon icon="fa-phone" size="2x" /> 
                                 <Tooltip
                                     placement="bottom"
-                                    isOpen={phone}
+                                    isOpen={false}
                                     target="phone"
-                                    toggle={togglePhone}
+                                    toggle={() => {}}
                                     className="custom-tooltip"
                                     transition={{ timeout: 300}}
                                 >
                                     phone
                                 </Tooltip>
                             </Nav.Link>
-                            <Nav.Link id="mail" href="mailto:alex.85marroquin@gmail.com" className="link" alt="mail"> 
+                            <Nav.Link onClick={() => window.location.href = 'mailto:alex.85marroquin@gmail.com'} className="link" id="mail" alt="mail"> 
                                 <FontAwesomeIcon icon="fa-envelope" size="2x" /> 
                                 <Tooltip
                                     placement="bottom"
-                                    isOpen={mail}
+                                    isOpen={false}
                                     target="mail"
-                                    toggle={toggleMail}
+                                    toggle={() => {}}
                                     className="custom-tooltip"
                                     transition={{ timeout: 300}}
                                 >
                                     email
                                 </Tooltip>
                             </Nav.Link>
-                            <Nav.Link  
-                                id="instagram" 
-                                onClick={() => navigate('https://instagram.com')}
-                                className="link" 
-                                alt="instagram"
-                            > 
+                            <Nav.Link onClick={() => window.location.href = 'https://instagram.com'} className="link" id="instagram" alt="instagram"> 
                                 <FontAwesomeIcon icon={faInstagram} size="2x" /> 
                                 <Tooltip
                                     placement="bottom"
-                                    isOpen={instagram}
+                                    isOpen={false}
                                     target="instagram"
-                                    toggle={toggleInstagram}
+                                    toggle={() => {}}
                                     className="custom-tooltip"
                                     transition={{ timeout: 300}}
                                 >

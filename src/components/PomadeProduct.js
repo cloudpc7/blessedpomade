@@ -58,7 +58,7 @@ const PomadeProduct = () => {
     }
 
     return (
-        <Container id="cart-section" className="product-container">
+        <Container id="pomade product cart-section" className="product-container">
             {transitions((styles, item) => (
                 <animated.div
                     className="animate-div"

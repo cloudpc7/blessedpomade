@@ -162,8 +162,6 @@
                             @include util.cart-check-style;
                             @media (max-width: 767px) {
                                 gap: 0.3rem;
-                                .term-link {
-                                }
                             }
                             .form-check-input {
                                 @include util.form-check-input-style;

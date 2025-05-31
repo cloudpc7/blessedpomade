@@ -1,0 +1,66 @@
+@use '../variables/fonts/fonts.scss' as font;
+@use '../variables/colors/colors.scss' as colors;
+@use '../variables/utillities/utils.scss' as util;
+
+.success-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include util.section-style;
+    background-color: colors.colorTheme(appGrey);
+    color: colors.colorTheme(appWhite);
+
+    .success-content {
+        width: 100%;
+        padding: 2rem;
+
+        @media (min-width: 62rem) {
+            padding: 4rem;
+        }
+
+        .blessed-logo-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+
+            .blessed-logo {
+                max-width: 150px;
+                max-height: 150px;
+                border: 2px solid colors.colorTheme(burntOrange);
+                border-radius: 50%;
+                padding: 0.5rem;
+                background-color: colors.colorTheme(appWhite);
+            }
+        }
+
+        .success-message {
+            .success-heading {
+                @include font.font-theme(title);
+                color: colors.colorTheme(burntOrange);
+                margin-bottom: 1rem;
+            }
+
+            .success-text {
+                font-size: 1.1rem;
+                line-height: 1.6;
+                margin-bottom: 1rem;
+                @include font.font-theme(default);
+            }
+
+            .success-button {
+                @include util.cart-button(); // Assuming you have a utility for buttons
+                background-color: transparent;
+                color: colors.colorTheme(burntOrange);
+                border-color: colors.colorTheme(burntOrange);
+                transition: all 0.3s ease;
+
+                &:hover {
+                    background-color: colors.colorTheme(burntOrange);
+                    color: colors.colorTheme(appWhite);
+                    border-color: colors.colorTheme(appWhite);
+                }
+            }
+        }
+    }
+}

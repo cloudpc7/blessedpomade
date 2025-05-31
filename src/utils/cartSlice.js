@@ -66,7 +66,6 @@ export const addToCartAsync = createAsyncThunk(
     dispatch(setLoading(true));
     const { id, product, price, quantity } = payload;
     const userId = getState().user.user ? getState().user.user.uid : null;
-    console.log(userId);
     if (!userId) {
       console.error('User ID not available. Please log in or create an account.');
       dispatch(setError('User ID not available. Please log in or create an account.'));
@@ -74,7 +73,7 @@ export const addToCartAsync = createAsyncThunk(
     }
 
     try {
-      const response = await fetch('https://us-central1-blessedpomade.cloudfunctions.net/api/cart-items', {
+      const response = await fetch('https://us-central1-blessedpomade-450103.cloudfunctions.net/api/cart-items', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -115,12 +114,12 @@ export const removeFromCartAsync = createAsyncThunk(
     const userId = getState().user.user ? getState().user.user.uid : null;
 
     try {
-      const response = await fetch(`https://us-central1-blessedpomade.cloudfunctions.net/api/update-cart-item/${userId}/${id}`, {
+      const response = await fetch(`https://us-central1-blessedpomade-450103.cloudfunctions.net/api/update-cart-item/${userId}/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ quantity: quantity }), // Send only the quantity to decrement
+        body: JSON.stringify({ quantity: quantity }),
       });
 
       if (!response.ok) {
@@ -156,7 +155,7 @@ export const incrementCartItemAsync = createAsyncThunk(
     }
 
     try {
-      const response = await fetch(`https://us-central1-blessedpomade.cloudfunctions.net/api/update-cart-item/${userId}/${id}`, {
+      const response = await fetch(`https://us-central1-blessedpomade-450103.cloudfunctions.net/api/update-cart-item/${userId}/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

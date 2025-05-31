@@ -45,7 +45,7 @@
                         display: grid;
                         align-items: end;
                         padding: 1rem;
-                        background: linear-gradient(to top, rgba(colors.colorTheme(burntOrange), 0.8), rgba(colors.colorTheme(burntOrange), 0));
+                        // background: linear-gradient(to top, rgba(colors.colorTheme(burntOrange), 0.8), rgba(colors.colorTheme(burntOrange), 0));
                         .testament-body {
                             @include font.font-theme(default);
                             .testament-text, .testament-name {

@@ -1,12 +1,21 @@
 @use '../variables/fonts/fonts.scss' as font;
 @use '../variables/colors/colors.scss' as colors;
-
+@use '../variables/utillities/utils.scss' as util;
 .modal-dialog {
-  max-width: 30rem;
-  width: calc(100% - 2rem);
-  margin: 1rem auto;
+  width: 85%; // Default width for small screens
+  max-width: 37.5rem; // Assuming 1rem = 16px, so 600px / 16 = 37.5rem
   padding: 0;
+  margin: 1rem auto;
 
+  @media (min-width: 48rem) { // 768px / 16 = 48rem
+    width: 80%; // Increase width for medium screens
+    max-width: 50rem; // 800px / 16 = 50rem
+  }
+
+  @media (min-width: 75rem) { // 1200px / 16 = 75rem
+    width: 70%; // Adjust this percentage to fit your design needs
+    max-width: 62.5rem; // 1000px / 16 = 62.5rem
+  }
   .modal-content {
     border-radius: 0;
     background-color: colors.colorTheme(burntOrange);
@@ -256,24 +265,41 @@
                   justify-content: center;
                   gap: 0.5rem;
                   padding-bottom: 0.5rem;
-
+                  
                   .cart-check {
                     display: flex;
                     align-items: center;
                     justify-content: flex-start;
                     gap: 0.3rem;
 
-                    .term-link {
-                      color: colors.colorTheme(burntOrange);
-                      text-decoration-color: colors.colorTheme(appWhite);
-                      text-underline-offset: 6px;
-                      &:hover {
+                    .form-check-input {
+                      @include util.form-check-input-style;
+                      cursor: pointer;
+                      &:checked {
+                        background-color: colors.colorTheme(burntOrange);
+                        border-color: colors.colorTheme(appBlack);
                         color: colors.colorTheme(appWhite);
-                        text-decoration-color: colors.colorTheme(appBlack);
+                      }
+
+                      &:checked::after {
+                        color: colors.colorTheme(appWhite);
+                        background-color: colors.colorTheme(burntOrange);
                       }
                     }
-                  }
 
+                    .form-check-label {
+                        .term-link {
+                          color: colors.colorTheme(appWhite);
+                          text-decoration-color: colors.colorTheme(burntOrange);
+                          text-underline-offset: 6px;
+    
+                          &:hover {
+                            color: colors.colorTheme(burntOrange);
+                            text-decoration-color: colors.colorTheme(appWhite);
+                          }
+                        }
+                    }
+                  }
                   .cart-buttons {
                     display: flex;
                     align-items: center;
@@ -314,8 +340,8 @@
   }
 }
 
-@media (max-width: 376px) {
-  .modal-dialog {
-    width: calc(100% - 1rem);
-  }
-}
+// @media (max-width: 376px) {
+//   .modal-dialog {
+//     width: calc(100% - 1rem);
+//   }
+// }

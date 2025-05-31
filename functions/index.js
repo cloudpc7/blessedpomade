@@ -1,11 +1,10 @@
 import admin from 'firebase-admin';
 import express from 'express';
 import cors from 'cors';
-import stripe from 'stripe';
+import Stripe from 'stripe';
 import * as functions from 'firebase-functions';
 import { Timestamp } from 'firebase-admin/firestore';
 
-const stripeInstance = new stripe('sk_test_51QfVA1IMAr2rME9Pnoa5HD35bVGIDEtt3pCOcqyzE8ircVbe3YZHncAzp3LehCuKGLiBlaCUoVg7W3R5rGn9Apw700xGsuLiCm');
 // Initialize Firebase Admin SDK
 try {
     admin.initializeApp({
@@ -17,19 +16,19 @@ try {
 
 const db = admin.firestore();
 const app = express();
-
+const stripe = new Stripe('sk_test_51QfVA1IMAr2rME9Pnoa5HD35bVGIDEtt3pCOcqyzE8ircVbe3YZHncAzp3LehCuKGLiBlaCUoVg7W3R5rGn9Apw700xGsuLiCm',  { apiVersion: '2020-08-27' });
 // CORS Configuration to allow all origins
 app.use(cors({
-  origin: '*', // Allow all origins - BE CAREFUL as this opens security vulnerabilities
+  origin: ['https://blessedpomade.web.app','http://localhost:3000'], 
   methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE', 'HEAD'],
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
+  allowedHeaders: ['Content-Type', 'Authorization'],
   exposedHeaders: ['Content-Range', 'X-Content-Range'],
-  optionsSuccessStatus: 200
+  optionsSuccessStatus: 200,
+  maxAge: 86400
 }));
 
 // Parse JSON bodies
 app.use(express.json());
-// Add helmet for security headers
 
 // Endpoint for anonymous sign-in
 app.post('/anonymous-sign-in', async (req, res) => {
@@ -170,20 +169,41 @@ app.put('/update-cart-item/:userId/:productId', async (req, res) => {
     }
 });
 
-// Endpoint to create Stripe checkout session
+const YOUR_DOMAIN = 'https://blessedpomade.web.app';
+
 app.post('/create-checkout-session', async (req, res) => {
     try {
         const { cartItems } = req.body;
         
-        // Log the cart items
         console.log('Received cart items:', cartItems);
 
-        // Send back the cart items as a response for confirmation
-        res.status(200).json({ cartItems: cartItems });
+        const lineItems = cartItems.map((item) => ({
+            price_data: {
+                currency: 'usd',
+                product_data: {
+                    name: item.productName,
+                },
+                unit_amount: Math.round(item.price * 100),
+            },
+            quantity: item.quantity,
+        }));
+
+        const session = await stripe.checkout.sessions.create({
+            line_items: lineItems,
+            mode: 'payment',
+            success_url: `https://blessedpomade.web.app/success?success=true`,
+            cancel_url: `https://blessedpomade.web.app?canceled=true`,
+            automatic_tax: { enabled: true },
+        });
+
+       console.log('Stripe session created:', session.id);
+        // Send back the session URL for the client to handle
+        res.json({ url: session.url });
     } catch (error) {
-        console.error("Error processing checkout request:", error);
-        res.status(500).json({ error: "Failed to process checkout request" });
+        console.error('Error creating checkout session:', error);
+        res.status(500).json({ error: 'An internal server error occurred' });
     }
 });
+
 
 export const api = functions.https.onRequest(app);

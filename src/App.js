@@ -4,7 +4,7 @@ import './styles/main/main.scss';
 import {  useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { handleAnonymousSignIn } from './firebaseConfig';
-import Success from './components/Success';
+import SuccessPage from './pages/SuccessPage';
 import Cancelled from './components/Cancelled';
 function App() {
   const dispatch = useDispatch();
@@ -17,8 +17,7 @@ function App() {
   return (
       <Routes>
         <Route path='/' element={<HomePage />} />
-        <Route path='/success' element={<Success />}/>
-        <Route path='/cancel' element={<Cancelled />}/>
+        <Route path='/success' element={<SuccessPage />}/>
       </Routes>
   );
 }

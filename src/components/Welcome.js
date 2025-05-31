@@ -3,7 +3,7 @@ import '../styles/home/welcome/welcome.scss';
 
 const Welcome = () => {
     return (
-        <Container className="welcome-container">
+        <Container id="welcome" className="welcome-container">
             <div className="welcome-content">
                 <h2 className="h2 welcome-title">Feel Fresh, Feel Blessed</h2>
                 <div className="welcome-statement">

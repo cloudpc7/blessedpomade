@@ -52,8 +52,8 @@ const HomePage = () => {
     });
 
     return (
-        <Container className="home-container">
-            <Row className="hero-section">
+        <Container id="home" className="home-container">
+            <Row id="hero" className="hero-section">
                 <Col>
                     <Card>
                         <Card.Img 
